@@ -1,0 +1,68 @@
+[
+{
+  "directory": "D:/drones code/UWBSMFC2026/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe  @CMakeFiles/nlink_unpack_com.dir/includes_C.rsp -g -o CMakeFiles\\nlink_unpack_com.dir\\UWB_Sender.c.obj -c \"D:\\drones code\\UWBSMFC2026\\nlink_unpack-master\\UWB_Sender.c\"",
+  "file": "D:/drones code/UWBSMFC2026/nlink_unpack-master/UWB_Sender.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/UWB_Sender.c.obj"
+},
+{
+  "directory": "D:/drones code/UWBSMFC2026/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe  @CMakeFiles/nlink_unpack_com.dir/includes_C.rsp -g -o CMakeFiles\\nlink_unpack_com.dir\\src\\nlink_utils.c.obj -c \"D:\\drones code\\UWBSMFC2026\\nlink_unpack-master\\src\\nlink_utils.c\"",
+  "file": "D:/drones code/UWBSMFC2026/nlink_unpack-master/src/nlink_utils.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_utils.c.obj"
+},
+{
+  "directory": "D:/drones code/UWBSMFC2026/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe  @CMakeFiles/nlink_unpack_com.dir/includes_C.rsp -g -o CMakeFiles\\nlink_unpack_com.dir\\src\\nlink_linktrack_nodeframe0.c.obj -c \"D:\\drones code\\UWBSMFC2026\\nlink_unpack-master\\src\\nlink_linktrack_nodeframe0.c\"",
+  "file": "D:/drones code/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_nodeframe0.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_nodeframe0.c.obj"
+},
+{
+  "directory": "D:/drones code/UWBSMFC2026/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe  @CMakeFiles/nlink_unpack_com.dir/includes_C.rsp -g -o CMakeFiles\\nlink_unpack_com.dir\\src\\nlink_linktrack_nodeframe1.c.obj -c \"D:\\drones code\\UWBSMFC2026\\nlink_unpack-master\\src\\nlink_linktrack_nodeframe1.c\"",
+  "file": "D:/drones code/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_nodeframe1.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_nodeframe1.c.obj"
+},
+{
+  "directory": "D:/drones code/UWBSMFC2026/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe  @CMakeFiles/nlink_unpack_com.dir/includes_C.rsp -g -o CMakeFiles\\nlink_unpack_com.dir\\src\\nlink_linktrack_nodeframe2.c.obj -c \"D:\\drones code\\UWBSMFC2026\\nlink_unpack-master\\src\\nlink_linktrack_nodeframe2.c\"",
+  "file": "D:/drones code/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_nodeframe2.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_nodeframe2.c.obj"
+},
+{
+  "directory": "D:/drones code/UWBSMFC2026/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe  @CMakeFiles/nlink_unpack_com.dir/includes_C.rsp -g -o CMakeFiles\\nlink_unpack_com.dir\\src\\nlink_linktrack_nodeframe3.c.obj -c \"D:\\drones code\\UWBSMFC2026\\nlink_unpack-master\\src\\nlink_linktrack_nodeframe3.c\"",
+  "file": "D:/drones code/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_nodeframe3.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_nodeframe3.c.obj"
+},
+{
+  "directory": "D:/drones code/UWBSMFC2026/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe  @CMakeFiles/nlink_unpack_com.dir/includes_C.rsp -g -o CMakeFiles\\nlink_unpack_com.dir\\src\\nlink_linktrack_aoa_nodeframe0.c.obj -c \"D:\\drones code\\UWBSMFC2026\\nlink_unpack-master\\src\\nlink_linktrack_aoa_nodeframe0.c\"",
+  "file": "D:/drones code/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_aoa_nodeframe0.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_aoa_nodeframe0.c.obj"
+},
+{
+  "directory": "D:/drones code/UWBSMFC2026/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe  @CMakeFiles/nlink_unpack_com.dir/includes_C.rsp -g -o CMakeFiles\\nlink_unpack_com.dir\\src\\nlink_linktrack_tagframe0.c.obj -c \"D:\\drones code\\UWBSMFC2026\\nlink_unpack-master\\src\\nlink_linktrack_tagframe0.c\"",
+  "file": "D:/drones code/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_tagframe0.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_tagframe0.c.obj"
+},
+{
+  "directory": "D:/drones code/UWBSMFC2026/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe  @CMakeFiles/nlink_unpack_com.dir/includes_C.rsp -g -o CMakeFiles\\nlink_unpack_com.dir\\src\\nlink_linktrack_anchorframe0.c.obj -c \"D:\\drones code\\UWBSMFC2026\\nlink_unpack-master\\src\\nlink_linktrack_anchorframe0.c\"",
+  "file": "D:/drones code/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_anchorframe0.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_anchorframe0.c.obj"
+},
+{
+  "directory": "D:/drones code/UWBSMFC2026/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe  @CMakeFiles/nlink_unpack_com.dir/includes_C.rsp -g -o CMakeFiles\\nlink_unpack_com.dir\\src\\nlink_tofsense_frame0.c.obj -c \"D:\\drones code\\UWBSMFC2026\\nlink_unpack-master\\src\\nlink_tofsense_frame0.c\"",
+  "file": "D:/drones code/UWBSMFC2026/nlink_unpack-master/src/nlink_tofsense_frame0.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_tofsense_frame0.c.obj"
+},
+{
+  "directory": "D:/drones code/UWBSMFC2026/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe  @CMakeFiles/nlink_unpack_com.dir/includes_C.rsp -g -o CMakeFiles\\nlink_unpack_com.dir\\src\\nlink_tofsensem_frame0.c.obj -c \"D:\\drones code\\UWBSMFC2026\\nlink_unpack-master\\src\\nlink_tofsensem_frame0.c\"",
+  "file": "D:/drones code/UWBSMFC2026/nlink_unpack-master/src/nlink_tofsensem_frame0.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_tofsensem_frame0.c.obj"
+}
+]

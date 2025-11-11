@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Win32-mingw32-make"
+	BuildStamp="20250929-0732-Experimental"
+	Name="DESKTOP-OB4KT1G"
+	Generator="ctest-4.1.1"
+	CompilerName="C:/msys64/ucrt64/bin/g++.exe"
+	CompilerVersion="15.2.0"
+	OSName="Windows"
+	Hostname="DESKTOP-OB4KT1G"
+	OSRelease=" Professional"
+	OSVersion=" (Build 19045)"
+	OSPlatform="AMD64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="14"
+	ModelName=""
+	ProcessorCacheSize="-1"
+	NumberOfLogicalCPU="8"
+	NumberOfPhysicalCPU="4"
+	TotalVirtualMemory="18568"
+	TotalPhysicalMemory="16136"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="2304"
+	>
+	<Testing>
+		<StartDateTime>Oct 08 13:46 Malay Peninsula Standard Time</StartDateTime>
+		<StartTestTime>1759902381</StartTestTime>
+		<TestList/>
+		<EndDateTime>Oct 08 13:46 Malay Peninsula Standard Time</EndDateTime>
+		<EndTestTime>1759902381</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

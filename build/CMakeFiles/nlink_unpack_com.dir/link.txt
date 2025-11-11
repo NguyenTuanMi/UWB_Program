@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\nlink_unpack_com.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe qc CMakeFiles\nlink_unpack_com.dir/objects.a @CMakeFiles\nlink_unpack_com.dir\objects1.rsp
+C:\msys64\ucrt64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\nlink_unpack_com.dir/objects.a -Wl,--no-whole-archive -o nlink_unpack_com.exe -Wl,--out-implib,libnlink_unpack_com.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\nlink_unpack_com.dir\linkLibs.rsp
