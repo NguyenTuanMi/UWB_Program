@@ -10,6 +10,7 @@ from shapely import Polygon as Poly_shapely
 import random
 import socket
 import threading
+from UWB_ReadUDP import get_target_position, get_all_positions
 def enlarge(vertices, buffer = 0.7):
     poll = Poly_shapely(vertices)
     buffered_polygon = poll.buffer(buffer)
@@ -206,14 +207,15 @@ def find_path(start, end = None, mode = "ptp", safe_y = -1):
                 pass
 initial_end = time()
 print(f"Initialization time: {initial_end - initial_start}")
-ca, cb = int(START_POINT[0]), int(START_POINT[1]) #TESTING
-def getpos():
-    return ca, cb, 0 #TESTING
+#ca, cb = int(START_POINT[0]), int(START_POINT[1]) #TESTING
+def getpos(target_id = 1, max_retries = 15):
+    pos = get_target_position(target_id, max_retries)
+    return pos[0], pos[1], 0
 def getStartPoint():
     pass
 def move_to(x, y):
     print(f"Called with {x}, {y}")
-    global ca, cb #TESTING
+    #global ca, cb #TESTING
     cur_x, cur_y, heading = getpos()
     dist = sqrt((cur_x - x)**2 + (cur_y - y)**2)
     print(dist)
