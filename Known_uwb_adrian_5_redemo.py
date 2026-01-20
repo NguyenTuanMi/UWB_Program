@@ -364,15 +364,14 @@ def perform_precision_landing(drone, target_marker_id):
 
                 search_moves = [
                 (0, 20, 0, 0.3),   # forward
-                (0, -40, 0, 0.3),   # backward
-                (0, 20, 0, 0.3),  # forward to original position
                 (-20, 0, 0, 0.3),  # left
+                (0, -40, 0, 0.3),   # backwards
                 (40, 0, 0, 0.3)   # right
                 ]
      
                 found = False
                 for lr, fb, ud, dur in search_moves:
-                    drone.rc_pulse(lr, fb, ud, dur=3)
+                    drone.rc_pulse(lr, fb, ud, dur=2)
                     time.sleep(0.5)  # short pause to stabilize
 
                     # check if marker reappears
@@ -406,8 +405,9 @@ def scan_marker(drone, release = False):
 
     for id in marker_list:
         if marker_client.is_marker_available(id) and id in victim_markers:
+            print(f"Marker ID {id} is being scanned. ")
             bonus_detected = False
-            if id == 2:
+            if int(id) == 2:
                 print("Bonus victim is detected!")
                 bonus_detected = True
             marker_client.send_update('marker', marker_id=int(id), detected=True, bonus_detected=bonus_detected)
@@ -422,8 +422,12 @@ def scan_for_marker(drone):
     while rotation < 360:
         for id in marker_list:
                 #if marker_located[id] == 0:
+                bonus_detected = False
                 if marker_client.is_marker_available(id) and id in victim_markers:
-                    marker_client.send_update('marker', marker_id=int(id), detected=True)
+                    if int(id) == 2:
+                        print("Bonus victim is detected!")
+                        bonus_detected = True
+                    marker_client.send_update('marker', marker_id=int(id), detected=True, bonus_detected=bonus_detected)
                     drone.send_rc_control(0, 0, 0, 0)
                     print(f"Measuring Marker {id}'s position...")
                     status = f"Measuring Marker {id}'s position..."
@@ -542,14 +546,17 @@ def locate_marker(drone, id):
             distance_forward = dis[id]
             if distance_forward > 270:
                 drone.move_forward(int(distance_forward - 250))
+                print("Moving forward for distance larger than 270 cm")
                 continue
             else:
                 app_pos = uwb_reading(drone)
-                drone.move_forward(int(distance_forward))
+                drone.move_forward(int(distance_forward + 50))
+                print("Moving forward for distance smaller than 270 cm")
                 time.sleep(5)
                 final_pos = uwb_reading(drone)
                 if app_pos != [0,0] and final_pos != [0,0]:
                     if abs(distance_forward - np.sqrt((app_pos[0] - final_pos[0])**2 + (app_pos[1] - final_pos[1])**2)) > 100:
+                        print("Position errors larger than 100, adjusting forward movement")
                         drone.move_forward(int(distance_forward))
 
             

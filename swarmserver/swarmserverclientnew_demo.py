@@ -569,10 +569,11 @@ class MarkerClient:
             time.sleep(0.5)  # Wait for takeoff command
 
         logging.info(f"Tello {self.drone_id} is taking off!")
-    def wait_for_relay(self):
+    def wait_for_relay(self, drone):
         while not self.relay_triggered:
             logging.debug(f"Tello {self.drone_id} waiting for relay execution signal. relay_triggered: {self.relay_triggered}")
             time.sleep(0.5)  # Wait for relay execution command
+            drone.send_rc_control(0,0,0,0)  # hover in place
     def _send_takeoff_request(self, waiting_list:list, status_message:str=None):
         """
         Notifies the server that this drone is ready for takeoff and is waiting for the specified drones.
@@ -599,7 +600,7 @@ class MarkerClient:
                     marker_id:int=None, detected:bool=None, landed:bool=None,
                     status_message:str='', 
                     send_repeat:int=3,
-                    bonus_detected:bool=False
+                    bonus_detected:bool=None
                     ):
         """
         19 Feb - keep separate from _send_takeoff_request since it has an additional waiting_list argument
@@ -625,7 +626,7 @@ class MarkerClient:
                 message["detected"] = detected
             if landed is not None:
                 message["landed"] = landed
-            if bonus_detected is not None:
+            if bonus_detected is not None and bonus_detected:
                 message["bonus_detected"] = bonus_detected
 
         elif update_type =="status":

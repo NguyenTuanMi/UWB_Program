@@ -1,17 +1,30 @@
+from pathlib import Path
+import sys
+
 from swarmserver.swarmserverclientnew_demo import MarkerClient
 from shared_utils.customtello import CustomTello
 from shared_utils.shared_utils import *
 import time
 
-params = load_params()
-drone_id = params.PI_ID
-tello = CustomTello(network_config=params.NETWORK_CONFIG)
+
+workspace_root = Path(__file__).resolve().parent.parent
+sys.path.append(str(workspace_root))
+
+pi_id = 6
+network_config = {
+            'host': f'192.168.0.{100+pi_id}',
+            'control_port': 9000 + pi_id,
+            #'control_port': 9020 + pi_id,
+            'state_port': 8000 + pi_id,
+            'video_port': 11100 + pi_id
+}
+tello = CustomTello(network_config=network_config)
 
 tello.connect()
 start_batt = tello.get_battery()
 status_str = f"Waiting for takeoff. Start Batt %: {start_batt}"
 
-marker_client = MarkerClient(drone_id=drone_id, relay_task=True)
+marker_client = MarkerClient(drone_id=pi_id, relay_task=True)
 marker_client.client_takeoff_simul([99], status_message=status_str)     # [99] ensures that takeoff is only triggered by the user. Otherwise, put the list of drone_ids you want to takeoff with.
 tello.takeoff()
 
