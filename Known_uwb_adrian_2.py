@@ -11,15 +11,8 @@ from typing import Dict, Set, Any, List, Literal
 import math
 import os
 import re
-from UWB_Manipulation.UWB_Reader import get_target_position
-from swarmserver.swarmserverclientnew_demo import MarkerClient
-from shared_utils.shared_utils import *
-from shared_utils.customtello import CustomTello
-
-params = load_params()
-tag_id = params.UWBTAG_ID  
-delay = params.TAKEOFF_DELAY
-drone_id = params.PI_ID
+from UWB_ReadUDP import get_target_position
+from swarmserverclient import MarkerClient
 
 # havent add my danger offset code
 np.set_printoptions(legacy='1.25')
@@ -35,8 +28,16 @@ danger_markers = list(range(11, 15))  # Markers 11-14 are danger markers
 
 script_name = os.path.basename(__file__)
 
+match = re.search(r'Known_uwb_adrian_(\d+)', script_name)
 
-group_1 = [5]
+if match:
+    drone_id = int(match.group(1))  # Extract the number and convert it to an integer
+    print(f"Extracted ID: {drone_id}")
+else:
+    print("Script name does not match the expected pattern.")
+    drone_id = 0  # Default drone ID
+
+group_1 = [2,8,9,10]
 group_2 = []
 group_3 = []
 group_4 = []
@@ -62,8 +63,16 @@ CONSECUTIVE_FRAMES_REQUIRED = 15
 
 waypoints = [] # to store executed waypoints and drone's current position
 
-cam_mat = params.CAMERA_MATRIX
-dist_coef = params.DIST_COEFF
+# Load in the calibration data
+calib_data_path = "MultiMatrix.npz"
+
+calib_data = np.load(calib_data_path)
+print(calib_data.files)
+
+cam_mat = calib_data["camMatrix"]
+dist_coef = calib_data["distCoef"]
+r_vectors = calib_data["rVector"]
+t_vectors = calib_data["tVector"]
 
 MARKER_SIZE = 19 # centimeters (measure your printed marker size)
 marker_dict = aruco.getPredefinedDictionary(aruco.DICT_5X5_250)
@@ -73,9 +82,58 @@ stream_ready = threading.Event()
 
 ###########################################################################################################
 
+def load_drone_info(filename='drones.json'):
+    try:
+        with open(filename, 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        print(f"{filename} not found!")
+        return []
+    except json.JSONDecodeError:
+        print(f"Error decoding JSON in {filename}!")
+        return []
+
+DRONE_INFO = load_drone_info()
+for drone in DRONE_INFO:
+    if drone['id'] == drone_id:
+        host = drone["TELLO_IP"]
+        control_port = drone["TELLO_PORT"]
+        state_port = drone["LOCAL_PORT"]
+        video_port = drone["VIDEO_PORT"]
+        delay = drone["delay"]
+        SSID = drone["TELLO_SSID"]
+        match = re.search(r'RMTT-TAG(\d+)', SSID)
+        if match:
+            tag_id = int(match.group(1))  # Extract the number and convert it to an integer
+            print(f"Tag ID: {tag_id}")
+        else:
+            print("SSID does not match the expected pattern.")
+            tag_id = 99 
 
 
+class CustomTello(Tello):
+    def __init__(self):
+        
+        global host, control_port, state_port, video_port
 
+        
+        # Store custom configuration
+        self.TELLO_IP = host
+        self.CONTROL_UDP_PORT = control_port
+        self.STATE_UDP_PORT = state_port
+        self.VS_UDP_PORT = video_port
+        
+        Tello.STATE_UDP_PORT = state_port
+        Tello.CONTROL_UDP_PORT = control_port
+        
+        # Call parent's init with our custom host
+        super().__init__(host)
+        
+        # Override the connection parameters
+        self.address = (self.TELLO_IP, self.CONTROL_UDP_PORT)
+        
+        # Override video port
+        self.vs_udp_port = video_port
 
 
 ###########################################################################################################
@@ -295,12 +353,11 @@ def perform_precision_landing(drone, target_marker_id):
     print(status)
     
     # Switch to downward camera
-    #drone.send_command_with_return("downvision 1")
-    drone.using_down_vision = True
-    time.sleep(5)  # Wait for camera to stabilize
+    drone.send_command_with_return("downvision 1")
+    time.sleep(2)  # Wait for camera to stabilize
     
     # Get frame reader for downward camera
-    #frame_reader = drone.get_frame_read()
+    frame_reader = drone.get_frame_read()
     time.sleep(1)
     marker_client.send_update('marker', marker_id=int(target_marker_id), detected=True)
     marker_client.send_update('marker', marker_id=int(target_marker_id), landed=True)
@@ -314,7 +371,7 @@ def perform_precision_landing(drone, target_marker_id):
         retry_count = 0
         frame = None
         while frame is None and retry_count < 3:
-            frame = drone.get_frame()
+            frame = frame_reader.frame
             if frame is None:
                 print("Frame capture failed, retrying...")
                 time.sleep(0.1)
@@ -360,33 +417,11 @@ def perform_precision_landing(drone, target_marker_id):
                     status = f"Adjusting position: LR={lr}, FB={fb}"
             else:
                 # No marker detected, slowly descend and search
-                print(f"Proceeding to local search for marker {target_marker_id}...")
-
-                search_moves = [
-                (-20, 0, 0, 0.3),
-                (0, 20, 0, 0.3),   # forward
-                (0, -40, 0, 0.3),   # backwards
-                (40, 0, 0, 0.3)   # right
-                ]
-     
-                found = False
-                for lr, fb, ud, dur in search_moves:
-                    drone.rc_pulse(lr, fb, ud, dur=2)
-                    time.sleep(0.5)  # short pause to stabilize
-
-                    # check if marker reappears
-                    if frame is not None:
-                        new_center, corners, marker_id, processed_frame = process_frame(frame)
-                        if new_center is not None and (marker_id is None or marker_id == target_marker_id):
-                            print("Marker re-acquired! Resuming centering...")
-                            found = True
-                            break
-                
-                if not found: 
-                    drone.land()
-                    drone.streamoff()
-                    marker_client.send_update('marker', marker_id=int(target_marker_id), landed=True)
-                    status = "No marker detected after local search"
+                consecutive_centered_frames = 0
+                drone.land()
+                drone.streamoff()
+                marker_client.send_update('marker', marker_id=int(target_marker_id), landed=True)
+                status = "No marker detected, descending slowly to search"
                 
         # Check if we should abort (e.g., timeout, battery low)
         # This is a simplified example - you might want more sophisticated conditions
@@ -399,35 +434,26 @@ def perform_precision_landing(drone, target_marker_id):
         time.sleep(0.05)  # Control loop rate
 
 ###########################################################################################################
-#This function checks if the marker is registered in the marker list of the server or not
+
 def scan_marker(drone, release = False):
     global marker_client
 
     for id in marker_list:
         if marker_client.is_marker_available(id) and id in victim_markers:
-            print(f"Marker ID {id} is being scanned. ")
-            bonus_detected = False
-            if int(id) == 2:
-                print("Bonus victim is detected!")
-                bonus_detected = True
-            marker_client.send_update('marker', marker_id=int(id), detected=True, bonus_detected=bonus_detected)
+            marker_client.send_update('marker', marker_id=int(id), detected=True)
             # if release == True:
             #     marker_client.send_update('waypoint', marker_id=waypoint_id-1, detected=False)
             locate_marker(drone,id)
 
-#Spin around and scan for marker
+
 def scan_for_marker(drone):
     global ang, heading, dis, marker_IDs, status, course, marker_client
     rotation = 0
     while rotation < 360:
         for id in marker_list:
                 #if marker_located[id] == 0:
-                bonus_detected = False
                 if marker_client.is_marker_available(id) and id in victim_markers:
-                    if int(id) == 2:
-                        print("Bonus victim is detected!")
-                        bonus_detected = True
-                    marker_client.send_update('marker', marker_id=int(id), detected=True, bonus_detected=bonus_detected)
+                    marker_client.send_update('marker', marker_id=int(id), detected=True)
                     drone.send_rc_control(0, 0, 0, 0)
                     print(f"Measuring Marker {id}'s position...")
                     status = f"Measuring Marker {id}'s position..."
@@ -520,7 +546,6 @@ def locate_marker(drone, id):
         if dis[id] == 0:
             print(f"Marker {id} was lost")
             status = f"Marker {id} was lost"
-
             marker_located[id] = 0
             marker_client.send_update('marker', marker_id=int(id), detected=False)
             if id in marker_list:
@@ -528,11 +553,14 @@ def locate_marker(drone, id):
                 break
         else:
             # First check for danger markers and calculate offset BEFORE approaching
-            frame = drone.get_frame()
+            frame = drone.get_frame_read().frame
             gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             marker_corners, marker_IDs, _ = cv2.aruco.detectMarkers(
                 gray_frame, marker_dict, parameters=param_markers
             )
+            
+            offset_applied = False
+            offset_x, offset_z = 0, 0
             
             if marker_IDs is not None and len(marker_IDs) > 0:
                 rVec, tVec, _ = aruco.estimatePoseSingleMarkers(
@@ -540,33 +568,53 @@ def locate_marker(drone, id):
                 )
                 
                 # Just calculate offset here, don't apply it yet
-
+                offset_needed, offset_x, offset_z = check_and_apply_danger_offset_with_timeout(
+                    drone, id, marker_corners, marker_IDs, rVec, tVec, timeout_seconds=3.0, 
+                    calculate_only=True  # New parameter to only calculate, not apply
+                )
+                
+                if offset_needed:
+                    print(f"Calculated offset (x={offset_x}, z={offset_z}) to avoid danger marker near marker {id}")
+                    status = f"Will apply offset near marker {id}"
+                    offset_applied = True
             
             # Now move forward to be close to the marker
             distance_forward = dis[id]
             if distance_forward > 270:
-                drone.move_forward(int(distance_forward - 200))
-                print("Moving forward for distance larger than 270 cm")
+                drone.move_forward(int(distance_forward - 250))
                 continue
             else:
                 app_pos = uwb_reading(drone)
-                drone.move_forward(int(distance_forward + 50))
-                print("Moving forward for distance smaller than 270 cm")
+                drone.move_forward(int(distance_forward))
                 time.sleep(5)
                 final_pos = uwb_reading(drone)
                 if app_pos != [0,0] and final_pos != [0,0]:
                     if abs(distance_forward - np.sqrt((app_pos[0] - final_pos[0])**2 + (app_pos[1] - final_pos[1])**2)) > 100:
-                        print("Position errors larger than 100, adjusting forward movement")
                         drone.move_forward(int(distance_forward))
 
             
             time.sleep(6)
             # marker_client.send_update('waypoint', marker_id=waypoint_id, detected=False)
 
-            offset_applied = False
             # Different handling based on whether a danger marker was detected
             if offset_applied:
-                print("Nah it won't")
+                # Scenario 1: Danger marker detected - apply offset and land directly
+                print(f"Applying pre-calculated offset: x={offset_x}, z={offset_z}")
+                status = f"Applying offset near marker {id}"
+                drone.go_xyz_speed(offset_x, offset_z, 0, 20)
+                time.sleep(2)  # Wait for movement to complete
+                
+                # Direct landing without downward camera
+                status = f"Landing with offset from marker {id}"
+                print(f"Landing near marker {id} with offset")
+                drone.land()
+                
+                time.sleep(1)
+                
+                drone.streamoff()
+                drone.reboot()
+                marker_client.send_update('marker', marker_id=int(id), landed=True)
+                status = f"Successfully landed with offset from marker {id}"
             else:
                 # Scenario 2: No danger marker - use precision landing with downward camera
                 status = f"Beginning precision landing on marker {id}"
@@ -603,18 +651,13 @@ def ascend(drone,altitude):
         status = f"Already at {height}"
 
 def stream_video(drone):
-    global heading, pos, ang, height, marker_IDs, marker_list, status, dis, id, sys, course, switch
-    frame_reader = drone.get_frame_read()
-    switch = True
+    global heading, pos, ang, height, marker_IDs, marker_list, status, dis, id, sys, course
+
     while True:
-        if drone.using_down_vision and switch:
-            drone.send_command_with_return("downvision 1")
-            time.sleep(5)
-            switch = False
-        
         ret = True
-        frame1 = frame_reader.frame
+        frame1 = drone.get_frame_read().frame
         frame = cv2.cvtColor(frame1, cv2.COLOR_BGR2RGB)
+
 
         height = drone.get_height()
         battery = drone.get_battery()
@@ -666,7 +709,7 @@ def stream_video(drone):
                     tVec[i][0][2] ** 2 + tVec[i][0][0] ** 2 + tVec[i][0][1] ** 2
                 )
 
-                scaling_factor = 1
+                scaling_factor = 1.25
                 actual_distance = np.sqrt((scaling_factor*distance)**2 - height**2)
 
                 id = ids[0]
@@ -731,8 +774,6 @@ def stream_video(drone):
 
         if cv2.waitKey(1) & 0xFF == ord('z'):
             break
-        
-        drone.set_frame(frame1)
 
     #cap.release()
     cv2.destroyAllWindows()
@@ -786,7 +827,7 @@ def validate_waypoints():
     global start_wpt
 
     if drone_id in group_1:
-        with open('waypoint6.json', 'r') as f:
+        with open('uwb_trace.json', 'r') as f:
             data = json.load(f)
     '''
     elif drone_id in group_2:
@@ -904,7 +945,7 @@ def execute_waypoints(drone):
         orientation = 180  # Starting heading in degrees (assuming 180 as the initial heading)
         
         if drone_id in group_1:
-            with open('waypoint6.json', 'r') as f:
+            with open('uwb_trace.json', 'r') as f:
                 data = json.load(f)
         elif drone_id in group_2:
             with open('waypoint_grp2.json', 'r') as f:
@@ -974,7 +1015,6 @@ def execute_waypoints(drone):
                         drone.send_rc_control(0, 0, 0, 0)
                         # marker_client.send_update('waypoint', marker_id=waypoint_id-1, detected=True)
                         time.sleep(1)
-
                     marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
                     try:
                         drone.move_forward(200)
@@ -1018,7 +1058,6 @@ def execute_waypoints(drone):
                 update_position(waypoints, abs_position, orientation, distance)
                 time.sleep(3)
                 uwb_correction(drone)
-                
                 marker_client.send_update('waypoint', marker_id=waypoint_id-1, detected=False)
                 scan_for_marker(drone)
                 time.sleep(1)
@@ -1062,7 +1101,9 @@ def main():
     global marker_client, pos, sx, sy, uwb_ground_height, start_heading
 
     # Initialize the drone, connect to it, and turn its video stream on.
-    drone = CustomTello(network_config=params.NETWORK_CONFIG)
+    drone = CustomTello()
+    print("test mark")
+    print("[PORTS]", host, control_port, state_port, video_port)
 
     #print(f"[DEBUG] Connecting to {getattr(drone, 'host', getattr(drone, '_host', '??'))}:{getattr(drone, 'port', getattr(drone, '_port', '??'))}")
     drone.connect()

@@ -28,7 +28,7 @@ marker_client = MarkerClient(drone_id=pi_id, relay_task=True)
 marker_client.client_takeoff_simul([99], status_message=status_str)     # [99] ensures that takeoff is only triggered by the user. Otherwise, put the list of drone_ids you want to takeoff with.
 tello.takeoff()
 
-marker_client.wait_for_relay()
+marker_client.wait_for_relay(tello)
 time.sleep(2)
 tello.move_forward(50)
 

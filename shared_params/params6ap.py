@@ -8,7 +8,7 @@ NO_FLY:bool = False        # indicate NO_FLY = True to connect to the drone, but
 IMSHOW:bool = True        # indicate IMSHOW = False to disable video stream display (program still works!)
 
 PI_ID:int = 6   # 0 for LAPTOP_ONLY
-UWBTAG_ID:int = 0
+UWBTAG_ID:int = 7
 
 WAYPOINTS_JSON = "waypoint_6.json"
 # WAYPOINTS_JSON = "UWBViz/waypoints_backentrance.json"
