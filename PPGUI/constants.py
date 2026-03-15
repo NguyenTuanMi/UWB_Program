@@ -10,7 +10,7 @@ BGPIC = "UWB_Manipulation/resources/field2025_old_overlay.png"
 # ACTUAL_HEIGHT, ACTUAL_WIDTH = 2000, 2000  # cm of actual space (competition; nanyang audi)
 # ACTUAL_HEIGHT, ACTUAL_WIDTH = 1500, 1500  # cm of actual space (arc lab)
 # ACTUAL_HEIGHT, ACTUAL_WIDTH = 600, 600  # cm of actual space (uav lab)
-ACTUAL_HEIGHT, ACTUAL_WIDTH = 440, 440 #cm of actual space (uav lab smaller area)
+ACTUAL_HEIGHT, ACTUAL_WIDTH = 2500, 2500 #cm of actual space (uav lab smaller area)
 WIDTH_HEIGHT_RATIO = ACTUAL_WIDTH/ACTUAL_HEIGHT
 
 SCREEN_HEIGHT = 600     # pixels on screen

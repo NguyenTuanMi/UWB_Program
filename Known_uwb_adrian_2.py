@@ -11,8 +11,12 @@ from typing import Dict, Set, Any, List, Literal
 import math
 import os
 import re
-from UWB_ReadUDP import get_target_position
-from swarmserverclient import MarkerClient
+from UWB_Manipulation.UWB_Reader import get_target_position
+from swarmserver.swarmserverclientnew_demo import MarkerClient
+
+stream_ready = threading.Event()
+# latest_frame = None          # shared frame buffer
+#frame_lock = threading.Lock()
 
 # havent add my danger offset code
 np.set_printoptions(legacy='1.25')
@@ -26,18 +30,7 @@ DANGER_SCALING_FACTOR = 68  # Scaling factor for offset calculation
 victim_markers = list(range(1, 9))
 danger_markers = list(range(11, 15))  # Markers 11-14 are danger markers
 
-script_name = os.path.basename(__file__)
-
-match = re.search(r'Known_uwb_adrian_(\d+)', script_name)
-
-if match:
-    drone_id = int(match.group(1))  # Extract the number and convert it to an integer
-    print(f"Extracted ID: {drone_id}")
-else:
-    print("Script name does not match the expected pattern.")
-    drone_id = 0  # Default drone ID
-
-group_1 = [2,8,9,10]
+group_1 = [5,8,9,10]
 group_2 = []
 group_3 = []
 group_4 = []
@@ -63,16 +56,12 @@ CONSECUTIVE_FRAMES_REQUIRED = 15
 
 waypoints = [] # to store executed waypoints and drone's current position
 
-# Load in the calibration data
-calib_data_path = "MultiMatrix.npz"
-
-calib_data = np.load(calib_data_path)
-print(calib_data.files)
-
-cam_mat = calib_data["camMatrix"]
-dist_coef = calib_data["distCoef"]
-r_vectors = calib_data["rVector"]
-t_vectors = calib_data["tVector"]
+cam_mat = np.array([[472.23497738,   0.,         314.44428497],
+                                      [  0.,         471.39817591, 226.70646477],
+                                      [  0.,           0.,           1.        ]])
+dist_coef = np.array([[ 0.03218703,  0.17998838,  0.00076689, -0.0075065,  -0.28000622]])
+r_vectors = np.array([[1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]])
+t_vectors = np.array([[925.811035, 0.0, 454.815025, 0.0, 0.0, 927.915833, 352.139027, 0.0, 0.0, 0.0, 1.0, 0.0]])
 
 MARKER_SIZE = 19 # centimeters (measure your printed marker size)
 marker_dict = aruco.getPredefinedDictionary(aruco.DICT_5X5_250)
@@ -82,34 +71,12 @@ stream_ready = threading.Event()
 
 ###########################################################################################################
 
-def load_drone_info(filename='drones.json'):
-    try:
-        with open(filename, 'r') as file:
-            return json.load(file)
-    except FileNotFoundError:
-        print(f"{filename} not found!")
-        return []
-    except json.JSONDecodeError:
-        print(f"Error decoding JSON in {filename}!")
-        return []
-
-DRONE_INFO = load_drone_info()
-for drone in DRONE_INFO:
-    if drone['id'] == drone_id:
-        host = drone["TELLO_IP"]
-        control_port = drone["TELLO_PORT"]
-        state_port = drone["LOCAL_PORT"]
-        video_port = drone["VIDEO_PORT"]
-        delay = drone["delay"]
-        SSID = drone["TELLO_SSID"]
-        match = re.search(r'RMTT-TAG(\d+)', SSID)
-        if match:
-            tag_id = int(match.group(1))  # Extract the number and convert it to an integer
-            print(f"Tag ID: {tag_id}")
-        else:
-            print("SSID does not match the expected pattern.")
-            tag_id = 99 
-
+pi_id = 5
+host = f'192.168.0.{100+pi_id}'
+control_port = 9000 + pi_id
+state_port = 8000 + pi_id
+video_port = 11100 + pi_id
+tag_id = 5
 
 class CustomTello(Tello):
     def __init__(self):
@@ -135,7 +102,16 @@ class CustomTello(Tello):
         # Override video port
         self.vs_udp_port = video_port
 
+        self.latest_frame = None
+        self.frame_lock = threading.Lock()
 
+    def set_frame(self, frame):
+        with self.frame_lock:
+            self.latest_frame = frame
+        
+    def get_frame(self):
+        with self.frame_lock:
+            return self.latest_frame.copy() if self.latest_frame is not None else None
 ###########################################################################################################
 
 # ADDED FROM SECOND CODE - Functions for downward centering
@@ -471,48 +447,6 @@ def scan_for_marker(drone):
         drone.rotate_counter_clockwise(heading-course - 360)
     # marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
 
-'''
-def scan_for_marker(drone):
-    global ang, heading, dis, marker_IDs, status, course, marker_client
-    rotation = 0
-    while rotation < 360:
-        for id in marker_list:
-                #if marker_located[id] == 0:
-                if marker_client.is_marker_available(id) and id in victim_markers:
-                    marker_client.send_update('marker', marker_id=int(id), detected=True)
-                    drone.send_rc_control(0, 0, 0, 0)
-                    print(f"Measuring Marker {id}'s position...")
-                    status = f"Measuring Marker {id}'s position..."
-                    locate_marker(drone,id)
-        rotation += 60
-        desired_heading = course + rotation
-        desired_heading %= 360  # Keep orientation within 0 to 360 degrees
-        if desired_heading > 180:
-            desired_heading -= 360  # Convert to -180 to 180 range
-        try_count = 0
-        while abs(desired_heading - heading) > 20 and not abs(desired_heading + 360 - heading) < 20 and not abs(desired_heading - heading - 360) < 20:
-            print(f"Desired heading: {desired_heading}")
-            print(f"Actual heading {heading}")
-            drone.rotate_clockwise(60)
-            time.sleep(1.5)
-            marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
-            try_count += 1
-            if try_count > 5:
-                marker_client.send_update('waypoint', marker_id=waypoint_id, detected=False)
-                drone.land()
-                break
-        time.sleep(1)
-        
-
-    if abs(heading-course) <= 180:
-        drone.rotate_counter_clockwise(heading-course)
-    elif heading-course < -180:
-        drone.rotate_counter_clockwise(360 + heading-course)
-    else:
-        drone.rotate_counter_clockwise(heading-course - 360)
-    marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
-'''
-
 
 def locate_marker(drone, id):
     while True:
@@ -526,7 +460,7 @@ def locate_marker(drone, id):
         time.sleep(0.5)
         cycle = 0
         status = f"Aligning with marker {id}"
-        while abs(ang[id]) > 1:  # Aligning with marker #id
+        while abs(ang[id]) > 0.8:  # Aligning with marker #id
             marker_client.send_update('marker', marker_id=int(id), detected=True)
             if cycle < 2:
                 drone.rotate_clockwise(int(ang[id]*1.2))
@@ -652,7 +586,6 @@ def ascend(drone,altitude):
 
 def stream_video(drone):
     global heading, pos, ang, height, marker_IDs, marker_list, status, dis, id, sys, course
-
     while True:
         ret = True
         frame1 = drone.get_frame_read().frame
@@ -764,14 +697,17 @@ def stream_video(drone):
                 # print(ids, "  ", corners)
 
 
-        #cv2.imshow("frame", frame)
-    
+        # cv2.imshow("frame", frame)
+        # print("Reach here")
+        #drone.latest_frame = frame.copy()
+        drone.set_frame(frame)
+        # print(drone.latest_frame is None)
         # Check if streaming readiness hasn't been signaled yet
-        if not stream_ready.is_set():
-            # Signal that video streaming is ready
-            stream_ready.set()
-            print("Event Signal Set: Stream is live.")
-
+        # if not stream_ready.is_set():
+        #     # Signal that video streaming is ready
+        #     stream_ready.set()
+        #     print("Event Signal Set: Stream is live.")
+        
         if cv2.waitKey(1) & 0xFF == ord('z'):
             break
 
@@ -826,8 +762,8 @@ def validate_waypoints():
 
     global start_wpt
 
-    if drone_id in group_1:
-        with open('uwb_trace.json', 'r') as f:
+    if pi_id in group_1:
+        with open('waypoint6.json', 'r') as f:
             data = json.load(f)
     '''
     elif drone_id in group_2:
@@ -944,16 +880,16 @@ def execute_waypoints(drone):
         abs_position = {"x": start_wpt[0], "y": start_wpt[1]}  # in cm
         orientation = 180  # Starting heading in degrees (assuming 180 as the initial heading)
         
-        if drone_id in group_1:
-            with open('uwb_trace.json', 'r') as f:
+        if pi_id in group_1:
+            with open('waypoint6.json', 'r') as f:
                 data = json.load(f)
-        elif drone_id in group_2:
+        elif pi_id in group_2:
             with open('waypoint_grp2.json', 'r') as f:
                 data = json.load(f)
-        elif drone_id in group_3:
+        elif pi_id in group_3:
             with open('waypoint_grp3.json', 'r') as f:
                 data = json.load(f)
-        elif drone_id in group_4:
+        elif pi_id in group_4:
             with open('waypoint_grp4.json', 'r') as f:
                 data = json.load(f)
         else:
@@ -1097,6 +1033,18 @@ def flight_routine(drone):
     
     execute_waypoints(drone)
 
+def display_loop(controller):
+    cv2.namedWindow("Tello Camera", cv2.WINDOW_NORMAL)
+    while True:
+        frame = controller.get_frame()
+        if frame is not None and frame.size:
+            cv2.imshow("Tello Camera", frame)
+        key = cv2.waitKey(1) & 0xFF
+        if key in (27, ord('q')):
+            controller.is_running = False
+            break
+    cv2.destroyAllWindows()
+
 def main():
     global marker_client, pos, sx, sy, uwb_ground_height, start_heading
 
@@ -1108,7 +1056,7 @@ def main():
     #print(f"[DEBUG] Connecting to {getattr(drone, 'host', getattr(drone, '_host', '??'))}:{getattr(drone, 'port', getattr(drone, '_port', '??'))}")
     drone.connect()
 
-    marker_client = MarkerClient(drone_id)
+    marker_client = MarkerClient(pi_id)
     uwb_raw = (0,0,0)
     while uwb_raw == (0,0,0):
         uwb_raw = get_target_position(tag_id)
@@ -1121,9 +1069,10 @@ def main():
     marker_client.client_takeoff_simul([99], f'Battery: {drone.get_battery()} Pos: {int(pos[0]), int(pos[1])}')
 
     #time.sleep(180)
-    drone.takeoff()
+    #drone.takeoff()
 
     delay_count = 0
+    delay = 10
     while delay_count < delay:
         drone.send_rc_control(0, 0, 0, 0)
         print(drone.get_battery())
@@ -1132,17 +1081,35 @@ def main():
         print(delay_count)
 
     drone.streamon()
+
     print("drone connected and stream on. Starting video stream thread.\n")
     stream_thread = threading.Thread(target=stream_video, args=(drone,))
     stream_thread.daemon = True
     stream_thread.start()
     drone.send_command_with_return("downvision 0")
 
+    # def display_loop():
+    #     while stream_thread.is_alive():
+            
+    #         frame_to_show = drone.get_frame()
+    #         if frame_to_show is not None:
+    #             cv2.imshow("frame", frame_to_show)
+    #         if cv2.waitKey(1) & 0xFF == ord('z'):
+    #             break
+    #     cv2.destroyAllWindows()
+    #flight_routine(drone)
     # Execute the flight routine
-    flight_routine(drone)
+    #flight_thread = threading.Thread(target=flight_routine, args=(drone,))
+    #flight_thread.start()
+
+    print("Finally reach here")
+    display_loop(drone)          # blocks main thread — runs imshow here
+
+    stream_thread.join(timeout=2)
+    #flight_thread.join()
 
     print("Flight routine ended.")
-
+    
     # Reboot the drone at the end
     #drone.reboot()
 

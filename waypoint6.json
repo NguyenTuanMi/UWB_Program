@@ -2,21 +2,48 @@
     "README": "JSON stores current waypoint and distance + angle to NEXT waypoint. Final waypoint has dist_cm = angle_deg = 0.",
     "wp": [
         {
-            "dist_cm": 332,
-            "dist_px": 454,
-            "angle_deg": 0.0,
+            "dist_cm": 663,
+            "dist_px": 159,
+            "angle_deg": -9.0,
             "position_cm": {
-                "x": 45,
-                "y": 60
+                "x": 1963,
+                "y": 96
             }
         },
         {
-            "dist_cm": 354,
-            "dist_px": 483,
+            "dist_cm": 633,
+            "dist_px": 152,
+            "angle_deg": 9.0,
+            "position_cm": {
+                "x": 2071,
+                "y": 750
+            }
+        },
+        {
+            "dist_cm": 232,
+            "dist_px": 55,
+            "angle_deg": 100.0,
+            "position_cm": {
+                "x": 2079,
+                "y": 1383
+            }
+        },
+        {
+            "dist_cm": 376,
+            "dist_px": 90,
             "angle_deg": -90.0,
             "position_cm": {
-                "x": 45,
-                "y": 393
+                "x": 1850,
+                "y": 1346
+            }
+        },
+        {
+            "dist_cm": 517,
+            "dist_px": 124,
+            "angle_deg": 88.0,
+            "position_cm": {
+                "x": 1788,
+                "y": 1717
             }
         },
         {
@@ -24,16 +51,16 @@
             "dist_px": 0,
             "angle_deg": 0,
             "position_cm": {
-                "x": 400,
-                "y": 395
+                "x": 1275,
+                "y": 1646
             }
         }
     ],
     "test_area": {
-        "width_cm": 440,
-        "height_cm": 440,
-        "scale_factor": 0.7333333333333333
+        "width_cm": 2500,
+        "height_cm": 2500,
+        "scale_factor": 4.166666666666667
     },
     "competition_notice": "This path was planned in a test area. Scale adjustments needed for 20m x 20m competition field.",
-    "datetime": "14 01 20:18"
+    "datetime": "16 03 01:40"
 }

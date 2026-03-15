@@ -1,5 +1,4 @@
 # Still Testing and Verifying Orientations and Errors List
-
 import pygame
 import json
 import math
@@ -7,6 +6,11 @@ import os
 from constants import *
 from config import *
 from utils import *
+from pathlib import Path
+import sys
+workspace_root = Path(__file__).resolve().parent.parent
+sys.path.append(str(workspace_root))
+from UWB_Manipulation.UWB_Reader import get_target_position
 
 import tkinter as tk
 from tkinter import simpledialog,  ttk
@@ -32,7 +36,7 @@ TODO:
 - Load new markers json (uwb_trace.json)
 
 """
-
+marking_tag = 6
 pygame.init()
 # screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT], pygame.RESIZABLE)
 screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
@@ -126,6 +130,37 @@ def draw_text_overlay():
 
     text_info = font.render("CCW is +ve. Assumes drone starts heading 180.", True, BLUE)
     screen.blit(text_info, (10, SCREEN_HEIGHT-20))
+
+
+def draw_uwb_positions():
+    """Pull UWB tag position and draw only the latest point (no trail)."""
+    global static_screen_snapshot
+    try:
+        df = get_target_position(marking_tag)
+    except Exception as exc:
+        print(f"[ERROR] UWB fetch failed: {exc}")
+        return
+
+    if df is None or df == (0,0,0):
+        print("[INFO] No UWB positions to display.")
+        return
+
+    # Restore the latest background (waypoints, walls, etc.) so we don't leave trails
+    if static_screen_snapshot is None:
+        screen_setup(screen)
+    else:
+        screen.blit(static_screen_snapshot, (0, 0))
+
+    try:
+        x_cm = df[0]*100
+        y_cm = df[1]*100
+        x_px = int(x_cm / MAP_SIZE_COEFF)
+        y_px = int(SCREEN_HEIGHT - y_cm / MAP_SIZE_COEFF)
+        print(f"Current position of UWB: {(x_cm, y_cm)}")
+        pygame.draw.circle(screen, ORANGE, (x_px, y_px), 6)
+    except Exception as exc:
+        print(f"[WARN] Bad UWB row skipped: {exc}")
+    pygame.display.flip()
 
 def load_json_waypoints(filename):
     """
@@ -664,6 +699,7 @@ action_index = 0
 last_pos = None
 
 while running:
+    draw_uwb_positions()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -785,6 +821,8 @@ while running:
                     print("Marked points loaded successfully")
                 else:
                     print("Marked points not loaded")
+
+            # elif event.key == pygame.K_u:  # 'U' key to show live UWB tags
         # if event.type == pygame.VIDEORESIZE:  # Handle window resize events
         #     SCREEN_WIDTH = event.w  # Update width and height
         #     SCREEN_HEIGHT = event.h
