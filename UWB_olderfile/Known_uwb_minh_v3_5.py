@@ -6,14 +6,13 @@ import time
 import threading
 from threading import Lock
 from UWB_Manipulation.UWB_Reader import get_target_position
-from swarmserver.swarmserverclient import MarkerClient
+from swarmserver.swarmserverclientnew_demo import MarkerClient
 import math
 import json
 
 dis = []
 pos = [0, 0]
 waypoints = []
-strafe_speed = 1.0
 # ============================================================
 # === Drone Controller Class
 # ============================================================
@@ -25,14 +24,13 @@ video_port = 11100 + pi_id
 tag_id = 6
 current_detected_markers = []
 
-group_1 = [5,6,19,10]
+group_1 = [5,6,9,10]
 group_2 = []
 group_3 = []
 group_4 = []
 course = 0
 uwb_ground_height = 60
 marker_list = []
-victim_marker_list = []
 fire_marker_list = []
 counter = 0
 
@@ -66,8 +64,8 @@ class CustomTello(Tello):
 class DroneController:
     def __init__(self):
         self.drone = initialize_drone()
-        self.drone_id = pi_id
-        self.drone_uwbtag = tag_id
+        self.drone_id = 5
+        self.drone_uwbtag = 5
         self.frame = None
         self.frame_lock = Lock()
         self.distance = [None]*25
@@ -86,11 +84,7 @@ class DroneController:
         self.bonus_victims = set(range(21, 24))
         self.target_marker_id = None
         self.total_marker = self.valid_ids | self.bonus_victims | self.invalid_ids
-
-        # UWB Thread
-        self.marker_position = None
-        self.marker_position_lock = Lock()
-
+        self.marker_positions = {}
         self.landing_position = None
         self.marker_list = []
         self.marker_list_lock = Lock()
@@ -170,14 +164,6 @@ class DroneController:
     def get_marker_center(self):
         with self.marker_pose:
             return self.marker_center
-    
-    def set_latest_uwb(self, uwb_position):
-        with self.marker_position_lock:
-            self.marker_position = uwb_position
-    
-    def get_latest_uwb(self):
-        with self.marker_position_lock:
-            return self.marker_position
 
 # ============================================================
 # === Utility Functions
@@ -192,84 +178,6 @@ def uwb_reading(drone):
         return [0,0]
     uwb_pos = [uwb_raw[0]*100, uwb_raw[1]*100]    
     return uwb_pos
-
-def uwb_poll_thread(tag_id, controller):
-    poll_dt = 0.1  # 5 Hz
-    while controller.is_running:
-        try:
-            position = get_target_position(tag_id)  # meters from UWB_Reader
-            if position and position != (0, 0, 0):
-                x_cm, y_cm, z_cm = position[0]*100.0, position[1]*100.0, position[2]*100.0
-                controller.set_latest_uwb((x_cm, y_cm, z_cm))
-                # print(f"The latest UWB: {(x_cm, y_cm, z_cm)}")
-        except Exception as exc:
-            print(f"[UWB] poll error: {exc}")
-        time.sleep(poll_dt)
-
-def rc_move_to(controller, target_xy_cm, pos_thresh_cm=30, max_rc=100):
-    """
-    Drive using send_rc_control until within pos_thresh_cm of target_xy_cm.
-    target_xy_cm: (x_cm, y_cm) in world coords.
-    """
-    print(f"[RC] Navigating to {target_xy_cm}")
-    
-    while controller.is_running:
-        uwb = controller.get_latest_uwb()
-        if uwb is None:
-            controller.drone.send_rc_control(0, 0, 0, 0)
-            time.sleep(0.1)
-            continue
-
-        cur_xy = (uwb[0], uwb[1])
-        dx = target_xy_cm[0] - cur_xy[0]
-        dy = target_xy_cm[1] - cur_xy[1]
-        dist = math.hypot(dx, dy)
-
-        if dist <= pos_thresh_cm:
-            controller.drone.send_rc_control(0, 0, 0, 0)
-            print(f"[RC] target reached within {dist:.1f} cm")
-            return True
-        
-        heading = controller.get_heading()
-        print(f"Drone heading: {heading}")
-        h = math.radians(heading)
-        
-        # Clarified projection math (Dot Products)
-        err_body_fwd = dx * math.sin(h) + dy * math.cos(h)
-        err_body_right = dx * math.cos(h) - dy * math.sin(h)
-
-        # Normalize the vectors
-        direction_fwd = err_body_fwd / dist 
-        direction_right = err_body_right / dist
-        
-        # BUG FIX: Ramp down within 300cm (3.0m), not 3.0cm
-        speed_scale = min(1.0, dist / 500.0)  
-        
-        # BUG FIX: Apply max_rc so the drone doesn't fly at max speed
-        speed_multiplier = max_rc * speed_scale
-        
-        lr = int(direction_right * speed_multiplier)
-        if abs(lr) < 8:
-            if lr < 0:
-                lr = -8
-            else: 
-                lr = 8
-
-        fb = int(direction_fwd * speed_multiplier)
-        if abs(fb) < 8:
-            if fb < 0:
-                fb = -8
-            else: 
-                fb = 8
-        # lr = max(8, int(direction_right * speed_multiplier))
-        # fb = max(8, int(direction_fwd * speed_multiplier))
-        
-        controller.drone.send_rc_control(lr, fb, 0, 0)
-        time.sleep(0.1)
-
-    controller.drone.send_rc_control(0, 0, 0, 0)
-    print("[RC] move timed out or stopped.")
-    return False
 
 def uwb_correction(drone):
     global pos
@@ -299,10 +207,10 @@ def uwb_correction(drone):
         except:
             pass
 
-def get_distance_with_retry(controller, id, max_attempts=30):
+def get_distance_with_retry(controller, id, max_attempts=50):
     for attempt in range(max_attempts):
         d = controller.get_distance(id)
-        print(f"Current distance to marker {id}: {d}")
+        print(f"Current distance to marker {d}")
         if d is not None:
             return d
         time.sleep(0.1)
@@ -316,25 +224,25 @@ def get_marker_x_with_retry(controller, id, max_attempts=10):
         time.sleep(0.1)
     return None
 
-# def emergency_land(drone):
-#     print("\nEmergency landing initiated!")
-#     try:
-#         drone.send_rc_control(0, 0, 0, 0)
-#         drone.emergency()
-#     except:
-#         pass
-#     time.sleep(0.5)
+def emergency_land(drone):
+    print("\nEmergency landing initiated!")
+    try:
+        drone.send_rc_control(0, 0, 0, 0)
+        drone.emergency()
+    except:
+        pass
+    time.sleep(0.5)
 
 def initialize_drone():
     drone = CustomTello()
     drone.connect()
     print(f"Battery Level: {drone.get_battery()}%")
 
-    # try:
-    #     drone.streamoff()
-    #     time.sleep(0.8)
-    # except:
-    #     pass
+    try:
+        drone.streamoff()
+        time.sleep(0.8)
+    except:
+        pass
     drone.streamon()
     try:
         drone.set_video_resolution(Tello.RESOLUTION_480P)
@@ -435,7 +343,7 @@ def draw_pose_axes(frame, corners, ids, rvecs, tvecs, controller, is_fire):
 # ============================================================
 
 def video_thread(controller):
-    global current_detected_markers, marker_list
+    global current_detected_markers
     print("Starting video thread...")
     frame_reader = controller.drone.get_frame_read()
     if frame_reader is None:
@@ -461,24 +369,18 @@ def video_thread(controller):
             for i in range(len(ids)):
                 if ids[i][0] == 0 or ids[i][0] > 25:
                     continue
-                # if ids[i][0] not in marker_list:
-                #     marker_list.append(ids[i][0])
-                #     print(f"New marker {ids[i][0]} is detected")
+                if ids[i][0] not in marker_list:
+                    marker_list.append(ids[i][0])
+                    print(f"New marker {ids[i][0]} is detected")
 
                 if ids[i][0] in controller.valid_ids or ids[i][0] in controller.bonus_victims:
                     is_fire = False
-                    if ids[i][0] not in victim_marker_list:
-                        victim_marker_list.append(ids[i][0])
-                        print(f"New victim marker {ids[i][0]} is detected")
                 elif ids[i][0] in controller.invalid_ids:
                     is_fire = True
                     if ids[i][0] not in fire_marker_list:
                         fire_marker_list.append(ids[i][0])
                         print(f"New fire marker {ids[i][0]} is detected")
                 
-                new_marker_list = fire_marker_list + victim_marker_list
-                if set(new_marker_list) != set(marker_list):
-                    marker_list = new_marker_list
                 x_cm = float(tvecs[i][0][0] * 100.0)
                 z_cm = float(tvecs[i][0][2] * 100.0)
 
@@ -515,16 +417,16 @@ def video_thread(controller):
 def center_on_marker(controller, id, marker_client):
     marker_client.send_update('marker', marker_id=int(id), detected=True)
     controller.set_marker_x(None, id)
-    time.sleep(0.2)
+    time.sleep(1)
     marker_x = get_marker_x_with_retry(controller, id) 
     frm = controller.get_frame()
     if marker_x is None or frm is None:
-        print("Marker not exist. Proceed to the next step")
+        print("Searching for marker...")
         controller.drone.send_rc_control(0, 0, 0, 0)
-        return True
+        return False
 
     x_error = marker_x
-    threshold = 15
+    threshold = 10
     # print("Position of the current marker")
 
     if abs(x_error) > threshold:
@@ -537,7 +439,7 @@ def center_on_marker(controller, id, marker_client):
         if not controller.is_centered:
             print("Marker centered!")
             controller.drone.send_rc_control(0, 0, 0, 0)
-            time.sleep(0.1)
+            time.sleep(0.3)
             controller.is_centered = True
         return True
 
@@ -550,9 +452,9 @@ def downward_center_and_land(controller, target_marker_id, marker_client):
     print("\nSwitching to downward camera for smooth landing...")
     for i in range(3):
         controller.drone.send_command_with_return("downvision 1")
-        time.sleep(0.2)
+        time.sleep(0.5)
     controller.using_downvision = True
-    #time.sleep(2)
+    time.sleep(2)
 
     # --- basic parameters ---         # cm/s base RC speed
     center_tolerance = 8      # pixel tolerance for "centered"
@@ -571,7 +473,7 @@ def downward_center_and_land(controller, target_marker_id, marker_client):
         frame = controller.get_frame() #Probably because the frame of the controller is still from the previous front camera
         marker_client.send_update('marker', marker_id=int(target_marker_id), landed=True)
         if frame is None:
-            time.sleep(0.05)
+            time.sleep(0.1)
             continue
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         corners, ids, rvecs, tvecs = detect_marker_pose(gray_frame, controller)
@@ -610,14 +512,13 @@ def downward_center_and_land(controller, target_marker_id, marker_client):
             break
     print("Centered — descending slightly...")
     rc_pulse(0, 0, descend_speed)
-    # time.sleep(0.2)
+    time.sleep(0.3)
 
     h = controller.drone.get_height()
     if h is not None and h <= min_height:
         print(f"Near ground (h={h} cm) — landing.")
     marker_client.send_update('marker', marker_id=int(target_marker_id), landed=True)
     controller.drone.send_rc_control(0, 0, 0, 0)
-    # marker_client.send_update('marker', marker_id=int(target_marker_id), claimed=False)  
     controller.drone.land()
     controller.movement_completed = True
     print("Landed safely.")
@@ -628,68 +529,63 @@ def downward_center_and_land(controller, target_marker_id, marker_client):
 
 def scan_marker(controller, marker_client, release = False):
     # global marker_client
-    is_fire = False
+    
     for id in marker_list:
         print(f"ID {id} is being scanned")
-        if marker_client.is_marker_available(id):
+        if marker_client.is_marker_available(id) and id in controller.valid_ids:
             marker_client.send_update('marker', marker_id=int(id), detected=True)
             controller.set_distance(None, id)
-            time.sleep(0.2)
-            dist = get_distance_with_retry(controller, id, max_attempts=3)
+            time.sleep(0.5)
+            dist = get_distance_with_retry(controller, id, max_attempts=5)
             if dist is None:
                 continue
             else: 
-                if id in controller.valid_ids or id in controller.bonus_victims:
-                    is_fire = False
-                else:
-                    is_fire = True
-                locate_marker(controller, id, marker_client=marker_client, is_fire=is_fire)
+                locate_marker(controller, id, marker_client=marker_client)
             print("Has reached here")
 
 
 def scan_for_marker(controller, marker_client):
-    rotation = 0
-    is_fire = False
-    while rotation < 270:
+    enter_searching_zone = False
+    while controller.get_heading() > 5 or controller.get_heading() < -5 or not enter_searching_zone:
+        if controller.get_heading() > 5:
+            enter_searching_zone = True
         for id in list(marker_list):
             controller.set_distance(None, id)
-            time.sleep(0.2)
-            dist = get_distance_with_retry(controller, id, max_attempts=3)
+            time.sleep(0.5)
+            dist = get_distance_with_retry(controller, id, max_attempts=5)
             if dist is None:
                 continue
-            if marker_client.is_marker_available(id):
+            if marker_client.is_marker_available(id) and id in controller.valid_ids:
                 marker_client.send_update('marker', marker_id=int(id), detected=True)
                 controller.drone.send_rc_control(0, 0, 0, 0)
                 print(f"Measuring Marker {id}'s position...")
                 status = f"Measuring Marker {id}'s position..."
-                if id in controller.valid_ids or id in controller.bonus_victims:
-                    is_fire = False
-                else:
-                    is_fire = True
-                locate_marker(controller,id, marker_client, is_fire)
-            # locate_marker(controller, id)
-        controller.drone.rotate_clockwise(90)
-        rotation += 90
-        time.sleep(0.5)
+                locate_marker(controller,id, marker_client)
+        controller.drone.send_rc_control(0, 0, 0, 10)
+        time.sleep(1)
+        controller.drone.send_rc_control(0, 0, 0, 0)
+        time.sleep(1)
     
     # This part is to align the drone back to the original course heading
     heading = controller.get_heading()
     print(f"Current heading: {heading}")
     print(f"Current course: {course}")
-    # if abs(heading-course) <= 180:
-    #     controller.drone.rotate_counter_clockwise(heading-course)
-    # elif heading-course < -180:
-    #     controller.drone.rotate_counter_clockwise(360 + heading-course)
-    # else:
-    #     controller.drone.rotate_counter_clockwise(heading-course - 360)
+    if abs(heading-course) <= 180:
+        controller.drone.rotate_counter_clockwise(heading-course)
+    elif heading-course < -180:
+        controller.drone.rotate_counter_clockwise(360 + heading-course)
+    else:
+        controller.drone.rotate_counter_clockwise(heading-course - 360)
 
 def scan_for_fire(controller, marker_client):
-    rotation = 0
-    while rotation < 270:
+    enter_searching_zone = True
+    while controller.get_heading() > 5 or controller.get_heading() < -5 or not enter_searching_zone:
+        if controller.get_heading() > 5:
+            enter_searching_zone = True
         for id in list(fire_marker_list):
             controller.set_distance(None, id)
-            time.sleep(0.2)
-            dist = get_distance_with_retry(controller, id, max_attempts=3)
+            time.sleep(0.5)
+            dist = get_distance_with_retry(controller, id, max_attempts=5)
             if dist is None:
                 continue
             if marker_client.is_marker_available(id) and id in controller.invalid_ids:
@@ -699,12 +595,12 @@ def scan_for_fire(controller, marker_client):
                 status = f"Measuring Marker {id}'s position..."
                 locate_fire_marker(controller,id, marker_client)
             # locate_marker(controller, id)
-        controller.drone.rotate_clockwise(90)
-        rotation += 90
-        time.sleep(0.5)
+        controller.drone.send_rc_control(0, 0, 0, 10)
+        time.sleep(1)
+        controller.drone.send_rc_control(0, 0, 0, 0)
+        time.sleep(1)
 
 def locate_fire_marker(controller, id, marker_client):
-    # marker_client.send_update('marker', marker_id=int(id), claimed=True)
     marker_client.send_update('marker', marker_id=int(id), detected=True)
     # while controller.is_running and controller.get_distance() is None:
     #     time.sleep(0.1)
@@ -715,117 +611,22 @@ def locate_fire_marker(controller, id, marker_client):
         time.sleep(0.1)
     print("The third time has reached here")
     controller.set_distance(None, id)
-    time.sleep(0.2)
+    time.sleep(1)
     initial_distance = get_distance_with_retry(controller, id)
-    must_center = False
+            
     if initial_distance is None:
-        # marker_client.send_update('marker', marker_id=int(id), claimed=False)
-        print(f"Marker {id} was lost")
-        status = f"Marker {id} was lost"
-        if id in fire_marker_list:
-            fire_marker_list.pop(fire_marker_list.index(id))           
-            print(f"Could not detect fire marker {id} for initial distance!")
-        return
-
-    print(f"Initial horizontal distance to marker: {initial_distance:.1f} cm")
-    if initial_distance > 350:
-        must_center = True
-    print("\nStep 2: Gradual horizontal approach...")
-    total_forward_distance = initial_distance*0.9
-    num_segments = 2
-    initial_segment = int(total_forward_distance / num_segments)
-    forward_per_segment = initial_segment
-
-    try:
-        current_altitude = controller.drone.get_height()  # in cm
-    except Exception:
-        current_altitude = 100  # fallback default if API fails
-    print(f"Current altitude: {current_altitude} cm")
-    target_altitude = 60
-
-    total_descent = max(current_altitude - target_altitude, 0)
-    descent_per_segment = int(total_descent / num_segments)
-
-    for i in range(num_segments):
-        marker_client.send_update('marker', marker_id=int(id), detected=True)
-        if not controller.is_running:
-            break
-        if i != 0:
-            controller.set_distance(None, id)
-            time.sleep(0.2)
-            dist = get_distance_with_retry(controller, id)
-            if dist is None: 
-                forward_per_segment = initial_segment
-            else: 
-                print("Recentering on marker (if visible)...")
-                marker_client.send_update('marker', marker_id=int(id), detected=True)
-                while not center_on_marker(controller, id, marker_client) and controller.is_running:
-                    time.sleep(0.1)
-                dist = get_distance_with_retry(controller, id, max_attempts=5)
-                forward_per_segment = int(dist*0.9/(num_segments-(i)))
-        print(f"\nExecuting segment {i+1}/{num_segments}")
-        curr_pose = controller.get_latest_uwb()
-        target_xy = (
-            curr_pose[0] + forward_per_segment * math.sin(math.radians(course)),  # x increment
-            curr_pose[1] + forward_per_segment * math.cos(math.radians(course)),  # y increment
-        )
-        print(f"The target position: {target_xy}")
-        rc_move_to(controller, target_xy_cm=target_xy)
-        # controller.drone.move_forward(forward_per_segment)
-        # time.sleep(0.5)
-        brake(controller.drone, 300)
-        descent_velocity = descent_per_segment/0.5
-        controller.drone.send_rc_control(0, 0, -int(descent_velocity), 0)  # gentle down velocity (cm/s)
-        time.sleep(0.2)
-        brake(controller.drone, 300)
-        
-        if must_center:
-            while not center_on_marker(controller, id, marker_client) and controller.is_running:
-                time.sleep(0.1)
-        # print("Recentering on marker (if visible)...")
-        # while not center_on_marker(controller, id) and controller.is_running:
-        #     time.sleep(0.1)
-        # max_center_attempts = 15  # about 1.5 seconds max
-
-        # for _ in range(max_center_attempts):
-        #     if not controller.is_running:
-        #         break
-
-        #     time.sleep(0.1)
-
-        # time.sleep(0.4)
-    downward_center_and_land(controller, id, marker_client)
-    
-def locate_marker(controller, id, marker_client, is_fire):
-    # marker_client.send_update('marker', marker_id=int(id), claimed=True)
-    marker_client.send_update('marker', marker_id=int(id), detected=True)
-    # while controller.is_running and controller.get_distance() is None:
-    #     time.sleep(0.1)
-    print("The second time has reached here")
-    print("\nStep 1: Centering on marker...")
-    while not center_on_marker(controller, id, marker_client) and controller.is_running:
-        marker_client.send_update('marker', marker_id=int(id), detected=True)
-        time.sleep(0.1)
-    print("The third time has reached here")
-    controller.set_distance(None, id)
-    time.sleep(0.2)
-    initial_distance = get_distance_with_retry(controller, id)
-    must_center = False
-    if initial_distance is None:
-        # marker_client.send_update('marker', marker_id=int(id), claimed=False)
         print(f"Marker {id} was lost")
         status = f"Marker {id} was lost"
         if id in marker_list:
             marker_list.pop(marker_list.index(id))           
             print("Could not detect marker for initial distance!")
         return
-    if initial_distance > 350:
-        must_center = True
+
     print(f"Initial horizontal distance to marker: {initial_distance:.1f} cm")
 
     print("\nStep 2: Gradual horizontal approach...")
     total_forward_distance = initial_distance*0.9
-    num_segments = 2
+    num_segments = 4
     initial_segment = int(total_forward_distance / num_segments)
     forward_per_segment = initial_segment
 
@@ -853,34 +654,121 @@ def locate_marker(controller, id, marker_client, is_fire):
                 print("Recentering on marker (if visible)...")
                 marker_client.send_update('marker', marker_id=int(id), detected=True)
                 while not center_on_marker(controller, id, marker_client) and controller.is_running:
-                    marker_client.send_update('marker', marker_id=int(id), detected=True)
                     time.sleep(0.1)
                 dist = get_distance_with_retry(controller, id, max_attempts=5)
                 forward_per_segment = int(dist*0.9/(num_segments-(i)))
         print(f"\nExecuting segment {i+1}/{num_segments}")
-        curr_pose = controller.get_latest_uwb()
-        target_xy = (
-            curr_pose[0] + forward_per_segment * math.sin(math.radians(course)),  # x increment
-            curr_pose[1] + forward_per_segment * math.cos(math.radians(course)),  # y increment
-        )
-        print(f"The target position: {target_xy}")
-        rc_move_to(controller, target_xy_cm=target_xy)
-        # controller.drone.move_forward(forward_per_segment)
-        marker_client.send_update('marker', marker_id=int(id), detected=True)
-        time.sleep(0.5)
+        controller.drone.move_forward(forward_per_segment)
+        time.sleep(1)
         brake(controller.drone, 300)
+        time.sleep(0.6)
+        
         descent_velocity = descent_per_segment/0.5
         controller.drone.send_rc_control(0, 0, -int(descent_velocity), 0)  # gentle down velocity (cm/s)
-        time.sleep(0.2)
+        time.sleep(0.5)
+        controller.drone.send_rc_control(0, 0, 0, 0) 
 
         brake(controller.drone, 300)
+        time.sleep(0.5)
 
-        if must_center:
-            print("Recentering on marker (if visible)...")
-            while not center_on_marker(controller, id, marker_client) and controller.is_running:
-                time.sleep(0.1) 
-    if not is_fire:
-        scan_for_fire(controller, marker_client)
+        # print("Recentering on marker (if visible)...")
+        # while not center_on_marker(controller, id) and controller.is_running:
+        #     time.sleep(0.1)
+        # max_center_attempts = 15  # about 1.5 seconds max
+
+        # for _ in range(max_center_attempts):
+        #     if not controller.is_running:
+        #         break
+
+        #     time.sleep(0.1)
+
+        time.sleep(0.4)
+    downward_center_and_land(controller, id, marker_client)
+    
+def locate_marker(controller, id, marker_client):
+    marker_client.send_update('marker', marker_id=int(id), detected=True)
+    # while controller.is_running and controller.get_distance() is None:
+    #     time.sleep(0.1)
+    print("The second time has reached here")
+    print("\nStep 1: Centering on marker...")
+    while not center_on_marker(controller, id, marker_client) and controller.is_running:
+        marker_client.send_update('marker', marker_id=int(id), detected=True)
+        time.sleep(0.1)
+    print("The third time has reached here")
+    controller.set_distance(None, id)
+    time.sleep(1)
+    initial_distance = get_distance_with_retry(controller, id)
+            
+    if initial_distance is None:
+        print(f"Marker {id} was lost")
+        status = f"Marker {id} was lost"
+        if id in marker_list:
+            marker_list.pop(marker_list.index(id))           
+            print("Could not detect marker for initial distance!")
+        return
+
+    print(f"Initial horizontal distance to marker: {initial_distance:.1f} cm")
+
+    print("\nStep 2: Gradual horizontal approach...")
+    total_forward_distance = initial_distance*0.9
+    num_segments = 4
+    initial_segment = int(total_forward_distance / num_segments)
+    forward_per_segment = initial_segment
+
+    try:
+        current_altitude = controller.drone.get_height()  # in cm
+    except Exception:
+        current_altitude = 100  # fallback default if API fails
+    print(f"Current altitude: {current_altitude} cm")
+    target_altitude = 60
+
+    total_descent = max(current_altitude - target_altitude, 0)
+    descent_per_segment = int(total_descent / num_segments)
+
+    for i in range(num_segments):
+        marker_client.send_update('marker', marker_id=int(id), detected=True)
+        if not controller.is_running:
+            break
+        if i != 0:
+            controller.set_distance(None, id)
+            time.sleep(0.5)
+            dist = get_distance_with_retry(controller, id)
+            if dist is None: 
+                forward_per_segment = initial_segment
+            else: 
+                print("Recentering on marker (if visible)...")
+                marker_client.send_update('marker', marker_id=int(id), detected=True)
+                while not center_on_marker(controller, id, marker_client) and controller.is_running:
+                    time.sleep(0.1)
+                dist = get_distance_with_retry(controller, id, max_attempts=5)
+                forward_per_segment = int(dist*0.9/(num_segments-(i)))
+        print(f"\nExecuting segment {i+1}/{num_segments}")
+        controller.drone.move_forward(forward_per_segment)
+        time.sleep(1)
+        brake(controller.drone, 300)
+        time.sleep(0.6)
+        
+        descent_velocity = descent_per_segment/0.5
+        controller.drone.send_rc_control(0, 0, -int(descent_velocity), 0)  # gentle down velocity (cm/s)
+        time.sleep(0.5)
+        controller.drone.send_rc_control(0, 0, 0, 0) 
+
+        brake(controller.drone, 300)
+        time.sleep(0.5)
+
+        # print("Recentering on marker (if visible)...")
+        # while not center_on_marker(controller, id) and controller.is_running:
+        #     time.sleep(0.1)
+        # max_center_attempts = 15  # about 1.5 seconds max
+
+        # for _ in range(max_center_attempts):
+        #     if not controller.is_running:
+        #         break
+
+        #     time.sleep(0.1)
+
+        time.sleep(0.4)
+    scan_for_fire(controller, marker_client)
     downward_center_and_land(controller, id, marker_client)
 
 def movement_thread(controller, marker_client):
@@ -977,67 +865,62 @@ def execute_waypoints(controller, marker_client):
         time.sleep(1)
     marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
     print(int(start_wpt[1]-sy),int(sx-start_wpt[0]))
-    target_xy = (
-                int(start_wpt[0]),  # x increment
-                int(start_wpt[1]),  # y increment
-    )
-    print(f"The target position: {target_xy}")
-    rc_move_to(controller, target_xy_cm=target_xy)
-    # if abs(int(start_wpt[1]-sy)) > 20 or  abs(int(sx-start_wpt[0])) > 20:
-    #     if abs(int(start_wpt[1]-sy)) > 1500 or  abs(int(sx-start_wpt[0])) > 1500:
-    #         print("More than 1500cm")
-    #         controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/4), int((sx-start_wpt[0])/4), 0, 100)
-    #         pos[0] += (start_wpt[0] - sx)/4
-    #         pos[1] += (start_wpt[1] - sy)/4
-    #         uwb_correction(controller.drone)
-    #         controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/4), int((sx-start_wpt[0])/4), 0, 100)
-    #         pos[0] += (start_wpt[0] - sx)/4
-    #         pos[1] += (start_wpt[1] - sy)/4
-    #         uwb_correction(controller.drone)
-    #         controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/4), int((sx-start_wpt[0])/4), 0, 100)
-    #         pos[0] += (start_wpt[0] - sx)/4
-    #         pos[1] += (start_wpt[1] - sy)/4
-    #         uwb_correction(controller.drone)
-    #         controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/4), int((sx-start_wpt[0])/4), 0, 100)
-    #         pos[0] += (start_wpt[0] - sx)/4
-    #         pos[1] += (start_wpt[1] - sy)/4
-    #     elif abs(int(start_wpt[1]-sy)) > 1000 or  abs(int(sx-start_wpt[0])) > 1000:
-    #         print("More than 1000cm")
-    #         controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/3), int((sx-start_wpt[0])/3), 0, 100)
-    #         pos[0] += (start_wpt[0] - sx)/3
-    #         pos[1] += (start_wpt[1] - sy)/3
-    #         uwb_correction(controller.drone)
-    #         controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/3), int((sx-start_wpt[0])/3), 0, 100)
-    #         pos[0] += (start_wpt[0] - sx)/3
-    #         pos[1] += (start_wpt[1] - sy)/3
-    #         uwb_correction(controller.drone)
-    #         controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/3), int((sx-start_wpt[0])/3), 0, 100)
-    #         pos[0] += (start_wpt[0] - sx)/3
-    #         pos[1] += (start_wpt[1] - sy)/3
-    #     elif abs(int(start_wpt[1]-sy)) > 500 or  abs(int(sx-start_wpt[0])) > 500:
-    #         print("More than 500cm")
-    #         controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/2), int((sx-start_wpt[0])/2), 0, 100)
-    #         pos[0] += (start_wpt[0] - sx)/2
-    #         pos[1] += (start_wpt[1] - sy)/2
-    #         uwb_correction(controller.drone)
-    #         controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/2), int((sx-start_wpt[0])/2), 0, 100)
-    #         pos[0] += (start_wpt[0] - sx)/2
-    #         pos[1] += (start_wpt[1] - sy)/2
-    #     elif abs(int(start_wpt[1]-sy)) <= 500 and  abs(int(sx-start_wpt[0])) <= 500:
-    #         print("Less than 500cm")
-    #         controller.drone.go_xyz_speed(int(start_wpt[1]-sy), int(sx-start_wpt[0]), 0, 100)
-    #         pos[0] += start_wpt[0] - sx
-    #         pos[1] += start_wpt[1] - sy
-    #     print(f"Starting position: {pos}")
-    # else:
-    print("Already at starting waypoint")
+    if abs(int(start_wpt[1]-sy)) > 20 or  abs(int(sx-start_wpt[0])) > 20:
+        if abs(int(start_wpt[1]-sy)) > 1500 or  abs(int(sx-start_wpt[0])) > 1500:
+            print("More than 1500cm")
+            controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/4), int((sx-start_wpt[0])/4), 0, 100)
+            pos[0] += (start_wpt[0] - sx)/4
+            pos[1] += (start_wpt[1] - sy)/4
+            uwb_correction(controller.drone)
+            controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/4), int((sx-start_wpt[0])/4), 0, 100)
+            pos[0] += (start_wpt[0] - sx)/4
+            pos[1] += (start_wpt[1] - sy)/4
+            uwb_correction(controller.drone)
+            controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/4), int((sx-start_wpt[0])/4), 0, 100)
+            pos[0] += (start_wpt[0] - sx)/4
+            pos[1] += (start_wpt[1] - sy)/4
+            uwb_correction(controller.drone)
+            controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/4), int((sx-start_wpt[0])/4), 0, 100)
+            pos[0] += (start_wpt[0] - sx)/4
+            pos[1] += (start_wpt[1] - sy)/4
+        elif abs(int(start_wpt[1]-sy)) > 1000 or  abs(int(sx-start_wpt[0])) > 1000:
+            print("More than 1000cm")
+            controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/3), int((sx-start_wpt[0])/3), 0, 100)
+            pos[0] += (start_wpt[0] - sx)/3
+            pos[1] += (start_wpt[1] - sy)/3
+            uwb_correction(controller.drone)
+            controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/3), int((sx-start_wpt[0])/3), 0, 100)
+            pos[0] += (start_wpt[0] - sx)/3
+            pos[1] += (start_wpt[1] - sy)/3
+            uwb_correction(controller.drone)
+            controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/3), int((sx-start_wpt[0])/3), 0, 100)
+            pos[0] += (start_wpt[0] - sx)/3
+            pos[1] += (start_wpt[1] - sy)/3
+        elif abs(int(start_wpt[1]-sy)) > 500 or  abs(int(sx-start_wpt[0])) > 500:
+            print("More than 500cm")
+            controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/2), int((sx-start_wpt[0])/2), 0, 100)
+            pos[0] += (start_wpt[0] - sx)/2
+            pos[1] += (start_wpt[1] - sy)/2
+            uwb_correction(controller.drone)
+            controller.drone.go_xyz_speed(int((start_wpt[1]-sy)/2), int((sx-start_wpt[0])/2), 0, 100)
+            pos[0] += (start_wpt[0] - sx)/2
+            pos[1] += (start_wpt[1] - sy)/2
+        elif abs(int(start_wpt[1]-sy)) <= 500 and  abs(int(sx-start_wpt[0])) <= 500:
+            print("Less than 500cm")
+            controller.drone.go_xyz_speed(int(start_wpt[1]-sy), int(sx-start_wpt[0]), 0, 100)
+            pos[0] += start_wpt[0] - sx
+            pos[1] += start_wpt[1] - sy
+        print(f"Starting position: {pos}")
+    else:
+        print("Already at starting waypoint")
     # marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
     time.sleep(3)
-    # uwb_correction(controller.drone)
+    uwb_correction(controller.drone)
     # marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
-    # heading = controller.get_heading()
-    # if abs(heading) > 1:
-    #     controller.drone.rotate_counter_clockwise(int(heading)
+    heading = controller.get_heading()
+    if abs(heading) > 1:
+        controller.drone.rotate_counter_clockwise(int(heading))
+
     try:
 
         # Initialize position and orientation
@@ -1065,169 +948,106 @@ def execute_waypoints(controller, marker_client):
         for wp in data['wp']:
             # Handle rotation
             status = "Orienting"
-            # if wp['angle_deg'] != 0:
-            #     orientation += wp['angle_deg']
-            #     orientation %= 360  # Keep orientation within 0 to 360 degrees
-            #     if orientation > 180:
-            #         orientation -= 360  # Convert to -180 to 180 range
+            if wp['angle_deg'] != 0:
+                orientation += wp['angle_deg']
+                orientation %= 360  # Keep orientation within 0 to 360 degrees
+                if orientation > 180:
+                    orientation -= 360  # Convert to -180 to 180 range
                 
-            #     course = int(-orientation) + 180
-            #     if course > 180:
-            #         course -= 360 # Convert to -180 to 180 range
+                course = int(-orientation) + 180
+                if course > 180:
+                    course -= 360 # Convert to -180 to 180 range
 
-            #     # marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
-            #     time.sleep(2)
+                # marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
+                time.sleep(2)
                 
-            #     while abs(course - controller.get_heading()) > 3:
-            #         heading = controller.get_heading()
-            #         if -180 < course - heading < 180:
-            #             controller.drone.send_command_without_return(f"cw {int(course - heading)}")
-            #         elif course - heading > 180:
-            #             controller.drone.send_command_without_return(f"cw {int(course - heading) - 360}")
-            #         else:
-            #             controller.drone.send_command_without_return(f"cw {int(course - heading) + 360}")
-            #         time.sleep(4)
+                while abs(course - controller.get_heading()) > 3:
+                    heading = controller.get_heading()
+                    if -180 < course - heading < 180:
+                        controller.drone.send_command_without_return(f"cw {int(course - heading)}")
+                    elif course - heading > 180:
+                        controller.drone.send_command_without_return(f"cw {int(course - heading) - 360}")
+                    else:
+                        controller.drone.send_command_without_return(f"cw {int(course - heading) + 360}")
+                    time.sleep(4)
                 
-            scan_marker(controller, marker_client=marker_client) #Check the availability of the marker_client
+                scan_marker(controller, marker_client=marker_client) #Check the availability of the marker_client
 
-            # marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
-            update_position(waypoints, abs_position, orientation)
-            # uwb_correction(controller.drone)
+                # marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
+                update_position(waypoints, abs_position, orientation)
+                uwb_correction(controller.drone)
 
             #heading = controller.get_heading()
-            # # Check if drone is facing course direction before flying forward
-            # while abs(course - controller.get_heading()) > 5:
-            #     heading = controller.get_heading()
-            #     if -180 < course - heading < 180:
-            #         controller.drone.send_command_without_return(f"cw {int(course - heading)}")
-            #     elif course - heading > 180:
-            #         controller.drone.send_command_without_return(f"cw {int(course - heading) - 360}")
-            #     else:
-            #         controller.drone.send_command_without_return(f"cw {int(course - heading) + 360}")
-            #     time.sleep(4)
+            # Check if drone is facing course direction before flying forward
+            while abs(course - controller.get_heading()) > 5:
+                heading = controller.get_heading()
+                if -180 < course - heading < 180:
+                    controller.drone.send_command_without_return(f"cw {int(course - heading)}")
+                elif course - heading > 180:
+                    controller.drone.send_command_without_return(f"cw {int(course - heading) - 360}")
+                else:
+                    controller.drone.send_command_without_return(f"cw {int(course - heading) + 360}")
+                time.sleep(4)
 
             # Handle forward movement in 200 cm increments
             distance = wp['dist_cm']
 
             status = "Proceeding forward"
-            waypoint_id += 1
-            while marker_client.is_waypoint_available(waypoint_id) is False:
-                print(f"waiting for waypoint {waypoint_id} to be available")
-                controller.drone.send_rc_control(0, 0, 0, 0)
+            if distance > 250:
+                while distance > 200:
+                    waypoint_id += 1
+                    print(f"Drone at proceeding to {waypoint_id}")
+                    while marker_client.is_waypoint_available(waypoint_id) is False:
+                        print(f"waiting for waypoint {waypoint_id} to be available")
+                        controller.drone.send_rc_control(0, 0, 0, 0)
                         # marker_client.send_update('waypoint', marker_id=waypoint_id-1, detected=True)
-                time.sleep(1)
-            # if distance > 450:
-            #     while distance > 400:
-            #         waypoint_id += 1
-            #         print(f"Drone at proceeding to {waypoint_id}")
-            #         while marker_client.is_waypoint_available(waypoint_id) is False:
-            #             print(f"waiting for waypoint {waypoint_id} to be available")
-            #             controller.drone.send_rc_control(0, 0, 0, 0)
-            #             # marker_client.send_update('waypoint', marker_id=waypoint_id-1, detected=True)
-            #             time.sleep(1)
-            #         marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
-            #         try:
-            #             target_xy = (
-            #             pos[0] + 400 * math.sin(math.radians(course)),  # x increment
-            #             pos[1] + 400 * math.cos(math.radians(course)),  # y increment
-            #             )
-            #             print(f"The value of target xy {target_xy}")
-            #             rc_move_to(controller, target_xy_cm=target_xy)
-            #             # controller.drone.move_forward(200)
-            #         except:
-            #             waypoint_id -= 1
-            #             continue
+                        time.sleep(1)
+                    marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
+                    try:
+                        controller.drone.move_forward(200)
+                    except:
+                        waypoint_id -= 1
+                        continue
                     
-            #         print(f"Drone at to Waypoint {waypoint_id}")
-            #         scan_marker(controller, marker_client, True) 
-            #         update_position(waypoints, abs_position, orientation, 400)
-            #         time.sleep(2)
-            #         uwb_correction(controller.drone)
-            #         time.sleep(2)
-            #         # marker_client.send_update('waypoint', marker_id=waypoint_id-1, detected=False)
-            #         scan_for_marker(controller, marker_client)
-            #         time.sleep(1)
+                    print(f"Drone at to Waypoint {waypoint_id}")
+                    scan_marker(controller, marker_client, True) 
+                    update_position(waypoints, abs_position, orientation, 200)
+                    time.sleep(2)
+                    uwb_correction(controller.drone)
+                    time.sleep(2)
+                    # marker_client.send_update('waypoint', marker_id=waypoint_id-1, detected=False)
+                    scan_for_marker(controller, marker_client)
+                    time.sleep(1)
 
-            #         distance -= 400
-            #         time.sleep(0.5)
-            # # # waypoint_id += 1
-            # # # print(f"Drone at proceeding to {waypoint_id}")
-            # # # while marker_client.is_waypoint_available(waypoint_id) is False:
-            # # #     print(f"waiting for waypoint {waypoint_id} to be available")
-            # #     controller.drone.send_rc_control(0, 0, 0, 0)
-            # #     # marker_client.send_update('waypoint', marker_id=waypoint_id-1, detected=True)
-            # #     time.sleep(1)
-            # # marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
-            # # try:
-            # #     target_xy = (
-            # #     pos[0] + 200 * math.sin(math.radians(course)),  # x increment
-            # #     pos[1] + 200 * math.cos(math.radians(course)),  # y increment
-            # #     )
-            # #     print(f"The value of target xy {target_xy}")
-            # #     rc_move_to(controller, target_xy_cm=target_xy)
-            # #     # controller.drone.move_forward(200)
-            # # except:
-            # #     waypoint_id -= 1
-            # #     continue    
-            # # Move remaining distance (if between 20 and 50 cm)
-            # if distance > 20:
-            #     waypoint_id += 1
-            #     print(f"Drone at proceeding to {waypoint_id}")
-            #     '''
-            #     while marker_client.is_waypoint_available(waypoint_id) is False:
-            #         print(f"waiting for waypoint {waypoint_id} to be available")
-            #         drone.send_rc_control(0, 0, 0, 0)
-            #         marker_client.send_update('waypoint', marker_id=waypoint_id-1, detected=True)
-            #         time.sleep(1)
-            #     marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
-            #     '''
-            #     try:
-            #         target_xy = (
-            #         pos[0] + distance * math.sin(math.radians(course)),  # x increment
-            #         pos[1] + distance * math.cos(math.radians(course)),  # y increment
-            #         )
-            #         rc_move_to(controller, target_xy_cm=target_xy)
-            #     except:
-            #         waypoint_id -= 1
-            #         continue
+                    distance -= 200
+                    time.sleep(0.5)
                 
-            #     print(f"Drone at to Waypoint {waypoint_id}")
-            #     scan_marker(controller, marker_client, True)
-            #     update_position(waypoints, abs_position, orientation, distance)
-            #     time.sleep(3)
-            #     uwb_correction(controller.drone)
-            #     marker_client.send_update('waypoint', marker_id=waypoint_id-1, detected=False)
-            #     scan_for_marker(controller, marker_client)
-            #     time.sleep(1)
-            # waypoint_id += 1
-            # print(f"Drone at proceeding to {waypoint_id}")
-            # '''
-            #     while marker_client.is_waypoint_available(waypoint_id) is False:
-            #         print(f"waiting for waypoint {waypoint_id} to be available")
-            #         drone.send_rc_control(0, 0, 0, 0)
-            #         marker_client.send_update('waypoint', marker_id=waypoint_id-1, detected=True)
-            #         time.sleep(1)
-            #     marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
-            # '''
-            try:
-                target_xy = (
-                wp['position_cm']['x'],  # x increment
-                wp['position_cm']['y'],  # y increment
-                )
-                print(f"The target position: {target_xy}")
-                rc_move_to(controller, target_xy_cm=target_xy)
-            except:
-                waypoint_id -= 1
-                continue
+            # Move remaining distance (if between 20 and 50 cm)
+            if distance > 20:
+                waypoint_id += 1
+                print(f"Drone at proceeding to {waypoint_id}")
+                '''
+                while marker_client.is_waypoint_available(waypoint_id) is False:
+                    print(f"waiting for waypoint {waypoint_id} to be available")
+                    drone.send_rc_control(0, 0, 0, 0)
+                    marker_client.send_update('waypoint', marker_id=waypoint_id-1, detected=True)
+                    time.sleep(1)
+                marker_client.send_update('waypoint', marker_id=waypoint_id, detected=True)
+                '''
+                try:
+                    controller.drone.move_forward(distance)
+                except:
+                    waypoint_id -= 1
+                    continue
                 
-            print(f"Drone at to Waypoint {waypoint_id}")
-            scan_marker(controller, marker_client, True)
-            update_position(waypoints, abs_position, orientation, distance)
-            time.sleep(3)
-            # uwb_correction(controller.drone)
-            marker_client.send_update('waypoint', marker_id=waypoint_id-1, detected=False)
-            scan_for_marker(controller, marker_client)
-            time.sleep(1)
+                print(f"Drone at to Waypoint {waypoint_id}")
+                scan_marker(controller, marker_client, True)
+                update_position(waypoints, abs_position, orientation, distance)
+                time.sleep(3)
+                uwb_correction(controller.drone)
+                marker_client.send_update('waypoint', marker_id=waypoint_id-1, detected=False)
+                scan_for_marker(controller, marker_client)
+                time.sleep(1)
     
     except Exception as e:
         print(f"Error occurred: {e}")
@@ -1266,20 +1086,17 @@ def main():
     markerclient = MarkerClient(drone_id=controller.drone_id)
     # controller.marker_client = markerclient
     try:
-        uwb_thread = threading.Thread(target=uwb_poll_thread, args=(controller.drone_uwbtag, controller), daemon=True)
         video_handler = threading.Thread(target=video_thread, args=(controller,), daemon=True)
         move_handler  = threading.Thread(target=movement_thread, args=(controller,markerclient,), daemon=True)
 
         video_handler.start()
         time.sleep(1.0)
-        uwb_thread.start()
         move_handler.start()
         display_loop(controller)
 
         controller.is_running = False
         video_handler.join(timeout=2)
         move_handler.join(timeout=2)
-        uwb_thread.join(timeout=2)
     finally:
         try: controller.drone.send_rc_control(0,0,0,0)
         except: pass
@@ -1289,7 +1106,6 @@ def main():
         except: pass
         try: controller.drone.streamoff()
         except: pass
-
         cv2.destroyAllWindows()
 
 

@@ -2,10 +2,10 @@ from djitellopy import Tello
 import time
 # Define configuration constants
 NETWORK_CONFIG = {
-'host': '192.168.0.107',
-'control_port': 9007,
-'state_port': 8007,
-'video_port': 11107
+'host': '192.168.0.105',
+'control_port': 9005,
+'state_port': 8005,
+'video_port': 11105
 }
 class CustomTello(Tello):
     def __init__(self, network_config):

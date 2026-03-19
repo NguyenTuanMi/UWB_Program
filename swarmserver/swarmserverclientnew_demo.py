@@ -13,7 +13,7 @@ class MarkerServer:
         self.host = host
         self.port = port
         self.marker_timeout = 5
-        self.waypoint_timeout = 10
+        self.waypoint_timeout = 45
         self.marker_status: Dict[str, Dict[str, Any]] = {}
         self.drone_status: Dict[str, Dict[str, Any]] = {}
         self.takeoff_waitlist = set()
@@ -37,6 +37,10 @@ class MarkerServer:
         self.broadcast_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
         self.valid_ids = set(range(1, 9))
+
+        self.relay_ids = set(range(1,4))
+
+        self.relay_victims = None # Formar (id, x, y)
 
         logging.info(f"Swarm server started on {self.host}:{self.port}")
 
@@ -164,6 +168,7 @@ class MarkerServer:
                         logging.info(f"All valid markers {self.valid_ids} have landed. Resetting landed flags.")
                         for marker_id in self.marker_status:
                             if self.marker_status[marker_id].get("landed", False):
+                                # self.marker_status[marker_id]["claimed"] = False
                                 self.marker_status[marker_id]["landed"] = False
                                 status_changed = True
                 
@@ -186,8 +191,13 @@ class MarkerServer:
                     if marker_id not in self.marker_status:
                         self.marker_status[marker_id] = {
                             "detected": False,
-                            "landed": False
+                            "landed": False,
+                            "claimed": False
                         }
+
+                    # Nguyen Tuan Minh add new claim
+                    if "claimed" in message:
+                        self.marker_status[marker_id]["claimed"] = message["claimed"]
 
                     self.marker_status[marker_id]["drone_id"] = message.get("drone_id", 0)  # Registers which drone ID detected that marker
                     
@@ -316,7 +326,14 @@ class MarkerServer:
                             self.update_marker_status(message)
                             if "bonus_detected" in message and message["bonus_detected"]:
                                 logging.info(f"Bonus marker detected by drone {message.get('drone_id', 0)} on marker {message.get('marker_id', 0)}")
-                                self.send_relay_execution_signal([99])
+                                if "bonus_position" in message and message["bonus_position"] is not None:
+                                    self.send_relay_execution_signal([99], bonus_position = message["bonus_position"])
+                                # Nguyen Tuan Minh's Feb 4 code to receive the bonus victims pose
+                                # if "landed" in message and message["landed"] and "pose" in message and message["pose"] is not None:
+                                #     self.relay_victims = (message.get('marker_id', 0), message.get('pose', 0)[0], message.get('pose', 0)[1])
+                                #     self.send_relay_execution_signal([99])
+                                #     
+                                
                         elif message.get("type") == 'waypoint':
                             self.update_waypoint_status(message)
                         else:
@@ -443,12 +460,14 @@ class MarkerServer:
 
                     logging.debug(f"MarkerServer sent {takeoff_message} to {client_addr} (sent {send_repeat} times for reliability)")
     
-    def send_relay_execution_signal(self, ready_drones:List, send_repeat: int=3):
+    def send_relay_execution_signal(self, ready_drones:List, bonus_position:List, send_repeat: int=3):
         if not ready_drones:
             logging.warning("No relay drones were ready for execution.")
             return
-        
-        takeoff_message = json.dumps({"type": "relay init", "takeoff_list": ready_drones}).encode()
+        takeoff_message = json.dumps({"type": "relay init", "takeoff_list": ready_drones, "bonus_pose": bonus_position}).encode()
+        # if self.relay_victims is not None and self.relay_victims[1] != (0,0):
+        #     takeoff_message = json.dumps({"type": "relay init", "takeoff_list": ready_drones, "marker pose": }).encode()
+        #takeoff_message = json.dumps({"type": "relay init", "takeoff_list": ready_drones}).encode()
         with self.lock:
             for client_addr in self.relay_clients:
                 for _ in range(send_repeat):  # Send the message N times for reliability
@@ -541,6 +560,7 @@ class MarkerClient:
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)  # Enable broadcast
         self.sock.bind(("0.0.0.0", 0))  # Bind to any available port
         self.ready = False
+        self.bonus_pose = [0,0,0]
         self.takeoff_signal = False
         self.relay_triggered = False
         self.land_signal = False
@@ -600,7 +620,9 @@ class MarkerClient:
                     marker_id:int=None, detected:bool=None, landed:bool=None,
                     status_message:str='', 
                     send_repeat:int=3,
-                    bonus_detected:bool=None
+                    claimed=None,
+                    bonus_detected:bool=None,
+                    bonus_position:List=None
                     ):
         """
         19 Feb - keep separate from _send_takeoff_request since it has an additional waiting_list argument
@@ -622,12 +644,16 @@ class MarkerClient:
         if update_type == "marker" and marker_id is not None:
             message["type"] = "marker"
             message["marker_id"] = marker_id
+            if claimed is not None:             # ← ADD THIS BLOCK
+                message["claimed"] = claimed
             if detected is not None:
                 message["detected"] = detected
             if landed is not None:
                 message["landed"] = landed
             if bonus_detected is not None and bonus_detected:
                 message["bonus_detected"] = bonus_detected
+                if bonus_position is not None:
+                    message["bonus_position"] = bonus_position
 
         elif update_type =="status":
             message["type"] = "status"
@@ -672,6 +698,7 @@ class MarkerClient:
                     logging.debug(f"Client's waypoint_status is now: {self.waypoint_status}")
                 elif message.get("type") == "relay init":
                     logging.info(f"Received relay execution signal for Tello {self.drone_id}")
+                    self.bonus_pose = message.get("bonus_pose")
                     self.relay_triggered = True
                 else:
                     logging.error(f"MarkerClient's receive_update: SHOULD NOT BE HERE")
@@ -689,6 +716,14 @@ class MarkerClient:
             return True  # Marker has never been seen before -> Available
         detected = marker_data.get("detected", False)   # False is the default value to return if "detected" key doesn't exist. If "detected": False, also returns false.
         landed = marker_data.get("landed", False)       # refer to TEST_markerstatusdict.py 
+        claimed = marker_data.get("claimed", False) 
+        print(f"Marker {marker_id} has landed status {landed} and claimed status {claimed}")
+        if claimed or landed:
+            claimed_by_me = marker_data.get("drone_id") == self.drone_id
+            if not claimed_by_me:
+                return False
+        else:
+            return True
         return not (detected or landed)  # If either is True, it's NOT available. If no server, returns True by default (good for redundancy).
     
     def is_waypoint_available(self, waypoint_id):

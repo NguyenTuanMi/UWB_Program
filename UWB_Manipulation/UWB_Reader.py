@@ -115,7 +115,7 @@ def get_target_position(target_id, max_retries=10, timeout=0.1):
                 if node_id == target_id:
                     GOT_POS = True
                     pos = (float(parts[2])+UWB_OFFSET[0] , float(parts[3])+UWB_OFFSET[1], float(parts[4]))
-                    print(f"Target {target_id}: {pos}")
+                    # print(f"Target {target_id}: {pos}")
                     sock.close()
                     return pos
 
@@ -124,7 +124,7 @@ def get_target_position(target_id, max_retries=10, timeout=0.1):
 
         except socket.timeout:
             # Increment retry count on timeout
-            print(f"[WARNING] Timeout occurred. Retry {retry_count + 1} of {max_retries}.")
+            #print(f"[WARNING] Timeout occurred. Retry {retry_count + 1} of {max_retries}.")
             retry_count += 1
 
         except Exception as e:

@@ -18,7 +18,7 @@ SPACESHIP_HEIGHT = 20
 WIDTH, HEIGHT = 494, 500
 
 #Field WIDTH and HEIGHT
-FIELD_WIDTH, FIELD_HEIGHT = 19.8, 19.8 #In meters
+FIELD_WIDTH, FIELD_HEIGHT = 25, 25 #In meters
 
 # Change the scale of the window and display it
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -82,7 +82,7 @@ def main():
     #start_time = time.time()
     while run:
         clock.tick(FPS) 
-        pose = UWB_Reader.get_target_position(8)
+        pose = UWB_Reader.get_target_position(6)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit() 

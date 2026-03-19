@@ -996,7 +996,6 @@ def execute_waypoints(controller, marker_client):
                 update_position(waypoints, abs_position, orientation)
                 uwb_correction(controller.drone)
 
-            #heading = controller.get_heading()
             # Check if drone is facing course direction before flying forward
             while abs(course - controller.get_heading()) > 5:
                 heading = controller.get_heading()

@@ -19,6 +19,7 @@ class MarkerServer:
         self.takeoff_waitlist = set()
         self.waypoints_status: Dict[str, Dict[str, Any]] = {}
         self.clients: Set[tuple] = set()
+        self.relay_clients: Set[tuple] = set()
         self.lock = threading.Lock()
         self.last_updates: Dict[str, float] = {}
         self.takeoff_triggered = False
@@ -433,6 +434,25 @@ class MarkerServer:
 
                     logging.debug(f"MarkerServer sent {takeoff_message} to {client_addr} (sent {send_repeat} times for reliability)")
     
+    # Send relay executional signal for all relay drones
+    def send_relay_execution_signal(self, ready_drones:List, bonus_position:List, send_repeat: int=3):
+        if not ready_drones:
+            logging.warning("No relay drones were ready for execution.")
+            return
+        takeoff_message = json.dumps({"type": "relay init", "takeoff_list": ready_drones, "bonus_pose": bonus_position}).encode()
+        # if self.relay_victims is not None and self.relay_victims[1] != (0,0):
+        #     takeoff_message = json.dumps({"type": "relay init", "takeoff_list": ready_drones, "marker pose": }).encode()
+        #takeoff_message = json.dumps({"type": "relay init", "takeoff_list": ready_drones}).encode()
+        with self.lock:
+            for client_addr in self.relay_clients:
+                for _ in range(send_repeat):  # Send the message N times for reliability
+                    try:
+                        self.broadcast_sock.sendto(takeoff_message, client_addr)
+                        time.sleep(0.01)  # Small 10ms delay to prevent flooding
+                    except Exception as e:
+                        logging.warning(f"Failed to send to relay client {client_addr}: {e}")
+
+                    logging.debug(f"MarkerServer sent {takeoff_message} to {client_addr} (sent {send_repeat} times for reliability)")
     ### 20 FEB GUI FUNCTIONS
 
     def adjust_column_widths(self):

@@ -15,7 +15,8 @@ import random
 class CustomTello(Tello):
     
     RESPONSE_TIMEOUT = 7    # Alternative: override globally here (default: 7s)
-    TAKEOFF_TIMEOUT = 10    # (default: 20s)
+    TAKEOFF_TIMEOUT = 10    # (default: 20s)]
+    
     
     def __init__(self, network_config):
         # Store custom configuration
@@ -23,12 +24,14 @@ class CustomTello(Tello):
         self.CONTROL_UDP_PORT = network_config['control_port']
         self.STATE_UDP_PORT = network_config['state_port']
         self.VS_UDP_PORT = network_config['video_port']
+        self.retries = 10 #Increase the num of retries to 10
+
         #print("This is the tello ip", self.TELLO_IP)
         Tello.STATE_UDP_PORT = self.STATE_UDP_PORT
         Tello.CONTROL_UDP_PORT = self.CONTROL_UDP_PORT
         
         # Call parent's init with our custom host
-        super().__init__(self.TELLO_IP)
+        super().__init__(self.TELLO_IP, retry_count=self.retries)
         
         # Override the connection parameters
         self.address = (self.TELLO_IP, self.CONTROL_UDP_PORT)
@@ -40,6 +43,7 @@ class CustomTello(Tello):
         self.using_down_vision = False # To track if downvision is used
         self.frame = None 
         self.frame_lock = threading.Lock()  # To ensure thread-safe access to frame
+        self.is_running = False
     
     def get_frame(self):
         with self.frame_lock:
