@@ -1,12 +1,13 @@
 import threading
 from threading import Lock
-from customtello import CustomTello
+from .customtello import CustomTello
 import time
 from djitellopy import Tello
+from .yaw_controller import YawController
 
 class DroneController:
-    def __init__(self, pi_id, tag_id):
-        self.drone = initialize_drone()
+    def __init__(self, pi_id: int, tag_id: int, network_config: dict):
+        self.drone = initialize_drone(network_config)
         self.drone_id = pi_id
         self.drone_uwbtag = tag_id
         self.frame = None
@@ -17,7 +18,6 @@ class DroneController:
         self.marker_pose = Lock()
         self.marker_x_lock = Lock()
         self.marker_x = [None]*25
-        #self.startpose_lock = Lock()
         self.is_running = True
         self.has_taken_off = False
         self.movement_completed = False
@@ -27,6 +27,19 @@ class DroneController:
         self.bonus_victims = set(range(21, 24))
         self.target_marker_id = None
         self.total_marker = self.valid_ids | self.bonus_victims | self.invalid_ids
+        self.yaw_controller = YawController(self)
+
+        # Replaces global marker_list, fire_marker_list, victim_marker_list
+        self.seen_marker_ids = set()        # all ever-detected victim/bonus markers (persistent)
+        self.seen_fire_ids = set()          # all ever-detected fire markers (persistent)
+
+        # The key new structure — only what is visible RIGHT NOW
+        self.current_visible = {}           # {marker_id: {'distance': float, 'x': float, 'is_fire': bool}}
+        self.current_visible_lock = Lock()
+
+        # Priority-ordered list of all ever-seen markers (fire first)
+        self.discovered_markers = []        # replaces global marker_list
+        self.discovered_lock = Lock()
 
         # UWB Thread
         self.marker_position = None
@@ -36,11 +49,11 @@ class DroneController:
         self.marker_list = []
         self.marker_list_lock = Lock()
         self.start_pose = []
-        # self.heading = None
         self.sh_lock = Lock()
         self.marker_priority_list = set()
         self.marker_client = None
         self.heading_lock = Lock()
+        
         # Waypoint control
         self.group_num = 1
 
@@ -57,6 +70,17 @@ class DroneController:
         self.rvec = None
         self.tvec = None
         self.rtlock = Lock()
+    
+    def _rebuild_discovered(self):
+    # Fire markers first, then victims — maintains priority ordering
+        with self.discovered_lock:
+            self.discovered_markers = (
+                list(self.seen_fire_ids) + list(self.seen_marker_ids)
+            )
+
+    def get_current_visible_snapshot(self):
+        with self.current_visible_lock:
+            return dict(self.current_visible)   # shallow copy is safe since values are dicts of primitives
 
     def get_marker_list(self):
         with self.marker_list_lock:
@@ -120,8 +144,8 @@ class DroneController:
         with self.marker_position_lock:
             return self.marker_position
 
-def initialize_drone():
-    drone = CustomTello()
+def initialize_drone(network_config: dict):
+    drone = CustomTello(network_config)
     drone.connect()
     print(f"Battery Level: {drone.get_battery()}%")
     drone.streamon()

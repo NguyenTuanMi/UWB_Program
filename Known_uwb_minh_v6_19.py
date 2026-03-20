@@ -10,8 +10,8 @@ import math
 import json
 
 strafe_speed = 1.0
-pi_id = 5
-tag_id = 6
+pi_id = 19
+tag_id = 7
 
 network_config = {
             'host': f'192.168.0.{100+pi_id}',     
@@ -291,6 +291,7 @@ def video_thread(controller: DroneController):
                     'x': x_cm,
                     'is_fire': is_fire
                     }
+                
                 frame = draw_pose_axes(frame, corners, ids, rvecs, tvecs, controller, is_fire)
                 
                 marker_center_x = int(tvecs[i][0][0] * 100.0)
@@ -681,7 +682,7 @@ def locate_marker(controller: DroneController, id, marker_client: MarkerClient, 
     downward_center_and_land(controller, id, marker_client)
     return True
 
-def movement_thread(controller: DroneController, marker_client):
+def movement_thread(controller: DroneController, marker_client: MarkerClient):
     print("Starting movement thread...")
 
     uwb_raw = (0,0,0)
@@ -694,7 +695,8 @@ def movement_thread(controller: DroneController, marker_client):
     
     controller.start_pose = uwb_pos
 
-    marker_client.client_takeoff_simul([99], f'Battery: {controller.drone.get_battery()}')
+    # marker_client.client_takeoff_simul([99], f'Battery: {controller.drone.get_battery()}')
+    marker_client.relay_client_takeoff_simul([99], f'Battery: {controller.drone.get_battery()}')
     print("Taking off...")
     controller.drone.takeoff()
     controller.has_taken_off = True
@@ -757,6 +759,7 @@ def execute_waypoints(controller: DroneController, marker_client: MarkerClient):
     # print("Already at starting waypoint")
     # time.sleep(3)
     # heading = controller.get_heading()
+
     waypoint_id = 0
     try:
 
@@ -806,6 +809,7 @@ def execute_waypoints(controller: DroneController, marker_client: MarkerClient):
             # time.sleep(3)
             scan_for_marker(controller, marker_client)
             waypoint_id += 1
+            
             time.sleep(1)
     
     except Exception as e:
@@ -817,7 +821,7 @@ def execute_waypoints(controller: DroneController, marker_client: MarkerClient):
             status = "Landing..."
             controller.drone.land()
             controller.drone.streamoff()
-        print("Mission completed!")
+        print("Mission completed!") 
 
 # ============================================================
 # === Display Loop
@@ -842,7 +846,7 @@ def display_loop(controller: DroneController):
 
 def main():
     controller = DroneController(pi_id=pi_id, tag_id=tag_id, network_config=network_config)
-    markerclient = MarkerClient(drone_id=controller.drone_id)
+    markerclient = MarkerClient(drone_id=controller.drone_id, relay_status=True)
     try:
         uwb_thread = threading.Thread(target=uwb_poll_thread, args=(controller.drone_uwbtag, controller), daemon=True)
         video_handler = threading.Thread(target=video_thread, args=(controller,), daemon=True)

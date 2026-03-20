@@ -1,2 +1,1112 @@
-INFO - 2026-03-19 03:38:26,073 - Swarm server started on 0.0.0.0:5005
-INFO - 2026-03-19 03:38:41,821 - Swarm server terminated.
+INFO - 2026-03-19 21:35:21,669 - Swarm server started on 0.0.0.0:5005
+DEBUG - 2026-03-19 21:35:30,125 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+INFO - 2026-03-19 21:35:30,125 - New non-relay client connected: drone 5 at ('192.168.0.70', 54014)
+DEBUG - 2026-03-19 21:35:30,126 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,126 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:30,126 - The takeoff_waitlist: set()
+INFO - 2026-03-19 21:35:30,126 - Drone 5 is first ready, starting countdown for {99, 5}
+DEBUG - 2026-03-19 21:35:30,126 - wait_and_takeoff thread started.
+DEBUG - 2026-03-19 21:35:30,126 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,127 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:30,135 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,136 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,136 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:30,136 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,136 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:30,136 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,136 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:30,146 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,146 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,147 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:30,147 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,148 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:30,149 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,149 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:30,156 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,157 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,157 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:30,158 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,158 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:30,158 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,158 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:30,166 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,166 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,167 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:30,167 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,167 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:30,167 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,168 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:30,176 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,176 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,177 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:30,177 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,177 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:30,177 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,177 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:30,687 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,687 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,687 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:30,688 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,688 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:30,688 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,688 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:30,697 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,697 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,697 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:30,698 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,698 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:30,698 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,698 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:30,707 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,708 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:30,708 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:30,709 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,710 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:30,711 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:30,712 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:31,127 - Waiting: 1.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:31,220 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:31,220 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:31,221 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:31,221 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:31,221 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:31,221 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:31,221 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:31,236 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:31,236 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:31,236 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:31,236 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:31,237 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:31,237 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:31,237 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:31,246 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:31,246 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:31,246 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:31,246 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:31,246 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:31,246 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:31,247 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:31,756 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:31,756 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:31,756 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:31,756 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:31,757 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:31,757 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:31,757 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:31,766 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:31,766 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:31,767 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:31,767 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:31,767 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:31,767 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:31,767 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:31,778 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:31,778 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:31,778 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:31,778 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:31,778 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:31,778 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:31,779 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:32,128 - Waiting: 2.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:32,288 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:32,288 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:32,288 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:32,288 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:32,288 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:32,288 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:32,288 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:32,298 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:32,298 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:32,298 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:32,299 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:32,299 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:32,299 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:32,299 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:32,308 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:32,308 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:32,308 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:32,309 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:32,309 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:32,309 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:32,309 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:32,818 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:32,819 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:32,819 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:32,819 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:32,819 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:32,819 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:32,819 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:32,829 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:32,829 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:32,829 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:32,829 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:32,829 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:32,829 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:32,829 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:32,840 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:32,840 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:32,840 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:32,840 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:32,840 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:32,840 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:32,840 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:33,128 - Waiting: 3.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:33,350 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:33,350 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:33,350 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:33,350 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:33,350 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:33,350 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:33,351 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:33,360 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:33,360 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:33,360 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:33,360 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:33,360 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:33,361 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:33,361 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:33,370 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:33,371 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:33,371 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:33,371 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:33,371 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:33,371 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:33,371 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:33,881 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:33,881 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:33,881 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:33,881 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:33,881 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:33,881 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:33,881 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:33,891 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:33,891 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:33,891 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:33,891 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:33,891 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:33,891 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:33,891 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:33,901 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:33,901 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:33,902 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:33,906 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:33,906 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:33,908 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:33,908 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:34,129 - Waiting: 4.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:34,412 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:34,413 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:34,413 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:34,414 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:34,414 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:34,414 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:34,415 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:34,422 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:34,425 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:34,426 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:34,429 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:34,429 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:34,429 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:34,430 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:34,432 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:34,433 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:34,434 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:34,437 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:34,438 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:34,438 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:34,439 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:34,943 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:34,943 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:34,943 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:34,943 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:34,943 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:34,943 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:34,943 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:34,953 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:34,953 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:34,953 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:34,953 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:34,953 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:34,953 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:34,953 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:34,963 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:34,963 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:34,963 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:34,963 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:34,964 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:34,964 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:34,964 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:35,129 - Waiting: 5.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:35,477 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:35,479 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:35,480 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:35,481 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:35,482 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:35,483 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:35,483 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:35,487 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:35,488 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:35,488 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:35,489 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:35,489 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:35,490 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:35,490 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:35,498 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:35,499 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:35,499 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:35,500 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:35,500 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:35,500 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:35,501 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:36,008 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:36,009 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:36,009 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:36,010 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:36,010 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:36,010 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:36,011 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:36,022 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:36,022 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:36,023 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:36,026 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:36,026 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:36,026 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:36,027 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:36,032 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:36,032 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:36,033 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:36,033 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:36,033 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:36,034 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:36,034 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:36,130 - Waiting: 6.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:36,542 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:36,542 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:36,542 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:36,543 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:36,543 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:36,544 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:36,544 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:36,552 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:36,553 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:36,553 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:36,553 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:36,553 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:36,553 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:36,553 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:36,563 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:36,563 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:36,563 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:36,563 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:36,563 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:36,563 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:36,563 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:37,074 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:37,074 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:37,074 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:37,074 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:37,074 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:37,075 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:37,075 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:37,085 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:37,085 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:37,085 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:37,085 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:37,088 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:37,088 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:37,088 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:37,095 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:37,095 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:37,095 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:37,095 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:37,095 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:37,096 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:37,096 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:37,131 - Waiting: 7.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:37,606 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:37,607 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:37,607 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:37,607 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:37,607 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:37,607 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:37,607 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:37,617 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:37,617 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:37,618 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:37,618 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:37,618 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:37,618 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:37,618 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:37,629 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:37,629 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:37,629 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:37,629 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:37,629 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:37,629 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:37,629 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:38,131 - Waiting: 8.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:38,139 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:38,140 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:38,140 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:38,140 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:38,140 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:38,140 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:38,140 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:38,150 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:38,150 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:38,150 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:38,150 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:38,150 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:38,150 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:38,150 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:38,161 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:38,161 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:38,161 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:38,161 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:38,161 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:38,161 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:38,162 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:38,671 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:38,671 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:38,671 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:38,671 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:38,672 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:38,672 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:38,672 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:38,681 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:38,682 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:38,682 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:38,682 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:38,682 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:38,682 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:38,682 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:38,691 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:38,692 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:38,692 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:38,692 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:38,692 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:38,692 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:38,692 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:39,131 - Waiting: 9.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:39,202 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:39,202 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:39,202 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:39,202 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:39,202 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:39,202 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:39,202 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:39,212 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:39,212 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:39,212 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:39,212 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:39,212 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:39,212 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:39,212 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:39,222 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:39,222 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:39,222 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:39,222 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:39,222 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:39,223 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:39,223 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:39,733 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:39,733 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:39,733 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:39,733 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:39,733 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:39,733 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:39,733 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:39,743 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:39,743 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:39,743 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:39,743 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:39,743 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:39,743 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:39,743 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:39,753 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:39,754 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:39,754 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:39,754 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:39,754 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:39,754 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:39,754 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:40,132 - Waiting: 10.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:40,263 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:40,264 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:40,264 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:40,264 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:40,264 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:40,264 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:40,265 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:40,275 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:40,275 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:40,275 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:40,275 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:40,275 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:40,276 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:40,276 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:40,284 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:40,285 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:40,289 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:40,290 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:40,290 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:40,291 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:40,292 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:40,795 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:40,795 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:40,796 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:40,796 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:40,796 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:40,797 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:40,797 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:40,805 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:40,805 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:40,806 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:40,806 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:40,806 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:40,807 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:40,807 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:40,816 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:40,817 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:40,818 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:40,819 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:40,819 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:40,820 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:40,821 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:41,132 - Waiting: 11.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:41,326 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:41,326 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:41,327 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:41,327 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:41,327 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:41,327 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:41,327 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:41,336 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:41,336 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:41,337 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:41,337 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:41,337 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:41,337 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:41,337 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:41,346 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:41,347 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:41,347 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:41,347 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:41,347 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:41,347 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:41,347 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:41,857 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:41,857 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:41,857 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:41,857 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:41,857 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:41,857 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:41,858 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:41,867 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:41,867 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:41,867 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:41,867 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:41,867 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:41,868 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:41,868 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:41,877 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:41,877 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:41,877 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:41,877 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:41,877 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:41,878 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:41,878 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:42,133 - Waiting: 12.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:42,398 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:42,399 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:42,400 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:42,401 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:42,401 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:42,402 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:42,402 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:42,409 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:42,410 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:42,410 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:42,411 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:42,412 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:42,412 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:42,412 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:42,419 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:42,419 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:42,420 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:42,420 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:42,421 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:42,421 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:42,422 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:42,933 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:42,934 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:42,935 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:42,935 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:42,936 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:42,936 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:42,937 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:42,945 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:42,946 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:42,946 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:42,947 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:42,947 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:42,947 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:42,948 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:42,956 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:42,957 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:42,957 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:42,958 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:42,959 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:42,959 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:42,959 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:43,134 - Waiting: 13.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:43,466 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:43,467 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:43,467 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:43,467 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:43,467 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:43,467 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:43,468 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:43,477 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:43,477 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:43,477 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:43,477 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:43,477 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:43,477 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:43,477 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:43,487 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:43,487 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:43,487 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:43,487 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:43,487 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:43,487 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:43,487 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:43,997 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:43,997 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:43,997 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:43,997 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:43,997 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:43,997 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:43,997 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:44,007 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:44,007 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:44,007 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:44,007 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:44,007 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:44,007 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:44,008 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:44,018 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:44,018 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:44,018 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:44,018 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:44,018 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:44,018 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:44,018 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:44,136 - Waiting: 14.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:44,528 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:44,529 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:44,588 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:44,588 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:44,588 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:44,589 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:44,589 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:44,589 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:44,589 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:44,589 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:44,589 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:44,589 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:44,589 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:44,589 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:44,589 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:44,589 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:44,589 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:44,590 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:44,590 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:44,590 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:44,590 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:45,059 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:45,059 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:45,059 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:45,060 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:45,060 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:45,060 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:45,060 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:45,069 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:45,070 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:45,070 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:45,070 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:45,070 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:45,070 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:45,070 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:45,080 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:45,080 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:45,080 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:45,080 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:45,080 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:45,080 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:45,080 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:45,136 - Waiting: 15.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:45,590 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:45,590 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:45,590 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:45,590 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:45,590 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:45,590 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:45,590 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:45,600 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:45,600 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:45,600 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:45,600 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:45,600 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:45,600 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:45,600 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:45,610 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:45,611 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:45,611 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:45,611 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:45,611 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:45,611 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:45,611 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:46,120 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:46,120 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:46,121 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:46,121 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:46,121 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:46,121 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:46,121 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:46,133 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:46,133 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:46,133 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:46,133 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:46,134 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:46,134 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:46,134 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:46,136 - Waiting: 16.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+DEBUG - 2026-03-19 21:35:46,145 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:46,145 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:46,145 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:46,145 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:46,145 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:46,146 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:46,146 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+INFO - 2026-03-19 21:35:46,580 - Takeoff triggered by user. Drones currently ready: [5]
+DEBUG - 2026-03-19 21:35:46,655 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:46,655 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:46,655 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:46,655 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:46,655 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:46,655 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:46,656 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:46,666 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:46,666 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:46,666 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:46,666 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:46,666 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:46,666 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:46,666 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:46,676 - Received message from ('192.168.0.70', 54014): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:46,677 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}
+DEBUG - 2026-03-19 21:35:46,677 - all_waiting_drones: {99, 5}
+DEBUG - 2026-03-19 21:35:46,677 - The takeoff_waitlist: {99, 5}
+INFO - 2026-03-19 21:35:46,678 - Drone 5 is ready, but waiting for others.
+DEBUG - 2026-03-19 21:35:46,678 - Current Waitlist: {99, 5}
+INFO - 2026-03-19 21:35:46,678 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 78 Pos: (1686, 76)', 'relay': False}}
+DEBUG - 2026-03-19 21:35:47,137 - Waiting: 17.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
+INFO - 2026-03-19 21:35:47,137 - User triggered takeoff. Drones [5] ready for takeoff!
+DEBUG - 2026-03-19 21:35:47,147 - MarkerServer sent b'{"type": "takeoff", "takeoff_list": [5]}' to ('192.168.0.70', 54014) (sent 3 times for reliability)
+DEBUG - 2026-03-19 21:35:47,157 - MarkerServer sent b'{"type": "takeoff", "takeoff_list": [5]}' to ('192.168.0.70', 54014) (sent 3 times for reliability)
+DEBUG - 2026-03-19 21:35:47,168 - MarkerServer sent b'{"type": "takeoff", "takeoff_list": [5]}' to ('192.168.0.70', 54014) (sent 3 times for reliability)
+DEBUG - 2026-03-19 21:35:47,168 - wait_and_takeoff thread ended.
+DEBUG - 2026-03-19 21:35:59,099 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:35:59,100 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927359.1000214, 'drone_id': 5}
+INFO - 2026-03-19 21:35:59,100 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927359.1000214, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:35:59,110 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:35:59,110 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927359.110246, 'drone_id': 5}
+INFO - 2026-03-19 21:35:59,110 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927359.110246, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:35:59,120 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:35:59,120 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927359.1203847, 'drone_id': 5}
+INFO - 2026-03-19 21:35:59,120 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927359.1203847, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:35:59,130 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:35:59,131 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927359.1312685, 'drone_id': 5}
+INFO - 2026-03-19 21:35:59,131 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927359.1312685, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:35:59,141 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:35:59,141 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927359.1412601, 'drone_id': 5}
+INFO - 2026-03-19 21:35:59,141 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927359.1412601, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:35:59,151 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:35:59,151 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927359.1513965, 'drone_id': 5}
+INFO - 2026-03-19 21:35:59,151 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927359.1513965, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:35:59,161 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:35:59,162 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927359.162164, 'drone_id': 5}
+INFO - 2026-03-19 21:35:59,162 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927359.162164, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:35:59,174 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:35:59,174 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927359.1743512, 'drone_id': 5}
+INFO - 2026-03-19 21:35:59,174 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927359.1743512, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:35:59,184 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:35:59,184 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927359.1847591, 'drone_id': 5}
+INFO - 2026-03-19 21:35:59,185 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927359.1847591, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:35:59,195 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:35:59,195 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927359.1956682, 'drone_id': 5}
+INFO - 2026-03-19 21:35:59,195 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927359.1956682, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,585 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,585 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927368.5855217, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,585 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.5855217, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,595 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,595 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927368.5957506, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,595 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.5957506, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,605 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,605 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927368.6059344, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,606 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6059344, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,615 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,615 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927368.615942, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,616 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.615942, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,625 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,626 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927368.6260014, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,626 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6260014, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,636 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,636 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927368.636303, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,636 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.636303, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,646 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,646 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927368.6463258, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,646 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6463258, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,656 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,656 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927368.6566133, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,656 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6566133, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,668 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,668 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927368.6684515, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,668 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6684515, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,679 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,679 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,679 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,688 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,688 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927368.688825, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,688 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.688825, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,698 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,699 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927368.699112, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,699 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.699112, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,709 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,709 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927368.7091715, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,709 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7091715, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,719 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,719 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927368.7198925, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,720 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7198925, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,733 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,733 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927368.7332702, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,733 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7332702, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,743 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,743 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927368.7436934, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,743 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7436934, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,752 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,753 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927368.7531214, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,753 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7531214, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,763 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,763 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927368.7639246, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,764 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7639246, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,773 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,774 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927368.7745538, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,775 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7745538, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:08,784 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:08,784 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927368.7842278, 'drone_id': 5}
+INFO - 2026-03-19 21:36:08,784 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7842278, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:18,819 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
+DEBUG - 2026-03-19 21:36:18,819 - Updated waypoint 0 status: {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}
+INFO - 2026-03-19 21:36:18,819 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7842278, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:18,830 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
+DEBUG - 2026-03-19 21:36:18,830 - Updated waypoint 0 status: {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}
+INFO - 2026-03-19 21:36:18,830 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7842278, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:18,840 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
+DEBUG - 2026-03-19 21:36:18,841 - Updated waypoint 0 status: {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}
+INFO - 2026-03-19 21:36:18,841 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7842278, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:18,851 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
+DEBUG - 2026-03-19 21:36:18,851 - Updated waypoint 0 status: {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}
+INFO - 2026-03-19 21:36:18,851 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7842278, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:18,861 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
+DEBUG - 2026-03-19 21:36:18,861 - Updated waypoint 0 status: {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}
+INFO - 2026-03-19 21:36:18,861 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7842278, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:18,877 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
+DEBUG - 2026-03-19 21:36:18,878 - Updated waypoint 0 status: {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}
+INFO - 2026-03-19 21:36:18,879 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7842278, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:18,887 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
+DEBUG - 2026-03-19 21:36:18,888 - Updated waypoint 0 status: {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}
+INFO - 2026-03-19 21:36:18,889 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7842278, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:18,898 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
+DEBUG - 2026-03-19 21:36:18,898 - Updated waypoint 0 status: {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}
+INFO - 2026-03-19 21:36:18,900 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7842278, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:18,911 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
+DEBUG - 2026-03-19 21:36:18,912 - Updated waypoint 0 status: {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}
+INFO - 2026-03-19 21:36:18,912 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7842278, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:18,920 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
+DEBUG - 2026-03-19 21:36:18,921 - Updated waypoint 0 status: {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}
+INFO - 2026-03-19 21:36:18,921 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927368.7842278, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,622 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,622 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927395.622263, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,622 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.622263, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,635 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,635 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927395.6353443, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,635 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.6353443, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,642 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,643 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927395.6430285, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,643 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.6430285, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,652 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,653 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927395.6531625, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,653 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.6531625, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,664 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,664 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927395.6645877, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,664 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.6645877, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,674 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,674 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927395.6747222, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,674 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.6747222, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,684 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,686 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927395.6862028, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,686 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.6862028, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,694 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,694 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927395.694915, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,695 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.694915, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,704 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,705 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927395.7051585, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,705 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.7051585, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,717 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,717 - Updated waypoint 1 status: {'occupied': True, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,717 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,725 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,726 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927395.7262964, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,726 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.7262964, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,737 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,737 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927395.7373798, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,737 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.7373798, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,747 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,747 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927395.7474878, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,747 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.7474878, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,758 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,758 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927395.7588763, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,759 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.7588763, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,769 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,769 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927395.7693825, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,769 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.7693825, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,780 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,780 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927395.780423, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,780 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.780423, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,791 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,791 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927395.7919083, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,792 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.7919083, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,800 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,801 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927395.801173, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,801 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.801173, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,811 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,811 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927395.811332, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,811 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.811332, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:35,822 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:36:35,822 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927395.8222938, 'drone_id': 5}
+INFO - 2026-03-19 21:36:35,822 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': True, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.8222938, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:54,202 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
+DEBUG - 2026-03-19 21:36:54,202 - Updated waypoint 1 status: {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}
+INFO - 2026-03-19 21:36:54,202 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.8222938, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:54,212 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
+DEBUG - 2026-03-19 21:36:54,213 - Updated waypoint 1 status: {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}
+INFO - 2026-03-19 21:36:54,213 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.8222938, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:54,223 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
+DEBUG - 2026-03-19 21:36:54,223 - Updated waypoint 1 status: {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}
+INFO - 2026-03-19 21:36:54,223 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.8222938, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:54,233 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
+DEBUG - 2026-03-19 21:36:54,233 - Updated waypoint 1 status: {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}
+INFO - 2026-03-19 21:36:54,233 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.8222938, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:54,243 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
+DEBUG - 2026-03-19 21:36:54,243 - Updated waypoint 1 status: {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}
+INFO - 2026-03-19 21:36:54,243 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.8222938, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:54,254 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
+DEBUG - 2026-03-19 21:36:54,254 - Updated waypoint 1 status: {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}
+INFO - 2026-03-19 21:36:54,254 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.8222938, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:54,265 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
+DEBUG - 2026-03-19 21:36:54,265 - Updated waypoint 1 status: {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}
+INFO - 2026-03-19 21:36:54,265 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.8222938, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:54,277 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
+DEBUG - 2026-03-19 21:36:54,278 - Updated waypoint 1 status: {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}
+INFO - 2026-03-19 21:36:54,278 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.8222938, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:54,288 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
+DEBUG - 2026-03-19 21:36:54,289 - Updated waypoint 1 status: {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}
+INFO - 2026-03-19 21:36:54,289 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.8222938, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:36:54,298 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
+DEBUG - 2026-03-19 21:36:54,299 - Updated waypoint 1 status: {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}
+INFO - 2026-03-19 21:36:54,300 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927395.8222938, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,795 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,795 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927432.7953813, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,795 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.7953813, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,805 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,805 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927432.805936, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,806 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.805936, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,815 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,816 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927432.8160071, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,816 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8160071, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,829 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,829 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927432.8295941, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,830 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8295941, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,839 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,841 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927432.8410826, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,841 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8410826, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,850 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,851 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927432.8508937, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,851 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8508937, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,861 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,862 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927432.8619175, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,862 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8619175, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,875 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,876 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927432.8760934, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,876 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8760934, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,883 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,886 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927432.8863397, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,887 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8863397, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,895 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,896 - Updated waypoint 2 status: {'occupied': True, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,897 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,909 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,911 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927432.9118268, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,913 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927432.9118268, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,920 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,920 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927432.9208918, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,921 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927432.9208918, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,930 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,932 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927432.9326036, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,935 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927432.9326036, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,942 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,943 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927432.9431674, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,943 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927432.9431674, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,951 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,953 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927432.9532514, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,953 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927432.9532514, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,961 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,962 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927432.9623113, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,963 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927432.9623113, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,977 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,977 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927432.9777381, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,979 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927432.9777381, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,987 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,988 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927432.9885554, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,989 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927432.9885554, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:12,997 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:12,998 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927432.9983437, 'drone_id': 5}
+INFO - 2026-03-19 21:37:12,998 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927432.9983437, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:13,009 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:13,010 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927433.0100112, 'drone_id': 5}
+INFO - 2026-03-19 21:37:13,010 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': True, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927433.0100112, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:31,090 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
+DEBUG - 2026-03-19 21:37:31,090 - Updated waypoint 2 status: {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}
+INFO - 2026-03-19 21:37:31,090 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927433.0100112, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:31,099 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
+DEBUG - 2026-03-19 21:37:31,099 - Updated waypoint 2 status: {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}
+INFO - 2026-03-19 21:37:31,100 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927433.0100112, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:31,109 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
+DEBUG - 2026-03-19 21:37:31,109 - Updated waypoint 2 status: {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}
+INFO - 2026-03-19 21:37:31,109 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927433.0100112, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:31,119 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
+DEBUG - 2026-03-19 21:37:31,119 - Updated waypoint 2 status: {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}
+INFO - 2026-03-19 21:37:31,120 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927433.0100112, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:31,129 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
+DEBUG - 2026-03-19 21:37:31,130 - Updated waypoint 2 status: {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}
+INFO - 2026-03-19 21:37:31,130 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927433.0100112, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:31,140 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
+DEBUG - 2026-03-19 21:37:31,140 - Updated waypoint 2 status: {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}
+INFO - 2026-03-19 21:37:31,140 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927433.0100112, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:31,154 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
+DEBUG - 2026-03-19 21:37:31,154 - Updated waypoint 2 status: {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}
+INFO - 2026-03-19 21:37:31,154 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927433.0100112, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:31,164 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
+DEBUG - 2026-03-19 21:37:31,164 - Updated waypoint 2 status: {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}
+INFO - 2026-03-19 21:37:31,164 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927433.0100112, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:31,174 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
+DEBUG - 2026-03-19 21:37:31,175 - Updated waypoint 2 status: {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}
+INFO - 2026-03-19 21:37:31,175 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927433.0100112, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:31,187 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
+DEBUG - 2026-03-19 21:37:31,188 - Updated waypoint 2 status: {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}
+INFO - 2026-03-19 21:37:31,188 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927433.0100112, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,720 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,721 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927468.7215424, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,722 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.7215424, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,730 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,731 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927468.7311716, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,731 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.7311716, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,741 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,741 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927468.7418153, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,741 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.7418153, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,751 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,751 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927468.7518978, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,752 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.7518978, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,762 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,762 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927468.7623053, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,762 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.7623053, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,773 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,773 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927468.7732685, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,773 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.7732685, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,783 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,783 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927468.7833703, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,783 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.7833703, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,794 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,795 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927468.7950485, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,796 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.7950485, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,803 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,804 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927468.8043792, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,804 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.8043792, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,815 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,816 - Updated waypoint 3 status: {'occupied': True, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,816 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,828 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 4, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,832 - Updated waypoint 4 status: {'occupied': True, 'last_occupied_time': 1773927468.8321664, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,832 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.8321664, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,846 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 4, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,852 - Updated waypoint 4 status: {'occupied': True, 'last_occupied_time': 1773927468.8489592, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,852 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.8489592, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,857 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 4, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,861 - Updated waypoint 4 status: {'occupied': True, 'last_occupied_time': 1773927468.8614404, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,862 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.8614404, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,867 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 4, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,869 - Updated waypoint 4 status: {'occupied': True, 'last_occupied_time': 1773927468.8698678, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,873 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.8698678, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,878 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 4, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,881 - Updated waypoint 4 status: {'occupied': True, 'last_occupied_time': 1773927468.8817453, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,884 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.8817453, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,891 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 4, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,892 - Updated waypoint 4 status: {'occupied': True, 'last_occupied_time': 1773927468.892057, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,894 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.892057, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,905 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 4, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,907 - Updated waypoint 4 status: {'occupied': True, 'last_occupied_time': 1773927468.9072652, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,909 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.9072652, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,913 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 4, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,918 - Updated waypoint 4 status: {'occupied': True, 'last_occupied_time': 1773927468.9181917, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,918 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.9181917, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,923 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 4, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,924 - Updated waypoint 4 status: {'occupied': True, 'last_occupied_time': 1773927468.924784, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,925 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.924784, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:48,935 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 4, 'detected': True}
+DEBUG - 2026-03-19 21:37:48,936 - Updated waypoint 4 status: {'occupied': True, 'last_occupied_time': 1773927468.935967, 'drone_id': 5}
+INFO - 2026-03-19 21:37:48,936 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': True, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.935967, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:58,568 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
+DEBUG - 2026-03-19 21:37:58,568 - Updated waypoint 3 status: {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}
+INFO - 2026-03-19 21:37:58,568 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.935967, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:58,578 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
+DEBUG - 2026-03-19 21:37:58,578 - Updated waypoint 3 status: {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}
+INFO - 2026-03-19 21:37:58,579 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.935967, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:58,588 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
+DEBUG - 2026-03-19 21:37:58,589 - Updated waypoint 3 status: {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}
+INFO - 2026-03-19 21:37:58,590 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.935967, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:58,601 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
+DEBUG - 2026-03-19 21:37:58,601 - Updated waypoint 3 status: {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}
+INFO - 2026-03-19 21:37:58,602 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.935967, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:58,611 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
+DEBUG - 2026-03-19 21:37:58,612 - Updated waypoint 3 status: {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}
+INFO - 2026-03-19 21:37:58,612 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.935967, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:58,622 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
+DEBUG - 2026-03-19 21:37:58,623 - Updated waypoint 3 status: {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}
+INFO - 2026-03-19 21:37:58,623 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.935967, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:58,632 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
+DEBUG - 2026-03-19 21:37:58,632 - Updated waypoint 3 status: {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}
+INFO - 2026-03-19 21:37:58,633 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.935967, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:58,642 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
+DEBUG - 2026-03-19 21:37:58,643 - Updated waypoint 3 status: {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}
+INFO - 2026-03-19 21:37:58,643 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.935967, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:58,653 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
+DEBUG - 2026-03-19 21:37:58,653 - Updated waypoint 3 status: {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}
+INFO - 2026-03-19 21:37:58,653 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.935967, 'drone_id': 5}}
+DEBUG - 2026-03-19 21:37:58,664 - Received message from ('192.168.0.70', 54014): {'drone_id': 5, 'relay': False, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
+DEBUG - 2026-03-19 21:37:58,664 - Updated waypoint 3 status: {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}
+INFO - 2026-03-19 21:37:58,664 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773927368.6794386, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 1773927395.717396, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 1773927432.8961015, 'drone_id': 5}, '3': {'occupied': False, 'last_occupied_time': 1773927468.8160446, 'drone_id': 5}, '4': {'occupied': True, 'last_occupied_time': 1773927468.935967, 'drone_id': 5}}
+INFO - 2026-03-19 21:38:29,077 - Releasing waypoint 4 due to 40s timeout
+WARNING - 2026-03-19 21:40:24,456 - Failed to send to client ('192.168.0.70', 54014): [Errno 101] Network is unreachable
+INFO - 2026-03-19 21:40:24,456 - Removed dead clients: {('192.168.0.70', 54014)}

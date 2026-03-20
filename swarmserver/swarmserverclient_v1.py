@@ -12,7 +12,7 @@ class MarkerServer:
     def __init__(self, host='0.0.0.0', port=5005, show_waypoints_window=False):
         self.host = host
         self.port = port
-        self.marker_timeout = 5
+        self.marker_timeout = 10
         self.waypoint_timeout = 40 #Release waypoint if occupied for more than 1 minute
         self.marker_status: Dict[str, Dict[str, Any]] = {}
         self.drone_status: Dict[str, Dict[str, Any]] = {} #List of drone id with its status (dictionary)
@@ -27,6 +27,12 @@ class MarkerServer:
         self.show_waypoints_window = show_waypoints_window
         self.bonus_status = {}
         self.bonus_pose = {}
+
+        self.broadcast_interval_s = 0.05
+        self.broadcast_running = True
+        self.last_marker_snapshot = ""
+        self.last_waypoint_snapshot = ""
+        self.force_heartbeat_every_s = 1.0
 
         # Initialize sockets and logging as before
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -144,8 +150,18 @@ class MarkerServer:
             logging.warning("No relay drones registered yet. Relay execution not sent.")
             return
 
-        self.send_relay_execution_signal(relay_drones, dict(self.bonus_pose))
+        self.send_relay_execution_signal(dict(self.bonus_pose))
         logging.info(f"Relay execution triggered for relay drones: {relay_drones}")
+
+    def broadcast_loop(self):
+        while self.broadcast_running:
+            with self.lock:
+                marker_payload = self.marker_status
+                waypoint_payload = self.waypoints_status
+
+            self.broadcast_status("marker_status", marker_payload)
+            self.broadcast_status("waypoint_status", waypoint_payload)
+            time.sleep(self.broadcast_interval_s)
 
     def check_timeouts(self):
         """Check for markers and waypoints that haven't been updated and clear their status.
@@ -336,7 +352,7 @@ class MarkerServer:
                     message:dict = json.loads(data.decode())
                     logging.debug(f"Received message from {addr}: {message}")
 
-                    if message != prev_message:
+                    # if message != prev_message:
                     
                         # Handle client registration message
                         # if message.get("marker_id") == -1:
@@ -345,42 +361,73 @@ class MarkerServer:
                         #             self.clients.add(addr)
                         #             logging.info(f"New client connected: {addr}")
                         #         self.broadcast_status_to_one(addr, 'marker_status', self.marker_status)
-                        if message.get("type") in ("takeoff_request", "status"):
-                            drone_id = message.get("drone_id")
-                            relay_flag = bool(
-                                message.get(
-                                    "relay",
-                                    self.drone_status.get(drone_id, {}).get("relay", False),
-                                )
-                            )
+                        # if message.get("type") in ("takeoff_request", "status"):
+                        #     drone_id = message.get("drone_id")
+                        #     relay_flag = bool(
+                        #         message.get(
+                        #             "relay",
+                        #             self.drone_status.get(drone_id, {}).get("relay", False),
+                        #         )
+                        #     )
 
-                            if relay_flag and addr is not None:
-                                with self.relay_lock:
-                                    if addr not in self.relay_clients:
-                                        self.relay_clients.add(addr)
-                                        logging.info(f"New relay client connected: drone {drone_id} at {addr}")
-                            elif addr is not None:
-                                with self.lock:
-                                    if addr not in self.clients:
-                                        self.clients.add(addr)
-                                        logging.info(f"New non-relay client connected: drone {drone_id} at {addr}")
-                            self.update_drone_status(message)
-                        elif message.get("type") == 'marker':
-                            self.update_marker_status(message)
-                        elif message.get("type") == 'waypoint':
-                            self.update_waypoint_status(message)
-                        else:
-                            logging.warning("Invalid message format received. See handle_messages in swarmserverclient")
-                            if addr not in self.clients:
-                                with self.lock:
+                        #     if relay_flag and addr is not None:
+                        #         with self.relay_lock:
+                        #             if addr not in self.relay_clients:
+                        #                 self.relay_clients.add(addr)
+                        #                 logging.info(f"New relay client connected: drone {drone_id} at {addr}")
+                        #     elif addr is not None:
+                        #         with self.lock:
+                        #             if addr not in self.clients:
+                        #                 self.clients.add(addr)
+                        #                 logging.info(f"New non-relay client connected: drone {drone_id} at {addr}")
+                        #     self.update_drone_status(message)
+                        # elif message.get("type") == 'marker':
+                        #     self.update_marker_status(message)
+                        # elif message.get("type") == 'waypoint':
+                        #     self.update_waypoint_status(message)
+                        # else:
+                        #     logging.warning("Invalid message format received. See handle_messages in swarmserverclient")
+                        #     if addr not in self.clients:
+                        #         with self.lock:
+                        #             self.clients.add(addr)
+                        #             logging.info(f"New client connected: {addr}")
+                        #         self.broadcast_status_to_one(addr, "marker_status", self.marker_status)
+                        #         self.broadcast_status_to_one(addr, "waypoint_status", self.waypoints_status)
+                    if message.get("type") in ("takeoff_request", "status"):
+                        drone_id = message.get("drone_id")
+                        relay_flag = bool(
+                            message.get(
+                                "relay",
+                                self.drone_status.get(drone_id, {}).get("relay", False),
+                            )
+                        )
+
+                        if relay_flag and addr is not None:
+                            with self.relay_lock:
+                                if addr not in self.relay_clients:
+                                    self.relay_clients.add(addr)
+                                    logging.info(f"New relay client connected: drone {drone_id} at {addr}")
+                        elif addr is not None:
+                            with self.lock:
+                                if addr not in self.clients:
                                     self.clients.add(addr)
-                                    logging.info(f"New client connected: {addr}")
-                                self.broadcast_status_to_one(addr, "marker_status", self.marker_status)
-                                self.broadcast_status_to_one(addr, "waypoint_status", self.waypoints_status)
-                    
-                    prev_message = message
-                    self.broadcast_status('marker_status', self.marker_status)
-                    self.broadcast_status('waypoint_status', self.waypoints_status)     # NEW NEW NEW 6 MAR
+                                    logging.info(f"New non-relay client connected: drone {drone_id} at {addr}")
+                        self.update_drone_status(message)
+                    elif message.get("type") == 'marker':
+                        self.update_marker_status(message)
+                    elif message.get("type") == 'waypoint':
+                        self.update_waypoint_status(message)
+                    else:
+                        logging.warning("Invalid message format received. See handle_messages in swarmserverclient")
+                        if addr not in self.clients:
+                            with self.lock:
+                                self.clients.add(addr)
+                                logging.info(f"New client connected: {addr}")
+                            self.broadcast_status_to_one(addr, "marker_status", self.marker_status)
+                            self.broadcast_status_to_one(addr, "waypoint_status", self.waypoints_status)
+                    # prev_message = message
+                    # self.broadcast_status('marker_status', self.marker_status)
+                    # self.broadcast_status('waypoint_status', self.waypoints_status)     # NEW NEW NEW 6 MAR
                         
                 except json.JSONDecodeError:
                     logging.warning(f"Received invalid JSON from {addr}: {data}")
@@ -416,12 +463,33 @@ class MarkerServer:
                     logging.info(f"Removed dead clients: {dead_clients}")
         except Exception as e:
             logging.error(f"Error in broadcast_status: {e}")
+        
+        try:
+            with self.relay_lock:
+                message_to_send = {"type": message_type, "message": message}
+                status_json = json.dumps(message_to_send).encode()
+                
+                dead_clients = set()
+                for client_addr in self.relay_clients:
+                    try:
+                        self.broadcast_sock.sendto(status_json, client_addr)
+                    except Exception as e:
+                        logging.warning(f"Failed to send to client {client_addr}: {e}")
+                        dead_clients.add(client_addr)
+                
+                # Remove dead clients
+                self.relay_clients -= dead_clients
+                if dead_clients:
+                    logging.info(f"Removed relay dead clients: {dead_clients}")
+        except Exception as e:
+            logging.error(f"Error in broadcast_status: {e}")
 
     def run(self):
         try:
             threads = [
                 threading.Thread(target=self.handle_messages, daemon=True),
-                threading.Thread(target=self.check_timeouts, daemon=True)
+                threading.Thread(target=self.check_timeouts, daemon=True),
+                threading.Thread(target=self.broadcast_loop, daemon=True)
             ]
             for thread in threads:
                 thread.start()
@@ -494,12 +562,12 @@ class MarkerServer:
                     logging.debug(f"MarkerServer sent {takeoff_message} to {client_addr} (sent {send_repeat} times for reliability)")
     
     # Send relay executional signal for all relay drones
-    def send_relay_execution_signal(self, relay_drones:List, bonus_position:Dict[str, Any], send_repeat: int=3):
+    def send_relay_execution_signal(self, bonus_position:Dict[str, Any], send_repeat: int=3):
         if not self.relay_clients:
             logging.warning("No relay clients are registered. Relay execution signal not sent.")
             return
 
-        takeoff_message = json.dumps({"type": "relay init", "takeoff_list": relay_drones, "bonus_pose": bonus_position}).encode()
+        takeoff_message = json.dumps({"type": "relay init", "bonus_pose": bonus_position}).encode()
         # if self.relay_victims is not None and self.relay_victims[1] != (0,0):
         #     takeoff_message = json.dumps({"type": "relay init", "takeoff_list": ready_drones, "marker pose": }).encode()
         #takeoff_message = json.dumps({"type": "relay init", "takeoff_list": ready_drones}).encode()
@@ -631,14 +699,29 @@ class MarkerClient:
             logging.debug(f"Tello {self.drone_id} waiting to take off. takeoff_signal: {self.takeoff_signal}")
             self._send_takeoff_request(drones_list, status_message=status_message)   # TBC 12 MAR - continue sending takeoff requests, just in case. (will it be too spammy?)
             time.sleep(0.5)  # Wait for takeoff command
+        
+    def relay_client_takeoff_simul(self, drones_list:list, status_message:str = None):
+        """
+        This is the holding pattern that releases the Client once takeoff_signal is received from server.
+        (caa 13 Mar) Must launch server BEFORE client can register for it to work!
+
+        Args:
+            drones_list: For manual clicking, use drones_list = [99]
+        """
+        self._send_takeoff_request(drones_list, status_message=status_message)
+        
+        while not self.relay_triggered:      # This is a holding pattern, which releases upon takeoff_signal being set by the server.
+            logging.debug(f"Tello {self.drone_id} waiting to take off. takeoff_signal: {self.takeoff_signal}")
+            self._send_takeoff_request(drones_list, status_message=status_message)   # TBC 12 MAR - continue sending takeoff requests, just in case. (will it be too spammy?)
+            time.sleep(0.5)  # Wait for takeoff command
 
         logging.info(f"Tello {self.drone_id} is taking off!")
 
-    def wait_for_relay(self, drone):
-        while not self.relay_triggered:
-            logging.debug(f"Tello {self.drone_id} waiting for relay execution signal. relay_triggered: {self.relay_triggered}")
-            time.sleep(0.5)  # Wait for relay execution command
-            drone.send_rc_control(0,0,0,0)  # hover in place
+    # def wait_for_relay(self):
+    #     while not self.relay_triggered:
+    #         logging.debug(f"Tello {self.drone_id} waiting for relay execution signal. relay_triggered: {self.relay_triggered}")
+    #         time.sleep(0.5)  # Wait for relay execution command
+    #         # drone.send_rc_control(0,0,0,0)  # hover in place
 
     def _send_takeoff_request(self, waiting_list:list, status_message:str=None):
         """
@@ -665,7 +748,7 @@ class MarkerClient:
                     update_type:Literal["status","marker","waypoint"], 
                     marker_id:int=None, detected:bool=None, landed:bool=None,
                     status_message:str='', 
-                    send_repeat:int=10, 
+                    send_repeat:int=3, 
                     bonus_detected:bool=False,
                     bonus_position:List=None):
         """
@@ -739,10 +822,10 @@ class MarkerClient:
                     self.waypoint_status = message.get("message", None)
                     logging.debug(f"Client's waypoint_status is now: {self.waypoint_status}")
 
-                elif message.get("type") == "relay init" and self.drone_id in message.get("takeoff_list", []):
+                elif message.get("type") == "relay init":
                     logging.info(f"Received relay execution signal for Tello {self.drone_id}")
-                    self.relay_bonus_pose = message.get("bonus_pose")
                     self.relay_triggered = True
+                    self.relay_bonus_pose = message.get("bonus_pose", (0,0,0))
 
                 else:
                     logging.error(f"MarkerClient's receive_update: SHOULD NOT BE HERE")
@@ -768,6 +851,9 @@ class MarkerClient:
         if waypoint_data is None:
             return True  # Marker has never been seen before -> Available
         occupied:bool = waypoint_data.get("occupied", False)   # False is the default value to return if "detected" key doesn't exist. If "detected": False, also returns false.
+        if occupied:
+            if waypoint_data['drone_id'] == self.drone_id:
+                return True
         return not occupied  # If occupied = True, return available = False. 
     
     def get_invalid_markers(self, markers_list: list) -> list:

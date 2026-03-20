@@ -1,180 +1,495 @@
-INFO - 2026-03-16 02:45:38,478 - Swarm server started on 0.0.0.0:5005
-DEBUG - 2026-03-16 02:45:44,337 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'marker', 'marker_id': -1}
-INFO - 2026-03-16 02:45:44,338 - New client connected: ('10.91.71.196', 51504)
-DEBUG - 2026-03-16 02:45:44,347 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'marker', 'marker_id': -1}
-DEBUG - 2026-03-16 02:45:44,358 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'marker', 'marker_id': -1}
-DEBUG - 2026-03-16 02:45:44,368 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'marker', 'marker_id': -1}
-DEBUG - 2026-03-16 02:45:44,378 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'marker', 'marker_id': -1}
-DEBUG - 2026-03-16 02:45:44,388 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'marker', 'marker_id': -1}
-DEBUG - 2026-03-16 02:45:44,398 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'marker', 'marker_id': -1}
-DEBUG - 2026-03-16 02:45:44,409 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'marker', 'marker_id': -1}
-DEBUG - 2026-03-16 02:45:44,420 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'marker', 'marker_id': -1}
-DEBUG - 2026-03-16 02:45:44,429 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'marker', 'marker_id': -1}
-DEBUG - 2026-03-16 02:45:46,293 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:46,293 - 5 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:46,293 - all_waiting_drones: {99, 5}
-DEBUG - 2026-03-16 02:45:46,293 - The takeoff_waitlist: set()
-INFO - 2026-03-16 02:45:46,293 - Drone 5 is first ready, starting countdown for {99, 5}
-DEBUG - 2026-03-16 02:45:46,294 - wait_and_takeoff thread started.
-DEBUG - 2026-03-16 02:45:46,294 - Current Waitlist: {99, 5}
-INFO - 2026-03-16 02:45:46,294 - Drone Statuses: {5: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 85 Pos: (1614, 347)'}}
-DEBUG - 2026-03-16 02:45:46,303 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:46,313 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:46,323 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:46,333 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:46,344 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:46,854 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:46,865 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:46,875 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:47,294 - Waiting: 1.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
-DEBUG - 2026-03-16 02:45:47,392 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:47,401 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:47,411 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:47,921 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:47,931 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:47,942 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:48,295 - Waiting: 2.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
-DEBUG - 2026-03-16 02:45:48,454 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:48,465 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:48,475 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:48,986 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:48,997 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:49,008 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:49,295 - Waiting: 3.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
-DEBUG - 2026-03-16 02:45:49,518 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:49,528 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:49,539 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:50,049 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:50,059 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:50,069 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:50,296 - Waiting: 4.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
-DEBUG - 2026-03-16 02:45:50,580 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:50,590 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:50,601 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:51,111 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:51,123 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:51,133 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:51,296 - Waiting: 5.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
-DEBUG - 2026-03-16 02:45:51,644 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:51,659 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:51,666 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:52,176 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:52,186 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:52,196 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:52,297 - Waiting: 6.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
-DEBUG - 2026-03-16 02:45:52,707 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:52,717 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:52,730 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:53,242 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:53,252 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:53,262 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:53,299 - Waiting: 7.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
-DEBUG - 2026-03-16 02:45:53,773 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:53,783 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:53,794 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:54,300 - Waiting: 8.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
-DEBUG - 2026-03-16 02:45:54,304 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:54,314 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:54,328 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:54,838 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:54,848 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:54,859 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:55,301 - Waiting: 9.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
-DEBUG - 2026-03-16 02:45:55,370 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:55,380 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:55,391 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:55,902 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:55,912 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-DEBUG - 2026-03-16 02:45:55,922 - Received message from ('10.91.71.196', 51504): {'type': 'takeoff_request', 'drone_id': 5, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 85 Pos: (1614, 347)'}
-INFO - 2026-03-16 02:45:56,100 - Takeoff triggered by user. Drones currently ready: [5]
-DEBUG - 2026-03-16 02:45:56,301 - Waiting: 10.0/600s. Ready drones: [5]. Waitlist set by 1st ready drone: {99, 5}
-INFO - 2026-03-16 02:45:56,301 - User triggered takeoff. Drones [5] ready for takeoff!
-DEBUG - 2026-03-16 02:45:56,311 - MarkerServer sent b'{"type": "takeoff", "takeoff_list": [5]}' to ('10.91.71.196', 51504) (sent 3 times for reliability)
-DEBUG - 2026-03-16 02:45:56,322 - MarkerServer sent b'{"type": "takeoff", "takeoff_list": [5]}' to ('10.91.71.196', 51504) (sent 3 times for reliability)
-DEBUG - 2026-03-16 02:45:56,333 - MarkerServer sent b'{"type": "takeoff", "takeoff_list": [5]}' to ('10.91.71.196', 51504) (sent 3 times for reliability)
-DEBUG - 2026-03-16 02:45:56,333 - wait_and_takeoff thread ended.
-DEBUG - 2026-03-16 02:46:08,354 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
-DEBUG - 2026-03-16 02:46:08,354 - Updated waypoint 0 status: {'occupied': True, 'last_occupied_time': 1773600368.3545368, 'drone_id': 5}
-INFO - 2026-03-16 02:46:08,354 - Waypoint Statuses: {'0': {'occupied': True, 'last_occupied_time': 1773600368.3545368, 'drone_id': 5}}
-DEBUG - 2026-03-16 02:46:08,364 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
-DEBUG - 2026-03-16 02:46:08,374 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
-DEBUG - 2026-03-16 02:46:08,384 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
-DEBUG - 2026-03-16 02:46:08,394 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
-DEBUG - 2026-03-16 02:46:08,405 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
-DEBUG - 2026-03-16 02:46:08,415 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
-DEBUG - 2026-03-16 02:46:08,425 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
-DEBUG - 2026-03-16 02:46:08,437 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
-DEBUG - 2026-03-16 02:46:08,447 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': True}
-DEBUG - 2026-03-16 02:46:29,935 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
-DEBUG - 2026-03-16 02:46:29,936 - Updated waypoint 0 status: {'occupied': False, 'last_occupied_time': 1773600368.3545368, 'drone_id': 5}
-INFO - 2026-03-16 02:46:29,937 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773600368.3545368, 'drone_id': 5}}
-DEBUG - 2026-03-16 02:46:29,946 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
-DEBUG - 2026-03-16 02:46:29,956 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
-DEBUG - 2026-03-16 02:46:29,969 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
-DEBUG - 2026-03-16 02:46:29,979 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
-DEBUG - 2026-03-16 02:46:29,990 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
-DEBUG - 2026-03-16 02:46:30,000 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
-DEBUG - 2026-03-16 02:46:30,010 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
-DEBUG - 2026-03-16 02:46:30,021 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
-DEBUG - 2026-03-16 02:46:30,031 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 0, 'detected': False}
-DEBUG - 2026-03-16 02:46:57,426 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
-DEBUG - 2026-03-16 02:46:57,426 - Updated waypoint 1 status: {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}
-INFO - 2026-03-16 02:46:57,426 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773600368.3545368, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}}
-DEBUG - 2026-03-16 02:46:57,437 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
-DEBUG - 2026-03-16 02:46:57,448 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
-DEBUG - 2026-03-16 02:46:57,459 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
-DEBUG - 2026-03-16 02:46:57,469 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
-DEBUG - 2026-03-16 02:46:57,486 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
-DEBUG - 2026-03-16 02:46:57,492 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
-DEBUG - 2026-03-16 02:46:57,502 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
-DEBUG - 2026-03-16 02:46:57,512 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
-DEBUG - 2026-03-16 02:46:57,523 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 1, 'detected': False}
-DEBUG - 2026-03-16 02:47:24,779 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
-DEBUG - 2026-03-16 02:47:24,779 - Updated waypoint 2 status: {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}
-INFO - 2026-03-16 02:47:24,779 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773600368.3545368, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}}
-DEBUG - 2026-03-16 02:47:24,789 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
-DEBUG - 2026-03-16 02:47:24,799 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
-DEBUG - 2026-03-16 02:47:24,809 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
-DEBUG - 2026-03-16 02:47:24,820 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
-DEBUG - 2026-03-16 02:47:24,830 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
-DEBUG - 2026-03-16 02:47:24,841 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
-DEBUG - 2026-03-16 02:47:24,851 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
-DEBUG - 2026-03-16 02:47:24,861 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
-DEBUG - 2026-03-16 02:47:24,871 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 2, 'detected': False}
-DEBUG - 2026-03-16 02:47:44,050 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
-DEBUG - 2026-03-16 02:47:44,050 - Updated waypoint 3 status: {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}
-INFO - 2026-03-16 02:47:44,050 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773600368.3545368, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}, '3': {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}}
-DEBUG - 2026-03-16 02:47:44,060 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
-DEBUG - 2026-03-16 02:47:44,071 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
-DEBUG - 2026-03-16 02:47:44,081 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
-DEBUG - 2026-03-16 02:47:44,091 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
-DEBUG - 2026-03-16 02:47:44,103 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
-DEBUG - 2026-03-16 02:47:44,112 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
-DEBUG - 2026-03-16 02:47:44,123 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
-DEBUG - 2026-03-16 02:47:44,133 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
-DEBUG - 2026-03-16 02:47:44,144 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 3, 'detected': False}
-DEBUG - 2026-03-16 02:48:11,484 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 4, 'detected': False}
-DEBUG - 2026-03-16 02:48:11,484 - Updated waypoint 4 status: {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}
-INFO - 2026-03-16 02:48:11,484 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773600368.3545368, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}, '3': {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}, '4': {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}}
-DEBUG - 2026-03-16 02:48:11,494 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 4, 'detected': False}
-DEBUG - 2026-03-16 02:48:11,507 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 4, 'detected': False}
-DEBUG - 2026-03-16 02:48:11,519 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 4, 'detected': False}
-DEBUG - 2026-03-16 02:48:11,529 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 4, 'detected': False}
-DEBUG - 2026-03-16 02:48:11,539 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 4, 'detected': False}
-DEBUG - 2026-03-16 02:48:11,552 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 4, 'detected': False}
-DEBUG - 2026-03-16 02:48:11,560 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 4, 'detected': False}
-DEBUG - 2026-03-16 02:48:11,576 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 4, 'detected': False}
-DEBUG - 2026-03-16 02:48:11,586 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 4, 'detected': False}
-DEBUG - 2026-03-16 02:48:37,938 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 5, 'detected': False}
-DEBUG - 2026-03-16 02:48:37,938 - Updated waypoint 5 status: {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}
-INFO - 2026-03-16 02:48:37,938 - Waypoint Statuses: {'0': {'occupied': False, 'last_occupied_time': 1773600368.3545368, 'drone_id': 5}, '1': {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}, '2': {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}, '3': {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}, '4': {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}, '5': {'occupied': False, 'last_occupied_time': 0, 'drone_id': 5}}
-DEBUG - 2026-03-16 02:48:37,949 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 5, 'detected': False}
-DEBUG - 2026-03-16 02:48:37,959 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 5, 'detected': False}
-DEBUG - 2026-03-16 02:48:37,969 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 5, 'detected': False}
-DEBUG - 2026-03-16 02:48:37,979 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 5, 'detected': False}
-DEBUG - 2026-03-16 02:48:37,989 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 5, 'detected': False}
-DEBUG - 2026-03-16 02:48:37,999 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 5, 'detected': False}
-DEBUG - 2026-03-16 02:48:38,009 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 5, 'detected': False}
-DEBUG - 2026-03-16 02:48:38,020 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 5, 'detected': False}
-DEBUG - 2026-03-16 02:48:38,030 - Received message from ('10.91.71.196', 51504): {'drone_id': 5, 'type': 'waypoint', 'marker_id': 5, 'detected': False}
-INFO - 2026-03-16 02:50:20,788 - Swarm server terminated.
+INFO - 2026-03-20 05:58:36,656 - Swarm server started on 0.0.0.0:5005
+DEBUG - 2026-03-20 05:58:45,110 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+INFO - 2026-03-20 05:58:45,111 - New relay client connected: drone 19 at ('10.91.71.196', 42701)
+DEBUG - 2026-03-20 05:58:45,111 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,112 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:45,112 - The takeoff_waitlist: set()
+INFO - 2026-03-20 05:58:45,112 - Drone 19 is first ready, starting countdown for {19, 99}
+DEBUG - 2026-03-20 05:58:45,114 - wait_and_takeoff thread started.
+DEBUG - 2026-03-20 05:58:45,114 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,115 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:45,120 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,121 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,121 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:45,122 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,122 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:45,122 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,123 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:45,133 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,134 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,134 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:45,134 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,135 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:45,135 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,135 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:45,144 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,144 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,145 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:45,145 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,145 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:45,145 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,146 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:45,154 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,155 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,155 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:45,156 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,156 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:45,158 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,158 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:45,165 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,165 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,166 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:45,167 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,167 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:45,167 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,168 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:45,677 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,677 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,678 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:45,678 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,678 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:45,679 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,679 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:45,689 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,690 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,690 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:45,690 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,690 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:45,691 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,692 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:45,700 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,701 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:45,702 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:45,703 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,703 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:45,704 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:45,705 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:46,115 - Waiting: 1.0/600s. Ready drones: [19]. Waitlist set by 1st ready drone: {19, 99}
+DEBUG - 2026-03-20 05:58:46,211 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:46,212 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:46,213 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:46,213 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:46,214 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:46,214 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:46,214 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:46,222 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:46,223 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:46,223 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:46,224 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:46,225 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:46,226 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:46,227 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:46,236 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:46,238 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:46,238 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:46,239 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:46,240 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:46,241 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:46,244 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:46,754 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:46,755 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:46,756 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:46,756 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:46,756 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:46,757 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:46,757 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:46,780 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:46,784 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:46,785 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:46,789 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:46,791 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:46,794 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:46,795 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:46,799 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:46,805 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:46,807 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:46,811 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:46,811 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:46,811 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:46,812 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:47,115 - Waiting: 2.0/600s. Ready drones: [19]. Waitlist set by 1st ready drone: {19, 99}
+DEBUG - 2026-03-20 05:58:47,312 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:47,313 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:47,313 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:47,313 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:47,313 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:47,313 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:47,313 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:47,323 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:47,323 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:47,323 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:47,323 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:47,323 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:47,323 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:47,323 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:47,334 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:47,334 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:47,334 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:47,334 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:47,334 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:47,334 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:47,334 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:47,850 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:47,851 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:47,851 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:47,855 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:47,856 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:47,856 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:47,857 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:47,861 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:47,861 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:47,862 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:47,862 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:47,862 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:47,863 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:47,863 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:47,867 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:47,868 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:47,868 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:47,869 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:47,871 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:47,874 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:47,876 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:48,120 - Waiting: 3.0/600s. Ready drones: [19]. Waitlist set by 1st ready drone: {19, 99}
+DEBUG - 2026-03-20 05:58:48,378 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:48,379 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:48,379 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:48,379 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:48,380 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:48,380 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:48,380 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:48,388 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:48,388 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:48,388 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:48,388 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:48,388 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:48,389 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:48,389 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:48,398 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:48,398 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:48,398 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:48,398 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:48,398 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:48,399 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:48,399 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+INFO - 2026-03-20 05:58:48,707 - Takeoff triggered by user. Drones currently ready: [19]
+DEBUG - 2026-03-20 05:58:48,910 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:48,911 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:48,912 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:48,913 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:48,913 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:48,914 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:48,914 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:48,921 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:48,922 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:48,922 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:48,924 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:48,924 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:48,925 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:48,925 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:48,934 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:48,936 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:48,936 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:48,937 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:48,937 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:48,937 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:48,942 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:49,123 - Waiting: 4.0/600s. Ready drones: [19]. Waitlist set by 1st ready drone: {19, 99}
+INFO - 2026-03-20 05:58:49,125 - User triggered takeoff. Drones [19] ready for takeoff!
+DEBUG - 2026-03-20 05:58:49,128 - wait_and_takeoff thread ended.
+DEBUG - 2026-03-20 05:58:49,447 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:49,448 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:49,448 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:49,449 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:49,450 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:49,451 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:49,452 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:49,457 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:49,458 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:49,459 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:49,459 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:49,459 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:49,461 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:49,461 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:49,471 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:49,472 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:49,472 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:49,473 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:49,473 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:49,473 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:49,475 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:49,981 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:49,982 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:49,982 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:49,982 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:49,982 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:49,982 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:49,982 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:49,992 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:49,992 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:49,992 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:49,992 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:49,992 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:49,992 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:49,992 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:50,004 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:50,005 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:50,005 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:50,006 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:50,006 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:50,006 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:50,007 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:50,515 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:50,516 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:50,576 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:50,577 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:50,577 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:50,578 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:50,580 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:50,582 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:50,584 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:50,584 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:50,588 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:50,589 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:50,594 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:50,595 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:50,602 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:50,603 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:50,603 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:50,608 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:50,612 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:50,619 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:50,619 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:51,045 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:51,046 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:51,046 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:51,046 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:51,047 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:51,047 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:51,047 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:51,060 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:51,060 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:51,060 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:51,060 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:51,060 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:51,060 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:51,061 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:51,067 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:51,067 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:51,067 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:51,067 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:51,067 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:51,068 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:51,068 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:51,579 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:51,581 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:51,582 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:51,582 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:51,583 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:51,583 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:51,584 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:51,589 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:51,590 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:51,591 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:51,593 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:51,594 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:51,594 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:51,596 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:51,601 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:51,602 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:51,603 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:51,603 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:51,604 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:51,605 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:51,605 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:52,116 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:52,117 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:52,118 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:52,118 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:52,120 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:52,120 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:52,122 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:52,127 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:52,127 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:52,128 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:52,129 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:52,130 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:52,130 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:52,130 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:52,138 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:52,139 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:52,139 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:52,140 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:52,140 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:52,141 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:52,141 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+INFO - 2026-03-20 05:58:52,174 - Takeoff triggered by user. Drones currently ready: [19]
+DEBUG - 2026-03-20 05:58:52,649 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:52,649 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:52,650 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:52,650 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:52,650 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:52,650 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:52,650 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:52,660 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:52,660 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:52,660 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:52,660 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:52,660 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:52,660 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:52,660 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:52,670 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:52,672 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:52,672 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:52,673 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:52,674 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:52,674 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:52,674 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:53,181 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:53,183 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:53,184 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:53,185 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:53,186 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:53,188 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:53,190 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:53,191 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:53,192 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:53,192 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:53,193 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:53,194 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:53,194 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:53,194 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:53,204 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:53,205 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:53,205 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:53,206 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:53,206 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:53,206 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:53,207 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:53,714 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:53,714 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:53,715 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:53,715 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:53,715 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:53,715 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:53,715 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:53,725 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:53,725 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:53,725 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:53,725 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:53,725 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:53,725 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:53,726 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:53,735 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:53,735 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:53,735 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:53,736 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:53,736 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:53,736 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:53,736 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:54,246 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:54,247 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:54,247 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:54,248 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:54,250 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:54,250 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:54,251 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:54,259 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:54,260 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:54,260 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:54,260 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:54,260 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:54,261 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:54,261 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:54,270 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:54,274 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:54,275 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:54,276 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:54,278 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:54,279 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:54,284 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:54,792 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:54,793 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:54,793 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:54,793 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:54,794 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:54,794 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:54,795 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:54,804 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:54,805 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:54,805 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:54,805 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:54,806 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:54,806 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:54,806 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:54,815 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:54,815 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:54,815 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:54,815 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:54,816 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:54,816 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:54,816 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:55,325 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:55,325 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:55,325 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:55,326 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:55,326 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:55,326 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:55,326 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:55,335 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:55,336 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:55,336 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:55,336 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:55,336 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:55,336 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:55,336 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:55,346 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:55,347 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:55,348 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:55,348 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:55,349 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:55,349 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:55,350 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:55,857 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:55,858 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:55,859 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:55,859 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:55,860 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:55,860 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:55,861 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:55,868 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:55,869 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:55,869 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:55,870 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:55,870 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:55,870 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:55,870 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:55,879 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:55,879 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:55,880 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:55,880 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:55,880 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:55,881 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:55,882 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:56,391 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:56,392 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:56,392 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:56,393 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:56,393 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:56,393 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:56,393 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:56,401 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:56,401 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:56,401 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:56,402 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:56,402 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:56,402 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:56,402 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+DEBUG - 2026-03-20 05:58:56,411 - Received message from ('10.91.71.196', 42701): {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:56,412 - 19 requesting takeoff. Message: {'type': 'takeoff_request', 'drone_id': 19, 'waiting_list': [99], 'ready': True, 'status': 'Battery: 45', 'relay': True}
+DEBUG - 2026-03-20 05:58:56,412 - all_waiting_drones: {19, 99}
+DEBUG - 2026-03-20 05:58:56,412 - The takeoff_waitlist: {19, 99}
+INFO - 2026-03-20 05:58:56,412 - Drone 19 is ready, but waiting for others.
+DEBUG - 2026-03-20 05:58:56,412 - Current Waitlist: {19, 99}
+INFO - 2026-03-20 05:58:56,412 - Drone Statuses: {19: {'ready': True, 'waiting_list': [99], 'status': 'Battery: 45', 'relay': True}}
+INFO - 2026-03-20 05:58:56,557 - Swarm server terminated.
