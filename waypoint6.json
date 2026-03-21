@@ -2,48 +2,39 @@
     "README": "JSON stores current waypoint and distance + angle to NEXT waypoint. Final waypoint has dist_cm = angle_deg = 0.",
     "wp": [
         {
-            "dist_cm": 663,
-            "dist_px": 159,
-            "angle_deg": -9.0,
+            "dist_cm": 408,
+            "dist_px": 98,
+            "angle_deg": 3.0,
             "position_cm": {
-                "x": 1963,
-                "y": 96
+                "x": 188,
+                "y": 683
             }
         },
         {
-            "dist_cm": 633,
-            "dist_px": 152,
-            "angle_deg": 9.0,
+            "dist_cm": 290,
+            "dist_px": 69,
+            "angle_deg": -61.0,
             "position_cm": {
-                "x": 2071,
-                "y": 750
+                "x": 167,
+                "y": 1092
             }
         },
         {
-            "dist_cm": 232,
-            "dist_px": 55,
-            "angle_deg": 100.0,
+            "dist_cm": 405,
+            "dist_px": 97,
+            "angle_deg": 63.0,
             "position_cm": {
-                "x": 2079,
-                "y": 1383
+                "x": 413,
+                "y": 1246
             }
         },
         {
-            "dist_cm": 376,
-            "dist_px": 90,
-            "angle_deg": -90.0,
+            "dist_cm": 333,
+            "dist_px": 80,
+            "angle_deg": 36.0,
             "position_cm": {
-                "x": 1850,
-                "y": 1346
-            }
-        },
-        {
-            "dist_cm": 517,
-            "dist_px": 124,
-            "angle_deg": 88.0,
-            "position_cm": {
-                "x": 1788,
-                "y": 1717
+                "x": 379,
+                "y": 1650
             }
         },
         {
@@ -51,8 +42,8 @@
             "dist_px": 0,
             "angle_deg": 0,
             "position_cm": {
-                "x": 1275,
-                "y": 1646
+                "x": 162,
+                "y": 1904
             }
         }
     ],
@@ -62,5 +53,5 @@
         "scale_factor": 4.166666666666667
     },
     "competition_notice": "This path was planned in a test area. Scale adjustments needed for 20m x 20m competition field.",
-    "datetime": "16 03 01:40"
+    "datetime": "21 03 22:05"
 }

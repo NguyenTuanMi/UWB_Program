@@ -36,7 +36,7 @@ TODO:
 - Load new markers json (uwb_trace.json)
 
 """
-marking_tag = 6
+marking_tag = 19
 pygame.init()
 # screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT], pygame.RESIZABLE)
 screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])

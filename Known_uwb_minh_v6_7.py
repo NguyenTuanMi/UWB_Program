@@ -10,8 +10,8 @@ import math
 import json
 
 strafe_speed = 1.0
-pi_id = 19
-tag_id = 7
+pi_id = 7
+tag_id = 17
 
 network_config = {
             'host': f'192.168.0.{100+pi_id}',     
@@ -20,7 +20,7 @@ network_config = {
             'video_port': 11100 + pi_id   
             }
 
-group_1 = [5,6,19,10]
+group_1 = [1,4,17,7]
 uwb_ground_height = 60
 
 # ============================================================
@@ -112,7 +112,7 @@ def get_distance_with_retry(controller: DroneController, id, max_attempts=30):
         time.sleep(0.1)
     return None
 
-def get_visible_marker_list_with_retry(controller: DroneController, max_attempts=10):
+def get_visible_marker_list_with_retry(controller: DroneController, max_attempts=5):
     for attempt in range(max_attempts):
         d = controller.get_current_visible_snapshot()
         print(f"Current visible snapshot: {d}")
@@ -291,7 +291,6 @@ def video_thread(controller: DroneController):
                     'x': x_cm,
                     'is_fire': is_fire
                     }
-                
                 frame = draw_pose_axes(frame, corners, ids, rvecs, tvecs, controller, is_fire)
                 
                 marker_center_x = int(tvecs[i][0][0] * 100.0)
@@ -636,8 +635,10 @@ def locate_marker(controller: DroneController, id, marker_client: MarkerClient, 
     total_descent = max(current_altitude - target_altitude, 0)
     descent_per_segment = int(total_descent / num_segments)
 
+
     for i in range(num_segments):
         marker_client.send_update('marker', marker_id=int(id), detected=True)
+        marker_client.send_update('waypoint', marker_id=controller.get_current_waypoint(), detected=False)
         if not controller.is_running:
             break
         if i != 0:
@@ -682,7 +683,7 @@ def locate_marker(controller: DroneController, id, marker_client: MarkerClient, 
     downward_center_and_land(controller, id, marker_client)
     return True
 
-def movement_thread(controller: DroneController, marker_client: MarkerClient):
+def movement_thread(controller: DroneController, marker_client):
     print("Starting movement thread...")
 
     uwb_raw = (0,0,0)
@@ -696,7 +697,7 @@ def movement_thread(controller: DroneController, marker_client: MarkerClient):
     controller.start_pose = uwb_pos
 
     # marker_client.client_takeoff_simul([99], f'Battery: {controller.drone.get_battery()}')
-    marker_client.relay_client_takeoff_simul([99], f'Battery: {controller.drone.get_battery()}')
+    marker_client.client_takeoff_simul([99], f'Battery: {controller.drone.get_battery()} - Start Pose: {controller.start_pose}')
     print("Taking off...")
     controller.drone.takeoff()
     controller.has_taken_off = True
@@ -759,7 +760,6 @@ def execute_waypoints(controller: DroneController, marker_client: MarkerClient):
     # print("Already at starting waypoint")
     # time.sleep(3)
     # heading = controller.get_heading()
-
     waypoint_id = 0
     try:
 
@@ -809,7 +809,6 @@ def execute_waypoints(controller: DroneController, marker_client: MarkerClient):
             # time.sleep(3)
             scan_for_marker(controller, marker_client)
             waypoint_id += 1
-            
             time.sleep(1)
     
     except Exception as e:
@@ -821,7 +820,7 @@ def execute_waypoints(controller: DroneController, marker_client: MarkerClient):
             status = "Landing..."
             controller.drone.land()
             controller.drone.streamoff()
-        print("Mission completed!") 
+        print("Mission completed!")
 
 # ============================================================
 # === Display Loop
@@ -846,7 +845,7 @@ def display_loop(controller: DroneController):
 
 def main():
     controller = DroneController(pi_id=pi_id, tag_id=tag_id, network_config=network_config)
-    markerclient = MarkerClient(drone_id=controller.drone_id, relay_status=True)
+    markerclient = MarkerClient(drone_id=controller.drone_id)
     try:
         uwb_thread = threading.Thread(target=uwb_poll_thread, args=(controller.drone_uwbtag, controller), daemon=True)
         video_handler = threading.Thread(target=video_thread, args=(controller,), daemon=True)

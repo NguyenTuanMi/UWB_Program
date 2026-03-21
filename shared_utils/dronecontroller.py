@@ -28,6 +28,11 @@ class DroneController:
         self.target_marker_id = None
         self.total_marker = self.valid_ids | self.bonus_victims | self.invalid_ids
         self.yaw_controller = YawController(self)
+        self.marker_detected_flag = False
+        self.marker_detected_lock = Lock()
+        self.current_waypont = None
+        self.waypoint_lock = Lock()
+
 
         # Replaces global marker_list, fire_marker_list, victim_marker_list
         self.seen_marker_ids = set()        # all ever-detected victim/bonus markers (persistent)
@@ -71,6 +76,14 @@ class DroneController:
         self.tvec = None
         self.rtlock = Lock()
     
+    def set_current_waypoint(self, waypoint):
+        with self.waypoint_lock:
+            self.current_waypont = waypoint
+    
+    def get_current_waypoint(self):
+        with self.waypoint_lock:
+            return self.get_current_waypoint
+    
     def _rebuild_discovered(self):
     # Fire markers first, then victims — maintains priority ordering
         with self.discovered_lock:
@@ -78,6 +91,24 @@ class DroneController:
                 list(self.seen_fire_ids) + list(self.seen_marker_ids)
             )
 
+    # New accessors:
+    def set_marker_detected(self, val: bool):
+        with self.marker_detected_lock:
+            self.marker_detected_flag = val
+
+    def get_marker_detected_with_retry(self) -> bool:
+        for attempt in range(10):
+            d = self.get_marker_detected()
+            print(f"State of current visible snapshot: {d}")
+            if d is not None and d:
+                return d
+            time.sleep(0.1)
+        return False
+        
+    def get_marker_detected(self) -> bool:
+        with self.marker_detected_lock:
+            return self.marker_detected_flag
+            
     def get_current_visible_snapshot(self):
         with self.current_visible_lock:
             return dict(self.current_visible)   # shallow copy is safe since values are dicts of primitives

@@ -1,23 +1,33 @@
 import time
 from typing import Optional
 
+from enum import Enum, auto
+
+class RotationResult(Enum):
+    COMPLETED  = auto()   # finished the full angle
+    INTERRUPTED = auto()  # stopped because marker was detected mid-rotation
+    TIMEOUT    = auto()   # hit timeout
+    ABORTED    = auto()   # controller stopped
+
 class YawController:
     """
     A blocking controller for precise angle-based yaw rotation using RC velocity commands.
     """
     
     DEFAULT_TIMEOUT_SEC = 10.0
-    DEFAULT_TOLERANCE_DEG = 3.0
-    DEFAULT_YAW_SPEED = 60  # RC velocity command (0-100)
+    DEFAULT_TOLERANCE_DEG = 4.0
+    DEFAULT_YAW_SPEED = 80  # RC velocity command (0-100)
     SLOWDOWN_THRESHOLD_DEG = 30.0  # Start slowing down within this range
     MIN_YAW_SPEED = 20  # Minimum RC yaw velocity during slowdown
+    MARKER_HOLD_SEC = 0.5
     
-    def __init__(self, controller):
+    def __init__(self, controller, MARKER_HOLD_SEC=MARKER_HOLD_SEC):
         """
         Args:
             controller: Instance of DroneController
         """
         self.controller = controller
+        self.MARKER_HOLD_SEC = MARKER_HOLD_SEC
     
     def yaw_right_by_angle(
             self, 
@@ -27,7 +37,7 @@ class YawController:
             tolerance=DEFAULT_TOLERANCE_DEG
         ):
         """Rotate clockwise (right) by specified angle and block until complete."""
-        self._execute_rotation(
+        return self._execute_rotation(
             abs(angle), 
             direction=1, 
             speed=speed, 
@@ -43,7 +53,7 @@ class YawController:
             tolerance=DEFAULT_TOLERANCE_DEG
         ):
         """Rotate counter-clockwise (left) by specified angle and block until complete."""
-        self._execute_rotation(
+        return self._execute_rotation(
             abs(angle), 
             direction=-1, 
             speed=speed, 
@@ -67,7 +77,7 @@ class YawController:
         last_heading = self._get_safe_heading()
         if last_heading is None:
             print("[YAW CONTROLLER] Failed to get initial heading.")
-            return
+            return RotationResult.ABORTED
             
         print(f"[YAW CONTROLLER] Starting rotation. Target: {target_angle}°, Direction: {'CW' if direction > 0 else 'CCW'}")
 
@@ -75,18 +85,34 @@ class YawController:
             # Abort quickly if mission/controller is stopping.
             if not getattr(self.controller, "is_running", True):
                 print("[YAW CONTROLLER] Aborted: controller is not running.")
-                break
+                return RotationResult.ABORTED
             
             # 2. Check Timeout
             if (time.time() - start_time) > timeout:
                 print(f"[YAW CONTROLLER] Warning: Rotation timed out after {timeout}s.")
-                break
+                return RotationResult.TIMEOUT
                 
             # 3. Update Heading
             current_heading = self._get_safe_heading()
             if current_heading is None:
                 time.sleep(0.05)
                 continue
+
+            if self.controller.get_marker_detected():
+                print("[YAW CONTROLLER] Marker detected mid-rotation — holding for 5s.")
+                self._stop_rotation()   # stop immediately
+
+                hold_start = time.time()
+                while time.time() - hold_start < self.MARKER_HOLD_SEC:
+                    self.controller.drone.send_rc_control(0,0,0,0)
+                    time.sleep(0.2)
+                    return RotationResult.INTERRUPTED
+            
+                # if self.controller.get_marker_detected(): 
+                #     print("[YAW CONTROLLER] Marker still visible after hold — interrupting rotation.")
+                #     return RotationResult.INTERRUPTED
+                # else: 
+                #     print("[YAW CONTROLLER] Marker gone after hold — resuming rotation.")
 
             # 4. Calculate Delta and Accumulate
             accumulated_rotation += self._calculate_progress(current_heading, last_heading, direction)
@@ -96,7 +122,8 @@ class YawController:
             # 5. Check Completion
             if remaining_angle <= tolerance:
                 print(f"[YAW CONTROLLER] Rotation complete. Accumulated: {accumulated_rotation:.1f}°")
-                break
+                self._stop_rotation()
+                return RotationResult.COMPLETED
                 
             # 6. Calculate Adaptive Speed & Send Command
             current_speed = self._calculate_adaptive_speed(speed, remaining_angle)
@@ -104,7 +131,7 @@ class YawController:
             time.sleep(0.2)
             
         # 7. Stop Rotation
-        self._stop_rotation()
+        
 
     def _get_safe_heading(self) -> Optional[float]:
         """Attempts to retrieve the current heading safely."""

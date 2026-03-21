@@ -13,7 +13,7 @@ class MarkerServer:
         self.host = host
         self.port = port
         self.marker_timeout = 10
-        self.waypoint_timeout = 40 #Release waypoint if occupied for more than 1 minute
+        self.waypoint_timeout = 30 #Release waypoint if occupied for more than 1 minute
         self.marker_status: Dict[str, Dict[str, Any]] = {}
         self.drone_status: Dict[str, Dict[str, Any]] = {} #List of drone id with its status (dictionary)
         self.takeoff_waitlist = set()
