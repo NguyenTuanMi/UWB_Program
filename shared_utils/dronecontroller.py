@@ -22,9 +22,9 @@ class DroneController:
         self.has_taken_off = False
         self.movement_completed = False
         self.is_centered = False
-        self.valid_ids = set(range(1, 4)) 
-        self.invalid_ids = set(range(11, 14))
-        self.bonus_victims = set(range(21, 24))
+        self.valid_ids = set(range(1, 5)) 
+        self.invalid_ids = set(range(11, 15))
+        self.bonus_victims = set(range(21, 25))
         self.target_marker_id = None
         self.total_marker = self.valid_ids | self.bonus_victims | self.invalid_ids
         self.yaw_controller = YawController(self)
@@ -33,6 +33,11 @@ class DroneController:
         self.current_waypont = None
         self.waypoint_lock = Lock()
 
+        # Controller is rotating
+        self.is_rotating = False
+        self.is_rotating_lock = Lock()
+        self.halt_rotation = True
+        self.halt_rotation_lock = Lock()
 
         # Replaces global marker_list, fire_marker_list, victim_marker_list
         self.seen_marker_ids = set()        # all ever-detected victim/bonus markers (persistent)
@@ -75,6 +80,13 @@ class DroneController:
         self.rvec = None
         self.tvec = None
         self.rtlock = Lock()
+
+        self.available_list = [True]*25
+        self.available_list_lock = Lock()
+
+        self.is_scanning = False
+        self.interrupt_scan_event = threading.Event()
+        self.scan_ignore_marker = set()
     
     def set_current_waypoint(self, waypoint):
         with self.waypoint_lock:
@@ -82,7 +94,7 @@ class DroneController:
     
     def get_current_waypoint(self):
         with self.waypoint_lock:
-            return self.get_current_waypoint
+            return self.current_waypont
     
     def _rebuild_discovered(self):
     # Fire markers first, then victims — maintains priority ordering
