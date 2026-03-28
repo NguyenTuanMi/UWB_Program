@@ -2,39 +2,30 @@
     "README": "JSON stores current waypoint and distance + angle to NEXT waypoint. Final waypoint has dist_cm = angle_deg = 0.",
     "wp": [
         {
-            "dist_cm": 408,
-            "dist_px": 98,
-            "angle_deg": 3.0,
+            "dist_cm": 946,
+            "dist_px": 227,
+            "angle_deg": -2.0,
             "position_cm": {
-                "x": 188,
-                "y": 683
+                "x": 71,
+                "y": 262
             }
         },
         {
-            "dist_cm": 290,
-            "dist_px": 69,
-            "angle_deg": -61.0,
+            "dist_cm": 467,
+            "dist_px": 112,
+            "angle_deg": -23.0,
             "position_cm": {
-                "x": 167,
-                "y": 1092
+                "x": 96,
+                "y": 1208
             }
         },
         {
-            "dist_cm": 405,
-            "dist_px": 97,
-            "angle_deg": 63.0,
+            "dist_cm": 416,
+            "dist_px": 99,
+            "angle_deg": 55.0,
             "position_cm": {
-                "x": 413,
-                "y": 1246
-            }
-        },
-        {
-            "dist_cm": 333,
-            "dist_px": 80,
-            "angle_deg": 36.0,
-            "position_cm": {
-                "x": 379,
-                "y": 1650
+                "x": 292,
+                "y": 1633
             }
         },
         {
@@ -42,8 +33,8 @@
             "dist_px": 0,
             "angle_deg": 0,
             "position_cm": {
-                "x": 162,
-                "y": 1904
+                "x": 79,
+                "y": 1992
             }
         }
     ],
@@ -53,5 +44,5 @@
         "scale_factor": 4.166666666666667
     },
     "competition_notice": "This path was planned in a test area. Scale adjustments needed for 20m x 20m competition field.",
-    "datetime": "21 03 22:05"
+    "datetime": "28 03 14:36"
 }
