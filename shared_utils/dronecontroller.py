@@ -6,10 +6,13 @@ from djitellopy import Tello
 from .yaw_controller import YawController
 
 class DroneController:
-    def __init__(self, pi_id: int, tag_id: int, network_config: dict):
+    def __init__(self, pi_id: int, tag_id: int, network_config: dict, priority = False):
         self.drone = initialize_drone(network_config)
         self.drone_id = pi_id
         self.drone_uwbtag = tag_id
+        self.prioritize_state = priority
+
+        self.is_navigating = False
         self.frame = None
         self.frame_lock = Lock()
         self.distance = [None]*25
@@ -30,7 +33,7 @@ class DroneController:
         self.yaw_controller = YawController(self)
         self.marker_detected_flag = False
         self.marker_detected_lock = Lock()
-        self.current_waypont = None
+        self.current_waypoint = None
         self.waypoint_lock = Lock()
 
         # Controller is rotating
@@ -90,11 +93,11 @@ class DroneController:
     
     def set_current_waypoint(self, waypoint):
         with self.waypoint_lock:
-            self.current_waypont = waypoint
+            self.current_waypoint = waypoint
     
     def get_current_waypoint(self):
         with self.waypoint_lock:
-            return self.current_waypont
+            return self.current_waypoint
     
     def _rebuild_discovered(self):
     # Fire markers first, then victims — maintains priority ordering
