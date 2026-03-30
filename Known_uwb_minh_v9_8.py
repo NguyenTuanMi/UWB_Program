@@ -12,8 +12,8 @@ import json
 import random
 
 strafe_speed = 1.0
-pi_id = 2
-tag_id = 2
+pi_id = 9
+tag_id = 9
 
 # ============================================================
 # === Utility Functions
@@ -70,7 +70,7 @@ def watchdog_thread(controller: DroneController, markerclient: MarkerClient):
     while controller.is_running:
         time.sleep(0.2)
 
-        # print(f"Current tof distance: {controller.drone.get_distance_tof()}")
+        print(f"Current State: {controller.drone.get_current_state()}")
 
         if not controller.is_navigating or not controller.is_rotating:
             last_time = time.time()
@@ -82,13 +82,13 @@ def watchdog_thread(controller: DroneController, markerclient: MarkerClient):
             last_state = current_state.copy()
 
         if (time.time() - last_time) > 4 or controller.drone.get_distance_tof() < 30 or is_drone_flipped(controller):
-            wp = controller.get_current_waypoint()
-            
-            if wp is not None:
-                markerclient.send_update('waypoint', marker_id=wp, detected=False)
-                if wp != 0:
-                    markerclient.send_update('waypoint', marker_id= wp - 1, detected=False)
-                controller.set_current_waypoint(None)
+            with controller.waypoint_lock:
+                if controller.current_waypont:
+                    markerclient.send_update('waypoint', marker_id=controller.current_waypont(), detected=False)
+                    if controller.current_waypont != 0:
+                        markerclient.send_update('waypoint', marker_id=controller.current_waypont()  - 1, detected=False)
+                    controller.is_running = False
+                    controller.current_waypont = None
             controller.is_navigating = False 
             controller.is_running = False
 
@@ -576,7 +576,6 @@ def video_thread(controller: DroneController):
             
             if has_interrupt_target:
                 controller.interrupt_scan_event.set()
-
         if tvecs is not None:
             controller.set_rtvec(rvecs, tvecs)
         else: 
@@ -655,9 +654,8 @@ def downward_center_and_land(controller: DroneController, target_marker_id: int,
         if frame is None:
             time.sleep(0.05)
             continue
-        gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        corners, ids, rvecs, tvecs = detect_marker_pose(gray_frame, controller)
-        # marker_client.send_update('marker', int(target_marker_id), landed=True)
+        # gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        # corners, ids, rvecs, tvecs = detect_marker_pose(gray_frame, controller)
         
         #marker_center = controller.get_marker_center()
         # marker_client.send_update('marker', marker_id=int(target_marker_id), detected=True, bonus_detected=bonus_detected)
@@ -666,17 +664,11 @@ def downward_center_and_land(controller: DroneController, target_marker_id: int,
         #     if marker_id != target_marker_id:
         #         marker_client.send_update('marker', marker_id=int(marker_id), detected=False)
         #   logging.info(f"Downward centering loop: marker_center={marker_center} at {time.time()}")
-        # rvecs, tvecs = controller.get_rtvec()
+        rvecs, tvecs = controller.get_rtvec()
         print(f"INFO: Downward centering loop at {time.time()}")
-        x_offset, y_offset = None, None
         if rvecs is not None and tvecs is not None:
             count = 0
-            for idx in range(len(ids)):
-                if int(ids[idx][0]) == int(target_marker_id):
-                    x_offset, y_offset = tvecs[idx][0][0]*100, tvecs[idx][0][1]*100
-
-            if x_offset == None or y_offset == None:
-                break
+            x_offset, y_offset = tvecs[0][0][0]*100, tvecs[0][0][1]*100
 
             if abs(x_offset) < center_tolerance and abs(y_offset) < center_tolerance:
                 print("Landing.")
@@ -697,12 +689,11 @@ def downward_center_and_land(controller: DroneController, target_marker_id: int,
                 controller.drone.send_rc_control(0,0,0,0)
                 continue
         else:
-            controller.drone.send_rc_control(0,0,0,0)
-            time.sleep(0.2)
-            count += 1
-            if count > 4:
-                break
-    
+            # controller.drone.send_rc_control(0,0,0,0)
+            # time.sleep(0.2)
+            # count += 1
+            # if count > 4:
+            break
     print("Centered — descending slightly...")
     controller.drone.send_rc_control(0, 0, descend_speed, 0)
     time.sleep(0.3)
@@ -716,7 +707,6 @@ def downward_center_and_land(controller: DroneController, target_marker_id: int,
         marker_client.send_update('marker', marker_id=int(target_marker_id), landed=True, bonus_detected=bonus_detected, bonus_position=pos)
     else:
         marker_client.send_update('marker', marker_id=int(target_marker_id), landed=True, bonus_detected=bonus_detected)
-    
     controller.drone.send_rc_control(0, 0, 0, 0)
     controller.drone.land()
     controller.movement_completed = True
@@ -761,8 +751,8 @@ def scan_for_marker(controller: DroneController, marker_client: MarkerClient, se
                 return
 
         # Enable the interrupt flag for the video_thread
-        controller.interrupt_scan_event.clear()
         controller.is_scanning = True
+        controller.interrupt_scan_event.clear()
         time.sleep(0.1)
 
         result, deg_turned = controller.yaw_controller.yaw_right_by_angle(rotating_angle - offset)
@@ -775,8 +765,7 @@ def scan_for_marker(controller: DroneController, marker_client: MarkerClient, se
                 offset = deg_turned
                 rotation += offset
                 continue
-            else: 
-                offset = 0
+            offset = 0
             # continue  # loop back, read visible again WITHOUT rotating
         elif result in (RotationResult.ABORTED, RotationResult.TIMEOUT):
             print(f"[SCAN] Rotation ended with {result} — stopping scan")
@@ -956,13 +945,10 @@ def execute_waypoints(controller: DroneController, marker_client: MarkerClient, 
         # waypoint_id = 0
         # Execute each waypoint
         for wp in data['wp']:
-
             # controller.set_current_waypoint(waypoint=waypoint_id)
             controller.is_navigating = True
             # Handle rotation
             status = "Orienting"
-
-            # scan_marker(controller, marker_client=marker_client) #Check the availability of the marker_client
             time.sleep(random.uniform(0, 0.5))
             if waypoint_id == 0:
                 start_time = time.time()
@@ -970,8 +956,8 @@ def execute_waypoints(controller: DroneController, marker_client: MarkerClient, 
                     controller.drone.send_rc_control(0, 0, 0, 0)
                     time.sleep(0.5)
             
+            # scan_marker(controller, marker_client=marker_client) #Check the availability of the marker_client
             print(f"Starting waypoint: {waypoint_id}")
-            
             while marker_client.send_update('waypoint', waypoint_id, detected=True) is False:
                 print(f"waiting for waypoint {waypoint_id} to be available")
                 controller.drone.send_rc_control(0, 0, 0, 0)
@@ -1049,13 +1035,11 @@ def main():
         uwb_thread = threading.Thread(target=uwb_poll_thread, args=(controller.drone_uwbtag, controller), daemon=True)
         video_handler = threading.Thread(target=video_thread, args=(controller,), daemon=True)
         move_handler  = threading.Thread(target=movement_thread, args=(controller,markerclient,), daemon=True)
-        watchdog_handler = threading.Thread(target=watchdog_thread, args=(controller, markerclient), daemon=True)
 
         video_handler.start()
         time.sleep(1.0)
         uwb_thread.start()
         move_handler.start()
-        watchdog_handler.start()
         display_loop(controller)
 
         controller.is_running = False
