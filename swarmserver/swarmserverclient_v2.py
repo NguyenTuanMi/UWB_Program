@@ -91,6 +91,8 @@ class MarkerServer:
         self.relay_button = tk.Button(self.root, text="Trigger Relay Execution", command=self.trigger_relay_execution)
         self.relay_button.pack(fill=tk.X, pady=10)
 
+        
+
         # Initialize waypoints status window if enabled
         if self.show_waypoints_window:
             self.waypoints_root = tk.Toplevel(self.root)
@@ -734,7 +736,7 @@ class MarkerServer:
 
 
 class MarkerClient:
-    def __init__(self, drone_id=0, server_port=5005, broadcast_ip="255.255.255.255", land_callback=None, relay_status=False):
+    def __init__(self, drone_id=0, server_port=5005, broadcast_ip="192.168.1.70", land_callback=None, relay_status=False):
         self.drone_id = drone_id
         self.server_port = server_port
         self.broadcast_ip = broadcast_ip
