@@ -12,8 +12,8 @@ import json
 import random
 
 strafe_speed = 1.0
-pi_id = 10
-tag_id = 10
+pi_id = 9
+tag_id = 9
 
 # ============================================================
 # === Utility Functions
@@ -328,7 +328,6 @@ def video_thread(controller: DroneController):
             
             if has_interrupt_target:
                 controller.interrupt_scan_event.set()
-
         if tvecs is not None:
             controller.set_rtvec(rvecs, tvecs)
         else: 
@@ -702,15 +701,15 @@ def execute_waypoints(controller: DroneController, marker_client: MarkerClient, 
             controller.is_navigating = True
             # Handle rotation
             status = "Orienting"
-
-            # scan_marker(controller, marker_client=marker_client) #Check the availability of the marker_client
             time.sleep(random.uniform(0, 0.5))
-            print(f"Starting waypoint: {waypoint_id}")
             if waypoint_id == 0:
                 start_time = time.time()
                 while time.time() - start_time < 15:
                     controller.drone.send_rc_control(0, 0, 0, 0)
                     time.sleep(0.5)
+            
+            # scan_marker(controller, marker_client=marker_client) #Check the availability of the marker_client
+            print(f"Starting waypoint: {waypoint_id}")
             while marker_client.send_update('waypoint', waypoint_id, detected=True) is False:
                 print(f"waiting for waypoint {waypoint_id} to be available")
                 controller.drone.send_rc_control(0, 0, 0, 0)
@@ -788,7 +787,6 @@ def main():
         uwb_thread = threading.Thread(target=uwb_poll_thread, args=(controller.drone_uwbtag, controller), daemon=True)
         video_handler = threading.Thread(target=video_thread, args=(controller,), daemon=True)
         move_handler  = threading.Thread(target=movement_thread, args=(controller,markerclient,), daemon=True)
-        watchdog_handler = threading.Thread(target=watchdog_thread, args=(controller, markerclient), daemon=True)
 
         video_handler.start()
         time.sleep(1.0)
