@@ -1,0 +1,203 @@
+import threading
+from threading import Lock
+from .customtello import CustomTello
+import time
+from djitellopy import Tello
+from .yaw_controller import YawController
+
+class DroneController:
+    def __init__(self, pi_id: int, tag_id: int, network_config: dict, priority = False):
+        self.drone = initialize_drone(network_config)
+        self.drone_id = pi_id
+        self.drone_uwbtag = tag_id
+        self.prioritize_state = priority
+
+        self.is_navigating = False
+        self.frame = None
+        self.frame_lock = Lock()
+        self.distance = [None]*25
+        self.distance_lock = Lock()
+        self.marker_center = None
+        self.marker_pose = Lock()
+        self.marker_x_lock = Lock()
+        self.marker_x = [None]*25
+        self.is_running = True
+        self.has_taken_off = False
+        self.movement_completed = False
+        self.is_centered = False
+        self.valid_ids = set(range(1, 5)) 
+        self.invalid_ids = set(range(11, 15))
+        self.bonus_victims = set(range(21, 25))
+        self.target_marker_id = None
+        self.total_marker = self.valid_ids | self.bonus_victims | self.invalid_ids
+        self.yaw_controller = YawController(self)
+        self.marker_detected_flag = False
+        self.marker_detected_lock = Lock()
+        self.current_waypoint = None
+        self.waypoint_lock = Lock()
+
+        # Controller is rotating
+        self.is_rotating = False
+        self.is_rotating_lock = Lock()
+        self.halt_rotation = True
+        self.halt_rotation_lock = Lock()
+
+        # Replaces global marker_list, fire_marker_list, victim_marker_list
+        self.seen_marker_ids = set()        # all ever-detected victim/bonus markers (persistent)
+        self.seen_fire_ids = set()          # all ever-detected fire markers (persistent)
+
+        # The key new structure — only what is visible RIGHT NOW
+        self.current_visible = {}           # {marker_id: {'distance': float, 'x': float, 'is_fire': bool}}
+        self.current_visible_lock = Lock()
+
+        # Priority-ordered list of all ever-seen markers (fire first)
+        self.discovered_markers = []        # replaces global marker_list
+        self.discovered_lock = Lock()
+
+        # UWB Thread
+        self.marker_position = None
+        self.marker_position_lock = Lock()
+
+        self.landing_position = None
+        self.marker_list = []
+        self.marker_list_lock = Lock()
+        self.start_pose = []
+        self.sh_lock = Lock()
+        self.marker_priority_list = set()
+        self.marker_client = None
+        self.heading_lock = Lock()
+        
+        # Waypoint control
+        self.group_num = 1
+
+        # Downward vision control
+        self.using_downvision = False
+        self.center_threshold = 20
+        self.consecutive_centered_frames = 0
+        self.required_centered_frames = 15
+        self.rc_speed_scale = 0.3
+
+        self.command_lock = Lock()
+        self.last_distance_ts = 0.0
+
+        self.rvec = None
+        self.tvec = None
+        self.rtlock = Lock()
+
+        self.available_list = [True]*25
+        self.available_list_lock = Lock()
+
+        self.is_scanning = False
+        self.interrupt_scan_event = threading.Event()
+        self.scan_ignore_marker = set()
+    
+    def set_current_waypoint(self, waypoint):
+        with self.waypoint_lock:
+            self.current_waypoint = waypoint
+    
+    def get_current_waypoint(self):
+        with self.waypoint_lock:
+            return self.current_waypoint
+    
+    def _rebuild_discovered(self):
+    # Fire markers first, then victims — maintains priority ordering
+        with self.discovered_lock:
+            self.discovered_markers = (
+                list(self.seen_fire_ids) + list(self.seen_marker_ids)
+            )
+
+    # New accessors:
+    def set_marker_detected(self, val: bool):
+        with self.marker_detected_lock:
+            self.marker_detected_flag = val
+
+    def get_marker_detected_with_retry(self) -> bool:
+        for attempt in range(10):
+            d = self.get_marker_detected()
+            print(f"State of current visible snapshot: {d}")
+            if d is not None and d:
+                return d
+            time.sleep(0.1)
+        return False
+        
+    def get_marker_detected(self) -> bool:
+        with self.marker_detected_lock:
+            return self.marker_detected_flag
+            
+    def get_current_visible_snapshot(self):
+        with self.current_visible_lock:
+            return dict(self.current_visible)   # shallow copy is safe since values are dicts of primitives
+
+    def get_marker_list(self):
+        with self.marker_list_lock:
+            return self.marker_list
+        
+    def set_marker_list(self, marker_list):
+        with self.marker_list_lock:
+            self.marker_list = marker_list
+        
+    def get_frame(self):
+        with self.frame_lock:
+            return self.frame.copy() if self.frame is not None else None
+    
+    def get_rtvec(self):
+        with self.rtlock:
+            return self.rvec, self.tvec
+    
+    def get_heading(self):
+        with self.heading_lock:
+            return self.drone.get_yaw()
+        
+    def set_rtvec(self, rVec, tVec):
+        with self.rtlock:
+            self.rvec = rVec
+            self.tvec = tVec
+
+    def set_frame(self, frame):
+        with self.frame_lock:
+            self.frame = frame
+
+    def get_distance(self, id):
+        with self.distance_lock:
+            return self.distance[id]
+
+    def set_distance(self, distance, id):
+        with self.distance_lock:
+            self.distance[id] = distance
+            self.last_distance_ts = time.time()
+
+    def get_marker_x(self, id): #Get the target marker
+        with self.marker_x_lock:
+            return self.marker_x[id]
+
+    def set_marker_x(self, x, id):
+        with self.marker_x_lock:
+            self.marker_x[id] = x
+
+    def set_marker_center(self, marker_x, marker_y):
+        with self.marker_pose:
+            self.marker_center = (marker_x, marker_y)
+    
+    def get_marker_center(self):
+        with self.marker_pose:
+            return self.marker_center
+    
+    def set_latest_uwb(self, uwb_position):
+        with self.marker_position_lock:
+            self.marker_position = uwb_position
+    
+    def get_latest_uwb(self):
+        with self.marker_position_lock:
+            return self.marker_position
+
+def initialize_drone(network_config: dict):
+    drone = CustomTello(network_config)
+    drone.connect()
+    print(f"Battery Level: {drone.get_battery()}%")
+    drone.streamon()
+    try:
+        drone.set_video_resolution(Tello.RESOLUTION_480P)
+    except:
+        pass
+    time.sleep(1)
+    return drone

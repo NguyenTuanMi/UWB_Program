@@ -1,0 +1,68 @@
+[
+{
+  "directory": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/build",
+  "command": "/usr/bin/gcc  -I/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src -g -o CMakeFiles/nlink_unpack_com.dir/UWB_Sender_Linux.c.o -c /home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/UWB_Sender_Linux.c",
+  "file": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/UWB_Sender_Linux.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/UWB_Sender_Linux.c.o"
+},
+{
+  "directory": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/build",
+  "command": "/usr/bin/gcc  -I/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src -g -o CMakeFiles/nlink_unpack_com.dir/src/nlink_utils.c.o -c /home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_utils.c",
+  "file": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_utils.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_utils.c.o"
+},
+{
+  "directory": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/build",
+  "command": "/usr/bin/gcc  -I/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src -g -o CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_nodeframe0.c.o -c /home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_nodeframe0.c",
+  "file": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_nodeframe0.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_nodeframe0.c.o"
+},
+{
+  "directory": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/build",
+  "command": "/usr/bin/gcc  -I/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src -g -o CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_nodeframe1.c.o -c /home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_nodeframe1.c",
+  "file": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_nodeframe1.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_nodeframe1.c.o"
+},
+{
+  "directory": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/build",
+  "command": "/usr/bin/gcc  -I/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src -g -o CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_nodeframe2.c.o -c /home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_nodeframe2.c",
+  "file": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_nodeframe2.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_nodeframe2.c.o"
+},
+{
+  "directory": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/build",
+  "command": "/usr/bin/gcc  -I/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src -g -o CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_nodeframe3.c.o -c /home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_nodeframe3.c",
+  "file": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_nodeframe3.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_nodeframe3.c.o"
+},
+{
+  "directory": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/build",
+  "command": "/usr/bin/gcc  -I/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src -g -o CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_aoa_nodeframe0.c.o -c /home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_aoa_nodeframe0.c",
+  "file": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_aoa_nodeframe0.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_aoa_nodeframe0.c.o"
+},
+{
+  "directory": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/build",
+  "command": "/usr/bin/gcc  -I/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src -g -o CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_tagframe0.c.o -c /home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_tagframe0.c",
+  "file": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_tagframe0.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_tagframe0.c.o"
+},
+{
+  "directory": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/build",
+  "command": "/usr/bin/gcc  -I/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src -g -o CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_anchorframe0.c.o -c /home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_anchorframe0.c",
+  "file": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_linktrack_anchorframe0.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_linktrack_anchorframe0.c.o"
+},
+{
+  "directory": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/build",
+  "command": "/usr/bin/gcc  -I/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src -g -o CMakeFiles/nlink_unpack_com.dir/src/nlink_tofsense_frame0.c.o -c /home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_tofsense_frame0.c",
+  "file": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_tofsense_frame0.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_tofsense_frame0.c.o"
+},
+{
+  "directory": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/build",
+  "command": "/usr/bin/gcc  -I/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src -g -o CMakeFiles/nlink_unpack_com.dir/src/nlink_tofsensem_frame0.c.o -c /home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_tofsensem_frame0.c",
+  "file": "/home/nguyen-tuan-minh/Documents/SAFMC_2026-main/safmc/UWBSMFC2026/nlink_unpack-master/src/nlink_tofsensem_frame0.c",
+  "output": "CMakeFiles/nlink_unpack_com.dir/src/nlink_tofsensem_frame0.c.o"
+}
+]

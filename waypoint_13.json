@@ -1,0 +1,48 @@
+{
+    "README": "JSON stores current waypoint and distance + angle to NEXT waypoint. Final waypoint has dist_cm = angle_deg = 0.",
+    "wp": [
+        {
+            "dist_cm": 350,
+            "dist_px": 478,
+            "angle_deg": -0.0,
+            "position_cm": {
+                "x": 57,
+                "y": 45
+            }
+        },
+        {
+            "dist_cm": 339,
+            "dist_px": 463,
+            "angle_deg": -90.0,
+            "position_cm": {
+                "x": 58,
+                "y": 396
+            }
+        },
+        {
+            "dist_cm": 351,
+            "dist_px": 479,
+            "angle_deg": -90.0,
+            "position_cm": {
+                "x": 397,
+                "y": 395
+            }
+        },
+        {
+            "dist_cm": 0,
+            "dist_px": 0,
+            "angle_deg": 0,
+            "position_cm": {
+                "x": 396,
+                "y": 44
+            }
+        }
+    ],
+    "test_area": {
+        "width_cm": 440,
+        "height_cm": 440,
+        "scale_factor": 0.7333333333333333
+    },
+    "competition_notice": "This path was planned in a test area. Scale adjustments needed for 20m x 20m competition field.",
+    "datetime": "21 10 15:03"
+}
